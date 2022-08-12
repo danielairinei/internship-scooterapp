@@ -4,6 +4,10 @@ plugins {
     id 'kotlin-kapt'
 }
 
+plugins {
+    id("androidx.navigation.safeargs.kotlin")
+}
+
 android {
     compileSdk 32
 
@@ -52,3 +56,4 @@ dependencies {
     //ViewBinding
     implementation 'com.github.Zhuinden:fragmentviewbindingdelegate-kt:1.0.0'
 }
+

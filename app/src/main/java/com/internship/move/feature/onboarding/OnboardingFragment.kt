@@ -18,5 +18,14 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         binding.onboardingBtn.setOnClickListener {
             view.findNavController().navigate(R.id.action_onboardingFragment_to_authentification_graph)
         }
+
+        binding.onboardingHelpBtn.setOnClickListener {
+            navigateAndPassData(view)
+        }
+    }
+
+    private fun navigateAndPassData(view: View){
+        val argText = binding.onboardingET.text.toString()
+        view.findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToHelpFragment(argText))
     }
 }
