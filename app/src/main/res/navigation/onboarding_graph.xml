@@ -8,7 +8,8 @@
     <fragment
         android:id="@+id/onboardingFragment"
         android:name="com.internship.move.feature.onboarding.OnboardingFragment"
-        android:label="OnboardingFragment" >
+        android:label="OnboardingFragment">
+
         <action
             android:id="@+id/action_onboardingFragment_to_authentification_graph"
             app:destination="@id/authentification_graph"
@@ -16,20 +17,25 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
         <action
             android:id="@+id/action_onboardingFragment_to_helpFragment"
             app:destination="@id/helpFragment" />
     </fragment>
+
     <include app:graph="@navigation/authentification_graph" />
+
     <fragment
         android:id="@+id/helpFragment"
         android:name="com.internship.move.feature.help.HelpFragment"
         android:label="fragment_help"
-        tools:layout="@layout/fragment_help" >
+        tools:layout="@layout/fragment_help">
+
         <argument
             android:name="argText"
-            app:argType="string"
-            android:defaultValue=""/>
+            android:defaultValue=""
+            app:argType="string" />
+
         <action
             android:id="@+id/action_helpFragment_to_onboardingFragment"
             app:destination="@id/onboardingFragment"
