@@ -1,9 +1,9 @@
-package com.internship.move.feature.authentification
+package com.internship.move.feature.authentification.login
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.internship.move.R
 import com.internship.move.databinding.FragmentLoginBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
@@ -16,11 +16,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.loginFragmentRegisterBtn.setOnClickListener {
-            view.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
 
         binding.loginFragmentHomeBtn.setOnClickListener {
-            view.findNavController().navigate(R.id.action_loginFragment_to_home_graph)
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
         }
     }
 }

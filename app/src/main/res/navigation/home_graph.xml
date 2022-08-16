@@ -9,7 +9,8 @@
         android:id="@+id/mapFragment"
         android:name="com.internship.move.feature.map.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" >
+        tools:layout="@layout/fragment_map">
+
         <action
             android:id="@+id/action_mapFragment_to_splash_graph"
             app:destination="@id/splash_graph"
