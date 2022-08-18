@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_800">#3B1159</color>
+    <color name="purple_900">#210B50</color>
+    <color name="pink_700">#E53062</color>
+    <color name="gray">#B2AAC2</color>
+    <!--Splash Fragment Colors-->
+    <color name="splash_fragment_background">@color/purple_800</color>
+    <!--Onboarding Fragment Colors-->
+    <color name="onboarding_fragment_text">@color/purple_900</color>
+    <color name="fragment_button">@color/pink_700</color>
+    <color name="onboarding_fragment_button_text">@color/white</color>
+    <color name="onboarding_fragment_skip">@color/gray</color>
 </resources>
