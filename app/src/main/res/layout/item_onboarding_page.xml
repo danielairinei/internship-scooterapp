@@ -8,8 +8,8 @@
     <ImageView
         android:id="@+id/onboardingIV"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/onboarding_image_view_height"
-        android:scaleType="fitXY"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_onboarding_safety"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +20,8 @@
         android:id="@+id/onboardingHeadingTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/onboarding_heading_margin"
-        android:layout_marginTop="@dimen/onboarding_heading_margin"
+        android:layout_marginStart="@dimen/onboarding_horizontal_margin"
+        android:layout_marginTop="@dimen/onboarding_horizontal_margin"
         android:text="@string/onboarding_safety_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboardingIV" />
@@ -32,19 +32,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/onboarding_skip_margin_top"
-        android:layout_marginEnd="@dimen/onboarding_heading_margin"
+        android:layout_marginEnd="@dimen/onboarding_horizontal_margin"
         android:text="@string/onboarding_skip"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onboardingIV" />
+        app:layout_constraintTop_toBottomOf="@id/onboardingIV" />
 
     <TextView
         android:id="@+id/onboardingContentTV"
         style="@style/OnboardingContentTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/onboarding_heading_margin"
+        android:layout_marginStart="@dimen/onboarding_horizontal_margin"
         android:layout_marginTop="@dimen/onboarding_content_margin_top"
         android:text="@string/onboarding_safety_tutorial"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onboardingHeadingTV" />
+        app:layout_constraintTop_toBottomOf="@id/onboardingHeadingTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

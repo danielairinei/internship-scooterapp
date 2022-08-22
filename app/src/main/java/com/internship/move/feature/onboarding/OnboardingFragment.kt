@@ -47,7 +47,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding), OnSkipListene
 
         list.add(
             ViewPagerItem(
-                1,
                 R.drawable.ic_onboarding_safety,
                 R.string.onboarding_safety_title,
                 R.string.onboarding_safety_tutorial
@@ -55,7 +54,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding), OnSkipListene
         )
         list.add(
             ViewPagerItem(
-                2,
                 R.drawable.ic_onboarding_scan,
                 R.string.onboarding_scan_title,
                 R.string.onboarding_scan_tutorial
@@ -63,7 +61,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding), OnSkipListene
         )
         list.add(
             ViewPagerItem(
-                3,
                 R.drawable.ic_onboarding_parking,
                 R.string.onboarding_parking_title,
                 R.string.onboarding_parking_tutorial
@@ -71,7 +68,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding), OnSkipListene
         )
         list.add(
             ViewPagerItem(
-                4,
                 R.drawable.ic_onboarding_rules,
                 R.string.onboarding_rules_title,
                 R.string.onboarding_rules_tutorial,

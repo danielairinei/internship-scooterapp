@@ -4,20 +4,20 @@
     <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@null</item>
         <item name="android:background">@drawable/bg_primary_button</item>
-        <item name="android:textColor">@color/onboarding_fragment_button_text</item>
+        <item name="android:textColor">@color/button_text_color</item>
         <item name="android:outlineProvider">none</item>
         <item name="cornerRadius">@dimen/onboarding_btn_corner_radius</item>
         <item name="fontFamily">@font/bai_jamjuree_bold</item>
-        <item name="android:textSize">@dimen/onboarding_btn_text</item>
+        <item name="android:textSize">@dimen/button1_text_size</item>
         <item name="android:height">@dimen/onboarding_btn_height</item>
         <item name="textAllCaps">false</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:padding">8dp</item>
     </style>
 
     <style name="OnboardingTV" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/onboarding_fragment_text</item>
         <item name="fontFamily">@font/bai_jamjuree_bold</item>
-        <item name="android:textSize">@dimen/onboarding_text_view_heading</item>
+        <item name="android:textSize">@dimen/heading1_text_size</item>
     </style>
 
     <style name="OnboardingSkipTV" parent="OnboardingTV">
