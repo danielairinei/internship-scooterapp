@@ -9,7 +9,7 @@ import com.internship.move.databinding.ItemOnboardingPageBinding
 import com.internship.move.feature.onboarding.model.ViewPagerItem
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 
-class ViewPagerFragment(private val pagerItem : ViewPagerItem) : Fragment(R.layout.item_onboarding_page) {
+class ViewPagerFragment(private val pagerItem: ViewPagerItem) : Fragment(R.layout.item_onboarding_page) {
 
     private val binding by viewBinding(ItemOnboardingPageBinding::bind)
 
@@ -17,7 +17,15 @@ class ViewPagerFragment(private val pagerItem : ViewPagerItem) : Fragment(R.layo
         super.onViewCreated(view, savedInstanceState)
 
         binding.onboardingHeadingTV.text = getText(pagerItem.heading)
-        binding.onboardingIV.setImageDrawable(context?.let { ContextCompat.getDrawable(it,pagerItem.photoUrl) })
+        binding.onboardingIV.setImageDrawable(context?.let { ContextCompat.getDrawable(it, pagerItem.photoUrl) })
         binding.onboardingContentTV.text = getText(pagerItem.content)
+
+        if (pagerItem.isLastItem) {
+            binding.onboardingSkipTV.visibility = View.INVISIBLE
+        } else{
+            binding.onboardingSkipTV.setOnClickListener{
+                (parentFragment as OnSkipListener).onSkipClickListener()
+            }
+        }
     }
 }

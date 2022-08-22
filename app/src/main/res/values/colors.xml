@@ -18,4 +18,6 @@
     <color name="fragment_button">@color/pink_700</color>
     <color name="onboarding_fragment_button_text">@color/white</color>
     <color name="onboarding_fragment_skip">@color/gray</color>
+    <color name="onboarding_dots_indicator_current">@color/purple_900</color>
+    <color name="onboarding_dots_indicator">@color/gray</color>
 </resources>

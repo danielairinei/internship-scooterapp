@@ -23,4 +23,19 @@
         android:text="@string/onboarding_next_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/dotsIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dotsColor="@color/onboarding_dots_indicator"
+        app:dotsCornerRadius="2dp"
+        app:dotsSize="4dp"
+        app:dotsWidthFactor="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:progressMode="true"
+        android:layout_marginBottom="98dp"
+        android:layout_marginStart="24dp"
+        app:selectedDotColor="@color/onboarding_dots_indicator_current" />
 </androidx.constraintlayout.widget.ConstraintLayout>
