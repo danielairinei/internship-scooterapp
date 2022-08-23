@@ -14,5 +14,6 @@
         <!-- Customize your theme here. -->
         <item name="materialButtonStyle">@style/PrimaryButton</item>
         <item name="android:textViewStyle">@style/OnboardingTV</item>
+        <item name="android:editTextStyle">@style/PrimaryET</item>
     </style>
 </resources>

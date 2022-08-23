@@ -32,7 +32,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding), OnSkipListene
             } else {
                 binding.onboardingVP2.currentItem++
                 if (binding.onboardingVP2.currentItem == adapter.itemCount - 1) {
-                    binding.onboardingNextBtn.text = resources.getText(R.string.onboarding_get_started_button)
+                    binding.onboardingNextBtn.text = resources.getText(R.string.get_started_button)
                 }
             }
         }

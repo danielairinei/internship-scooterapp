@@ -19,19 +19,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
 
         sharedPref.edit().putString(getString(R.string.saved_splash_next_fragment), SPLASH_TO_REGISTER).apply()
-
-        initButtons()
     }
 
-    private fun initButtons() {
-        binding.registerFragmentLoginBtn.setOnClickListener {
-            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
-        }
-
-        binding.registerFragmentHomeBtn.setOnClickListener {
-            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToHomeGraph())
-        }
-    }
 
     companion object {
         const val SPLASH_TO_REGISTER = "SPLASH_TO_REGISTER"

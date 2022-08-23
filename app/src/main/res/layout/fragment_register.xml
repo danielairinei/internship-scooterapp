@@ -1,29 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".feature.authentification.register.RegisterFragment"
     tools:ignore="HardcodedText">
 
+    <ImageView
+        android:id="@+id/topRectangleIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_top_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/logoRectangleIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_rectangle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/pinPointIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_pin_point"
+        app:layout_constraintBottom_toBottomOf="@+id/logoRectangleIV"
+        app:layout_constraintEnd_toEndOf="@+id/logoRectangleIV"
+        app:layout_constraintStart_toStartOf="@+id/logoRectangleIV"
+        app:layout_constraintTop_toTopOf="@+id/logoRectangleIV" />
+
+    <ImageView
+        android:id="@+id/bottomRectangleIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_bottom_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ovalIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_oval"
+        app:layout_constraintBottom_toBottomOf="@+id/pinPointIV"
+        app:layout_constraintEnd_toEndOf="@+id/pinPointIV"
+        app:layout_constraintStart_toStartOf="@+id/pinPointIV"
+        app:layout_constraintTop_toTopOf="@+id/logoRectangleIV" />
+
+    <ImageView
+        android:id="@+id/moveTextIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_move_text_auth"
+        app:layout_constraintBottom_toBottomOf="@+id/logoRectangleIV"
+        app:layout_constraintEnd_toEndOf="@+id/logoRectangleIV"
+        app:layout_constraintStart_toStartOf="@+id/logoRectangleIV"
+        app:layout_constraintTop_toTopOf="@id/logoRectangleIV" />
+
     <TextView
-        android:id="@+id/registerFragmentTV"
+        android:id="@+id/getStartedTV"
+        style="@style/AuthentificationHeadingTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register Fragment"
-        android:textSize="@dimen/text_view_text_size" />
+        android:text="@string/register_get_started_heading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/registerFragmentLoginBtn"
+    <TextView
+        android:id="@+id/heading2TV"
+        style="@style/AuthentificationHeading2TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login" />
-
-    <Button
-        android:id="@+id/registerFragmentHomeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home" />
-</LinearLayout>
+        android:text="@string/register_heading2_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getStartedTV" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,13 @@
     <string name="onboarding_parking_tutorial">If convenient, park at a bike rack. If not, park close to the edge of the sidewalk closest to the street. Do not block sidewalks, doors or ramps.</string>
     <string name="onboarding_rules_tutorial">You must be 18 years or and older with a valid driving licence to operate a scooter. Please follow all street signs, signals and markings, and obey local traffic laws.</string>
     <string name="onboarding_next_button">Next</string>
-    <string name="onboarding_get_started_button">Get Started</string>
+    <string name="get_started_button">Get Started</string>
     <string name="saved_splash_next_fragment">Splash Next Fragment</string>
     <string name="shared_pref_default_value">Default</string>
+    <string name="register_get_started_heading">Let\'s get started</string>
+    <string name="register_heading2_text">Sign up or login and start riding right away</string>
+    <string name="authentication_email_adress_et_hint">Email address</string>
+    <string name="authentication_username_et_hint">Username</string>
+    <string name="authentication_password_et_hint">Password</string>
+    <string name="register_terms_and_conditions_text_view">By continuing you agree to Move’s Terms and Conditions and Privacy Policy</string>
 </resources>

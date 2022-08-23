@@ -8,16 +8,20 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="jagger">#3B1159</color>
-    <color name="violent_violet">#210B50</color>
+    <color name="indigo">#210B50</color>
     <color name="magenta">#E53062</color>
-    <color name="gray">#B2AAC2</color>
+    <color name="grey">#B2AAC2</color>
+    <color name="dusty_grey">#9D9D9D</color>
+    <color name="baby_pink">#F4BDCC</color>
+    <color name="pearl_purple">#B2AAC2</color>
     <!--Splash Fragment Colors-->
-    <color name="splash_fragment_background">@color/jagger</color>
+    <color name="background_color">@color/jagger</color>
     <!--Onboarding Fragment Colors-->
-    <color name="onboarding_fragment_text">@color/violent_violet</color>
+    <color name="onboarding_fragment_text">@color/indigo</color>
     <color name="button_background_color">@color/magenta</color>
     <color name="button_text_color">@color/white</color>
-    <color name="onboarding_fragment_skip">@color/gray</color>
-    <color name="onboarding_dots_indicator_current">@color/violent_violet</color>
-    <color name="onboarding_dots_indicator">@color/gray</color>
+    <color name="onboarding_fragment_skip">@color/grey</color>
+    <color name="onboarding_dots_indicator_current">@color/indigo</color>
+    <color name="onboarding_dots_indicator">@color/grey</color>
+    <color name="authentication_text_color">@color/white</color>
 </resources>
