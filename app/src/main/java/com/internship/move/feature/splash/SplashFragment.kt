@@ -14,7 +14,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         super.onViewCreated(view, savedInstanceState)
 
         Handler(Looper.getMainLooper()).postDelayed(
-            { findNavController().navigate(R.id.action_splashFragment_to_onboarding_graph) },
+            { findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToOnboardingGraph()) },
             SPLASH_FRAGMENT_DELAY
         )
     }

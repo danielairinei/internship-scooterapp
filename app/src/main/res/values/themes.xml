@@ -12,5 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="materialButtonStyle">@style/PrimaryButton</item>
+        <item name="android:textViewStyle">@style/OnboardingTV</item>
     </style>
 </resources>

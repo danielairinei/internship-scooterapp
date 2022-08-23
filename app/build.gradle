@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 
@@ -39,7 +40,7 @@ android {
 
 dependencies {
     implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
@@ -53,5 +54,11 @@ dependencies {
 
     //ViewBinding
     implementation 'com.github.Zhuinden:fragmentviewbindingdelegate-kt:1.0.0'
+
+    //ViewPager
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    //DotsIndicator
+    implementation("com.tbuonomo:dotsindicator:4.3")
 }
 
