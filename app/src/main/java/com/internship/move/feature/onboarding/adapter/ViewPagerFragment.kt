@@ -17,7 +17,7 @@ class ViewPagerFragment : Fragment(R.layout.item_onboarding_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val pagerItem: ViewPagerItem? = arguments?.getParcelable(KEY_PARCELABLE)
+        val pagerItem: ViewPagerItem? = arguments?.getParcelable(KEY_ONBOARDING_PAGER_ITEM)
 
         if (pagerItem != null) {
             binding.onboardingIV.setImageDrawable(ContextCompat.getDrawable(requireContext(), pagerItem.photo))
@@ -32,10 +32,10 @@ class ViewPagerFragment : Fragment(R.layout.item_onboarding_page) {
     }
 
     companion object {
-        private const val KEY_PARCELABLE = "pagerItem"
+        private const val KEY_ONBOARDING_PAGER_ITEM = "KEY_ONBOARDING_PAGER_ITEM"
 
         fun newInstance(pagerItem: ViewPagerItem): ViewPagerFragment = ViewPagerFragment().apply {
-            arguments = Bundle().apply { putParcelable(KEY_PARCELABLE, pagerItem) }
+            arguments = Bundle().apply { putParcelable(KEY_ONBOARDING_PAGER_ITEM, pagerItem) }
         }
     }
 }
