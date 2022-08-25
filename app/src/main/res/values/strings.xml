@@ -11,6 +11,4 @@
     <string name="onboarding_rules_tutorial">You must be 18 years or and older with a valid driving licence to operate a scooter. Please follow all street signs, signals and markings, and obey local traffic laws.</string>
     <string name="onboarding_next_button">Next</string>
     <string name="onboarding_get_started_button">Get Started</string>
-    <string name="saved_splash_next_fragment">Splash Next Fragment</string>
-    <string name="shared_pref_default_value">Default</string>
 </resources>

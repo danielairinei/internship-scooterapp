@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.internship.move.R
 import com.internship.move.databinding.FragmentRegisterBinding
+import com.internship.move.feature.splash.SplashFragment
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
@@ -18,7 +19,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
 
-        sharedPref.edit().putString(getString(R.string.saved_splash_next_fragment), SPLASH_TO_REGISTER).apply()
+        sharedPref.edit().putString(SplashFragment.SPLASH_NEXT_FRAGMENT, SPLASH_TO_REGISTER).apply()
 
         initButtons()
     }
