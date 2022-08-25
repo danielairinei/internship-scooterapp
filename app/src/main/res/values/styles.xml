@@ -15,7 +15,13 @@
     </style>
 
     <style name="TransparentButton" parent="PrimaryButton">
-
+        <item name="android:background">@drawable/bg_transparent_button</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginEnd">@dimen/horizontal_margin</item>
+        <item name="android:alpha">0.3</item>
+        <item name="fontFamily">@font/bai_jamjuree_regular</item>
+        <item name="android:textSize">@dimen/regular_text_size</item>
     </style>
 
     <style name="OnboardingTV" parent="Widget.AppCompat.TextView">
@@ -56,16 +62,29 @@
         <item name="fontFamily">@font/bai_jamjuree_regular</item>
         <item name="android:textColor">@color/authentication_text_color</item>
         <item name="android:textSize">@dimen/regular_text_size</item>
-        <item name="android:width">@dimen/edit_text_width</item>
         <item name="android:textColorHint">@color/authentication_text_color</item>
         <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
         <item name="android:layout_marginEnd">@dimen/horizontal_margin</item>
         <item name="android:hint">This is a hint</item>
-        <item name="boxBackgroundMode">none</item>
         <item name="android:alpha">0.6</item>
+        <item name="hintTextColor">@color/authentication_text_color</item>
+        <item name="endIconMode">custom</item>
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="android:layout_marginTop">@dimen/text_field_margin_top</item>
     </style>
 
     <style name="PrimaryET" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:textSize">@dimen/regular_text_size</item>
+        <item name="android:textColor">@color/authentication_text_color</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="fontFamily">@font/bai_jamjuree_regular</item>
+        <item name="android:layout_marginStart">@dimen/edit_text_margin_start</item>
+    </style>
 
+    <style name="SmallTextView" parent="AuthentificationHeading2TV">
+        <item name="android:alpha">1</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:layout_marginTop">@dimen/authentication_terms_margin_top</item>
     </style>
 </resources>

@@ -20,6 +20,10 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
 
         sharedPref.edit().putString(SplashFragment.SPLASH_NEXT_FRAGMENT, SPLASH_TO_REGISTER).apply()
+
+        binding.registerToLoginTV.setOnClickListener{
+            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
+        }
     }
 
 

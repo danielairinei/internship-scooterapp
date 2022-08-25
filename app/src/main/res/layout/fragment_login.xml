@@ -1,40 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:background="@color/background_color"
     tools:context=".feature.authentification.login.LoginFragment"
-    tools:ignore="HardcodedText">
+    tools:ignore="ContentDescription">
 
-    <TextView
-        android:id="@+id/loginTV"
+    <ImageView
+        android:id="@+id/topRectangleIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login Fragment"
-        android:textSize="@dimen/text_view_text_size"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_top_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/logoRectangleIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_rectangle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/loginFragmentRegisterBtn"
+    <ImageView
+        android:id="@+id/pinPointIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_pin_point"
+        app:layout_constraintBottom_toBottomOf="@+id/logoRectangleIV"
+        app:layout_constraintEnd_toEndOf="@+id/logoRectangleIV"
+        app:layout_constraintStart_toStartOf="@+id/logoRectangleIV"
+        app:layout_constraintTop_toTopOf="@+id/logoRectangleIV" />
+
+    <ImageView
+        android:id="@+id/bottomRectangleIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_bottom_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginFragmentHomeBtn" />
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ovalIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_oval"
+        app:layout_constraintBottom_toBottomOf="@+id/pinPointIV"
+        app:layout_constraintEnd_toEndOf="@+id/pinPointIV"
+        app:layout_constraintStart_toStartOf="@+id/pinPointIV"
+        app:layout_constraintTop_toTopOf="@+id/logoRectangleIV" />
+
+    <ImageView
+        android:id="@+id/moveTextIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_move_text_auth"
+        app:layout_constraintBottom_toBottomOf="@+id/logoRectangleIV"
+        app:layout_constraintEnd_toEndOf="@+id/logoRectangleIV"
+        app:layout_constraintStart_toStartOf="@+id/logoRectangleIV"
+        app:layout_constraintTop_toTopOf="@id/logoRectangleIV" />
+
+    <TextView
+        android:id="@+id/loginTitleTV"
+        style="@style/AuthentificationHeadingTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/authentication_login_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/loginHeading2TV"
+        style="@style/AuthentificationHeading2TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/authentication_login_heading2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginTitleTV" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailTF"
+        style="@style/PrimaryTF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/authentication_email_address_et_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginHeading2TV">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/PrimaryET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTF"
+        style="@style/PrimaryTF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/authentication_password_et_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailTF">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/PrimaryET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/forgotPasswordTV"
+        style="@style/SmallTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/authentication_login_forgot_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordTF" />
 
     <Button
-        android:id="@+id/loginFragmentHomeBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/loginBtn"
+        style="@style/TransparentButton"
         android:layout_height="wrap_content"
-        android:text="Home"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/authentication_btn_margin_top"
+        android:text="@string/authentication_login_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginTV" />
-</LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/forgotPasswordTV" />
+
+    <TextView
+        android:id="@+id/loginToRegisterTV"
+        style="@style/SmallTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/authentication_login_tv_margin_horizontal"
+        android:layout_marginEnd="@dimen/authentication_login_tv_margin_horizontal"
+        android:text="@string/authentication_login_to_register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginBtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>
