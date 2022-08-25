@@ -39,7 +39,7 @@
 
     <style name="AuthentificationHeadingTV" parent="OnboardingTV">
         <item name="android:textColor">@color/authentication_text_color</item>
-        <item name="android:layout_marginStart">@dimen/onboarding_horizontal_margin</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
         <item name="android:layout_marginTop">@dimen/authentication_heading_top_margin</item>
     </style>
 
@@ -48,15 +48,24 @@
         <item name="android:textSize">@dimen/heading2_text_size</item>
         <item name="android:layout_marginTop">@dimen/authentication_heading2_top_margin</item>
         <item name="android:width">@dimen/heading2_text_view_content_width</item>
-        <item name="android:layout_marginStart">@dimen/onboarding_horizontal_margin</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
         <item name="android:alpha">0.6</item>
     </style>
 
-    <style name="PrimaryET" parent="Widget.AppCompat.EditText">
+    <style name="PrimaryTF" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="fontFamily">@font/bai_jamjuree_regular</item>
         <item name="android:textColor">@color/authentication_text_color</item>
         <item name="android:textSize">@dimen/regular_text_size</item>
         <item name="android:width">@dimen/edit_text_width</item>
-        <item name="hintTextColor">@color/authentication_text_color</item>
+        <item name="android:textColorHint">@color/authentication_text_color</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
+        <item name="android:layout_marginEnd">@dimen/horizontal_margin</item>
+        <item name="android:hint">This is a hint</item>
+        <item name="boxBackgroundMode">none</item>
+        <item name="android:alpha">0.6</item>
+    </style>
+
+    <style name="PrimaryET" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+
     </style>
 </resources>

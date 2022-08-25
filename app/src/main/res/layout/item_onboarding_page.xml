@@ -20,8 +20,8 @@
         android:id="@+id/onboardingHeadingTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/onboarding_horizontal_margin"
-        android:layout_marginTop="@dimen/onboarding_horizontal_margin"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/horizontal_margin"
         android:text="@string/onboarding_safety_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboardingIV" />
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/onboarding_skip_margin_top"
-        android:layout_marginEnd="@dimen/onboarding_horizontal_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin"
         android:text="@string/onboarding_skip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboardingIV" />
@@ -42,7 +42,7 @@
         style="@style/OnboardingContentTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/onboarding_horizontal_margin"
+        android:layout_marginStart="@dimen/horizontal_margin"
         android:layout_marginTop="@dimen/onboarding_content_margin_top"
         android:text="@string/onboarding_safety_tutorial"
         app:layout_constraintStart_toStartOf="parent"

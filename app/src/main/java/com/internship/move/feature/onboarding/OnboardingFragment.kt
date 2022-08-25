@@ -61,6 +61,13 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding), OnSkipListene
         )
         list.add(
             ViewPagerItem(
+                R.drawable.ic_onboarding_ride,
+                R.string.onboarding_ride_title,
+                R.string.onboarding_ride_tutorial
+            )
+        )
+        list.add(
+            ViewPagerItem(
                 R.drawable.ic_onboarding_parking,
                 R.string.onboarding_parking_title,
                 R.string.onboarding_parking_tutorial

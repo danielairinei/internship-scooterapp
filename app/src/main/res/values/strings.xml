@@ -19,4 +19,6 @@
     <string name="authentication_username_et_hint">Username</string>
     <string name="authentication_password_et_hint">Password</string>
     <string name="register_terms_and_conditions_text_view">By continuing you agree to Move’s Terms and Conditions and Privacy Policy</string>
+    <string name="onboarding_ride_title">Ride</string>
+    <string name="onboarding_ride_tutorial">Step on the scooter with one foot and kick off the ground. When the scooter starts to coast, push the right throttle to accelerate.</string>
 </resources>

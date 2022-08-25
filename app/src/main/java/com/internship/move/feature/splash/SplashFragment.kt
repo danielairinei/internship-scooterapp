@@ -22,8 +22,8 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         Handler(Looper.getMainLooper()).postDelayed(
             {
                 when (sharedPref?.getString(
-                    getString(R.string.saved_splash_next_fragment),
-                    getString(R.string.shared_pref_default_value)
+                    SPLASH_NEXT_FRAGMENT,
+                    DEFAULT_VALUE
                 )
                 ) {
                     MapFragment.SPLASH_TO_MAP -> findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeGraph())
@@ -37,5 +37,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     companion object {
         private const val SPLASH_FRAGMENT_DELAY = 2000L
+        const val SPLASH_NEXT_FRAGMENT = "Splash Next Fragment"
+        private const val DEFAULT_VALUE = "DEFAULT_VALUE"
     }
 }
