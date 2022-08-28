@@ -35,7 +35,7 @@ fun TextView.makeLinks(text: String, action: (() -> Unit)? = null) {
 fun Button.enableButton() {
     if (this.isEnabled) {
         this.alpha = 1F
-    } else{
+    } else {
         this.alpha = 0.3F
     }
 }
