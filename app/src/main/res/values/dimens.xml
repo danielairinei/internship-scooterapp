@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_view_text_size">24sp</dimen>
-    <!--Onboarding dimens-->
     <dimen name="heading1_text_size">32sp</dimen>
     <dimen name="heading2_text_size">20sp</dimen>
     <dimen name="button1_text_size">16sp</dimen>
@@ -29,4 +28,7 @@
     <dimen name="authentication_btn_margin_top">32dp</dimen>
     <dimen name="authentication_register_tv_margin_horizontal">49dp</dimen>
     <dimen name="authentication_login_tv_margin_horizontal">44dp</dimen>
+    <dimen name="authentication_chevron_margin_top">54dp</dimen>
+    <dimen name="authentication_forgot_password_title_margin_top">14dp</dimen>
+    <dimen name="authentication_forgot_password_heading2_width">328dp</dimen>
 </resources>

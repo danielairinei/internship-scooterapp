@@ -26,4 +26,11 @@
     <string name="authentication_login_heading2">Enter your account credentials and start riding away</string>
     <string name="authentication_login_forgot_password">Forgot your password?</string>
     <string name="authentication_login_to_register">Don’t have an account? You can start with one here</string>
+    <string name="terms_and_conditions_key">Terms and Conditions</string>
+    <string name="privacy_policy_key">Privacy Policy</string>
+    <string name="register_to_login_key">log in here</string>
+    <string name="login_to_register_key">start with one here</string>
+    <string name="authentication_forgot_password_title">Forgot password</string>
+    <string name="authentication_send_reset_btn">Send Reset Link</string>
+    <string name="authentication_forgot_password_heading2">Enter the email address you\'re using for your account bellow and we\'ll send you a password reset link.</string>
 </resources>

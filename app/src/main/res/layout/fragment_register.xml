@@ -45,8 +45,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_bottom_rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/ovalIV"
@@ -87,48 +86,57 @@
         app:layout_constraintTop_toBottomOf="@+id/getStartedTV" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailTF"
+        android:id="@+id/emailTIL"
         style="@style/PrimaryTF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/authentication_email_address_et_hint"
+        app:endIconDrawable="@drawable/ic_clear_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/heading2TV">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailTIET"
             style="@style/PrimaryET"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress|textNoSuggestions" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/usernameTF"
+        android:id="@+id/usernameTIL"
         style="@style/PrimaryTF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/authentication_username_et_hint"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailTF">
+        app:layout_constraintTop_toBottomOf="@id/emailTIL">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/usernameTIET"
             style="@style/PrimaryET"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="text|textNoSuggestions" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordTF"
+        android:id="@+id/passwordTIL"
         style="@style/PrimaryTF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/authentication_password_et_hint"
+        app:endIconDrawable="@drawable/ic_password_toggle"
+        app:endIconMode="password_toggle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/usernameTF">
+        app:layout_constraintTop_toBottomOf="@id/usernameTIL">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordTIET"
             style="@style/PrimaryET"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textPassword|textNoSuggestions" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -141,13 +149,15 @@
         android:text="@string/register_terms_and_conditions_text_view"
         android:textSize="@dimen/small_text_size"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordTF" />
+        app:layout_constraintTop_toBottomOf="@id/passwordTIL" />
 
     <Button
         android:id="@+id/getStartedBtn"
         style="@style/TransparentButton"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/authentication_btn_margin_top"
+        android:background="@drawable/bg_state_button"
+        android:enabled="false"
         android:text="@string/get_started_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/termsTV" />

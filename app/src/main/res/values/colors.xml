@@ -14,7 +14,9 @@
     <color name="dusty_grey">#9D9D9D</color>
     <color name="baby_pink">#F4BDCC</color>
     <color name="pearl_purple">#B2AAC2</color>
-    <!--Splash Fragment Colors-->
+    <color name="white_grey">#99FFFFFF</color>
+
+    <!--App Colors-->
     <color name="background_color">@color/jagger</color>
     <!--Onboarding Fragment Colors-->
     <color name="onboarding_fragment_text">@color/indigo</color>
@@ -24,4 +26,7 @@
     <color name="onboarding_dots_indicator_current">@color/indigo</color>
     <color name="onboarding_dots_indicator">@color/grey</color>
     <color name="authentication_text_color">@color/white</color>
+    <color name="input_box_stroke_color">@color/white</color>
+    <color name="input_box_stroke_focused_color">@color/white_grey</color>
+    <color name="input_box_hint_color">@color/white_grey</color>
 </resources>
