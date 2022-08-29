@@ -33,4 +33,5 @@
     <string name="authentication_forgot_password_title">Forgot password</string>
     <string name="authentication_send_reset_btn">Send Reset Link</string>
     <string name="authentication_forgot_password_heading2">Enter the email address you\'re using for your account bellow and we\'ll send you a password reset link.</string>
+    <string name="onboarding_get_started_button">Get Started</string>
 </resources>

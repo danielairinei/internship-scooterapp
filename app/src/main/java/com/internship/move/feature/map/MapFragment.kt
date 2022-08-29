@@ -19,7 +19,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
 
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
 
-        sharedPref.edit().putString(getString(R.string.saved_splash_next_fragment), SPLASH_TO_MAP).apply()
+        sharedPref.edit().putString(SplashFragment.SPLASH_NEXT_FRAGMENT, SPLASH_TO_MAP).apply()
 
         binding.mapFragmentLogoutBtn.setOnClickListener {
             sharedPref.edit().putString(SplashFragment.SPLASH_NEXT_FRAGMENT, SPLASH_TO_ONBOARDING).apply()

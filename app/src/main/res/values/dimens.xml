@@ -18,10 +18,10 @@
     <dimen name="onboarding_text_view_content_height">48dp</dimen>
     <dimen name="onboarding_content_margin_top">12dp</dimen>
     <dimen name="onboarding_dots_indicator_margin_btm">98dp</dimen>
+    <dimen name="onboarding_btn_margin_top">698dp</dimen>
     <dimen name="authentication_heading_top_margin">152dp</dimen>
     <dimen name="authentication_heading2_top_margin">20dp</dimen>
     <dimen name="text_field_margin_top">18dp</dimen>
-    <dimen name="onboarding_btn_margin_top">698dp</dimen>
     <dimen name="edit_text_margin_start">-16dp</dimen>
     <dimen name="authentication_terms_text_view">232dp</dimen>
     <dimen name="authentication_terms_margin_top">36dp</dimen>
