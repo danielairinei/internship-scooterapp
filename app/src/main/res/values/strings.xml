@@ -34,4 +34,8 @@
     <string name="authentication_send_reset_btn">Send Reset Link</string>
     <string name="authentication_forgot_password_heading2">Enter the email address you\'re using for your account bellow and we\'ll send you a password reset link.</string>
     <string name="onboarding_get_started_button">Get Started</string>
+    <string name="authentication_reset_password_text">Reset Password</string>
+    <string name="authentication_reset_password_new_pw_text_view">New password</string>
+    <string name="authentication_reset_password_confirm_pw_text_view">Confirm new password</string>
+    <string name="authentication_reset_password_error">Passwords do not match</string>
 </resources>

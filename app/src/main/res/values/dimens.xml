@@ -22,7 +22,6 @@
     <dimen name="authentication_heading_top_margin">152dp</dimen>
     <dimen name="authentication_heading2_top_margin">20dp</dimen>
     <dimen name="text_field_margin_top">18dp</dimen>
-    <dimen name="edit_text_margin_start">-16dp</dimen>
     <dimen name="authentication_terms_text_view">232dp</dimen>
     <dimen name="authentication_terms_margin_top">36dp</dimen>
     <dimen name="authentication_btn_margin_top">32dp</dimen>

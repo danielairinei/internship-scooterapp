@@ -1,15 +1,15 @@
 package com.internship.move.feature.authentification.register
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.internship.move.R
 import com.internship.move.databinding.FragmentRegisterBinding
-import com.internship.move.feature.splash.SplashFragment
+import com.internship.move.feature.authentification.viewmodel.AuthenticationViewModel
 import com.internship.move.util.enableButton
 import com.internship.move.util.makeLinks
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
@@ -17,7 +17,7 @@ import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private val binding by viewBinding(FragmentRegisterBinding::bind)
-
+    private val viewModel by lazy { ViewModelProvider(this)[AuthenticationViewModel::class.java] }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -25,9 +25,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     private fun initFragment() {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-
-        sharedPref.edit().putString(SplashFragment.SPLASH_NEXT_FRAGMENT, SPLASH_TO_REGISTER).apply()
+        viewModel.setUserHasCompletedOnboarding(true)
 
         initClickableTV()
         initListeners()
@@ -90,6 +88,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     companion object {
-        const val SPLASH_TO_REGISTER = "SPLASH_TO_REGISTER"
+        const val HAS_USER_COMPLETED_ONBOARDING_KEY = "HAS_USER_COMPLETED_ONBOARDING"
     }
 }
