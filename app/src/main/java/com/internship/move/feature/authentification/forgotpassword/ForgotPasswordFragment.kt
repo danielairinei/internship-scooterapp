@@ -7,10 +7,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.internship.move.R
 import com.internship.move.databinding.FragmentForgotPasswordBinding
-import com.internship.move.util.enableButton
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 
 class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
+
     private val binding by viewBinding(FragmentForgotPasswordBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -20,22 +20,15 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
     }
 
     private fun initListeners() {
-        binding.emailTIL.isEndIconVisible = false
-
-        binding.chevronIV.setOnClickListener {
+        binding.backIV.setOnClickListener {
             findNavController().navigate(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToLoginFragment())
-        }
-
-        binding.emailTIL.setEndIconOnClickListener {
-            binding.emailTIET.text?.clear()
         }
 
         binding.sendResetBtn.setOnClickListener {
             findNavController().navigate(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToResetPasswordFragment())
         }
 
-        binding.emailTIET.doOnTextChanged { text, _, _, _ ->
-            binding.emailTIL.isEndIconVisible = text?.isNotEmpty() == true
+        binding.emailTIET.doOnTextChanged { _, _, _, _ ->
             changeBtnState(
                 binding.emailTIET.text?.isNotEmpty() ?: false,
             )
@@ -44,6 +37,5 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
 
     private fun changeBtnState(isNotEmpty: Boolean) {
         binding.sendResetBtn.isEnabled = isNotEmpty
-        binding.sendResetBtn.enableButton()
     }
 }

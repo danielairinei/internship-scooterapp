@@ -1,89 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
-    android:gravity="center"
+    android:background="@drawable/bg_app"
     android:orientation="vertical"
     tools:context=".feature.authentification.register.RegisterFragment"
     tools:ignore="ContentDescription">
 
     <ImageView
-        android:id="@+id/topRectangleIV"
+        android:id="@+id/logoIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_top_rectangle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/logoRectangleIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
-        android:src="@drawable/ic_rectangle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/pinPointIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_pin_point"
-        app:layout_constraintBottom_toBottomOf="@+id/logoRectangleIV"
-        app:layout_constraintEnd_toEndOf="@+id/logoRectangleIV"
-        app:layout_constraintStart_toStartOf="@+id/logoRectangleIV"
-        app:layout_constraintTop_toTopOf="@+id/logoRectangleIV" />
-
-    <ImageView
-        android:id="@+id/bottomRectangleIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_bottom_rectangle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/ovalIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_oval"
-        app:layout_constraintBottom_toBottomOf="@+id/pinPointIV"
-        app:layout_constraintEnd_toEndOf="@+id/pinPointIV"
-        app:layout_constraintStart_toStartOf="@+id/pinPointIV"
-        app:layout_constraintTop_toTopOf="@+id/logoRectangleIV" />
-
-    <ImageView
-        android:id="@+id/moveTextIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_move_text_auth"
-        app:layout_constraintBottom_toBottomOf="@+id/logoRectangleIV"
-        app:layout_constraintEnd_toEndOf="@+id/logoRectangleIV"
-        app:layout_constraintStart_toStartOf="@+id/logoRectangleIV"
-        app:layout_constraintTop_toTopOf="@id/logoRectangleIV" />
+        android:layout_marginStart="@dimen/authentication_logo_margin_start"
+        android:layout_marginTop="@dimen/authentication_logo_margin_top"
+        android:src="@drawable/ic_logo" />
 
     <TextView
         android:id="@+id/getStartedTV"
-        style="@style/AuthentificationHeadingTV"
+        style="@style/Heading1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/authentication_headings_top_margin"
         android:text="@string/register_get_started_heading"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/heading2TV"
-        style="@style/AuthentificationHeading2TV"
+        style="@style/Heading2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/register_heading2_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getStartedTV" />
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/authentication_headings_top_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:text="@string/register_heading2_text" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailTIL"
@@ -92,8 +45,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/authentication_email_address_et_hint"
         app:endIconDrawable="@drawable/ic_clear_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/heading2TV">
+        app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailTIET"
@@ -141,10 +93,11 @@
 
     <TextView
         android:id="@+id/termsTV"
-        style="@style/SmallTextView"
+        style="@style/SmallText"
         android:layout_width="@dimen/authentication_terms_text_view"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/authentication_terms_margin_top"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/authentication_clickable_margin_top"
         android:alpha="1"
         android:text="@string/register_terms_and_conditions_text_view"
         android:textSize="@dimen/small_text_size"
@@ -153,24 +106,28 @@
 
     <Button
         android:id="@+id/getStartedBtn"
-        style="@style/TransparentButton"
+        style="@style/PrimaryButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
         android:layout_marginTop="@dimen/authentication_btn_margin_top"
-        android:background="@drawable/bg_state_button"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:background="@drawable/bg_primary_button"
         android:enabled="false"
         android:text="@string/get_started_button"
+        android:textColor="@color/primary_button_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/termsTV" />
 
     <TextView
         android:id="@+id/registerToLoginTV"
-        style="@style/SmallTextView"
+        style="@style/SmallText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/authentication_register_tv_margin_horizontal"
-        android:layout_marginTop="@dimen/authentication_btn_margin_top"
+        android:layout_marginTop="@dimen/authentication_clickable_margin_top"
         android:layout_marginEnd="@dimen/authentication_register_tv_margin_horizontal"
         android:text="@string/authentication_register_to_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/getStartedBtn" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
