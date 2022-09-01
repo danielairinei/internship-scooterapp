@@ -62,7 +62,6 @@ dependencies {
     implementation("com.tbuonomo:dotsindicator:4.3")
 
     //Material Design
-    var mat_version = "1.6.1"
-    implementation("com.google.android.material:material:$mat_version")
+    implementation("com.google.android.material:material:1.6.1")
 }
 

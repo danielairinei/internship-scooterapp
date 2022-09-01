@@ -5,12 +5,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.internship.move.R
 import com.internship.move.databinding.FragmentRegisterBinding
 import com.internship.move.feature.authentification.viewmodel.AuthenticationViewModel
-import com.internship.move.util.enableButton
 import com.internship.move.util.makeLinks
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 
@@ -32,19 +30,13 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     private fun initListeners() {
-        binding.emailTIL.isEndIconVisible = false
         binding.passwordTIL.isEndIconVisible = false
-
-        binding.emailTIL.setEndIconOnClickListener {
-            binding.emailTIET.text?.clear()
-        }
 
         binding.getStartedBtn.setOnClickListener {
             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToHomeGraph())
         }
 
-        binding.emailTIET.doOnTextChanged { text, _, _, _ ->
-            binding.emailTIL.isEndIconVisible = text?.isNotEmpty() == true
+        binding.emailTIET.doOnTextChanged { _, _, _, _ ->
             changeBtnState(
                 binding.emailTIET.text?.isNotEmpty() ?: false,
                 binding.usernameTIET.text?.isNotEmpty() ?: false,
@@ -71,20 +63,19 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     private fun initClickableTV() {
-        binding.termsTV.makeLinks(getString(R.string.terms_and_conditions_key), action = {
-            Toast.makeText(context, getString(R.string.terms_and_conditions_key), Toast.LENGTH_SHORT).show()
+        binding.termsTV.makeLinks(getString(R.string.key_terms_and_conditions), action = {
+            Toast.makeText(context, getString(R.string.key_terms_and_conditions), Toast.LENGTH_SHORT).show()
         })
-        binding.termsTV.makeLinks(getString(R.string.privacy_policy_key), action = {
-            Toast.makeText(context, getString(R.string.privacy_policy_key), Toast.LENGTH_SHORT).show()
+        binding.termsTV.makeLinks(getString(R.string.key_privacy_policy), action = {
+            Toast.makeText(context, getString(R.string.key_privacy_policy), Toast.LENGTH_SHORT).show()
         })
-        binding.registerToLoginTV.makeLinks(getString(R.string.register_to_login_key), action = {
+        binding.registerToLoginTV.makeLinks(getString(R.string.key_register_to_login), action = {
             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
         })
     }
 
     private fun changeBtnState(emailIsNotEmpty: Boolean, usernameIsNotEmpty: Boolean, passwordIsNotEmpty: Boolean) {
         binding.getStartedBtn.isEnabled = emailIsNotEmpty && usernameIsNotEmpty && passwordIsNotEmpty
-        binding.getStartedBtn.enableButton()
     }
 
     companion object {

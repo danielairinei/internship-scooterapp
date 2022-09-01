@@ -3,8 +3,8 @@
 
     <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@null</item>
-        <item name="android:background">@drawable/bg_primary_button</item>
-        <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:background">@drawable/bg_primary_button_enabled</item>
+        <item name="android:textColor">@color/primary_text_color</item>
         <item name="android:outlineProvider">none</item>
         <item name="cornerRadius">@dimen/onboarding_btn_corner_radius</item>
         <item name="fontFamily">@font/bai_jamjuree_bold</item>
@@ -14,55 +14,42 @@
         <item name="android:padding">8dp</item>
     </style>
 
-    <style name="TransparentButton" parent="PrimaryButton">
-        <item name="android:background">@drawable/bg_transparent_button</item>
-        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_marginEnd">@dimen/horizontal_margin</item>
-        <item name="android:alpha">0.3</item>
+    <style name="TextAppearance">
+        <item name="android:textColor">@color/primary_text_color</item>
         <item name="fontFamily">@font/bai_jamjuree_regular</item>
         <item name="android:textSize">@dimen/regular_text_size</item>
     </style>
 
-    <style name="OnboardingTV" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/onboarding_fragment_text</item>
+    <style name="Heading1" parent="TextAppearance">
         <item name="fontFamily">@font/bai_jamjuree_bold</item>
         <item name="android:textSize">@dimen/heading1_text_size</item>
     </style>
 
-    <style name="OnboardingSkipTV" parent="OnboardingTV">
-        <item name="android:textColor">@color/onboarding_fragment_skip</item>
-        <item name="fontFamily">@font/bai_jamjuree_medium</item>
-        <item name="android:textSize">@dimen/onboarding_text_view_skip</item>
-    </style>
-
-    <style name="OnboardingContentTV" parent="OnboardingTV">
-        <item name="fontFamily">@font/bai_jamjuree_regular</item>
-        <item name="android:textSize">@dimen/onboarding_text_view_content</item>
-        <item name="android:height">@dimen/onboarding_text_view_content_height</item>
-        <item name="android:width">@dimen/heading2_text_view_content_width</item>
-    </style>
-
-    <style name="AuthentificationHeadingTV" parent="OnboardingTV">
-        <item name="android:textColor">@color/authentication_text_color</item>
-        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
-        <item name="android:layout_marginTop">@dimen/authentication_heading_top_margin</item>
-    </style>
-
-    <style name="AuthentificationHeading2TV" parent="AuthentificationHeadingTV">
+    <style name="Heading2" parent="TextAppearance">
         <item name="fontFamily">@font/bai_jamjuree_regular</item>
         <item name="android:textSize">@dimen/heading2_text_size</item>
-        <item name="android:layout_marginTop">@dimen/authentication_heading2_top_margin</item>
-        <item name="android:width">@dimen/heading2_text_view_content_width</item>
-        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
-        <item name="android:alpha">0.6</item>
+    </style>
+
+    <style name="Button1" parent="TextAppearance">
+        <item name="fontFamily">@font/bai_jamjuree_bold</item>
+        <item name="android:textSize">@dimen/button1_text_size</item>
+    </style>
+
+    <style name="SmallText" parent="TextAppearance">
+        <item name="fontFamily">@font/bai_jamjuree_regular</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
+    </style>
+
+    <style name="MediumText" parent="TextAppearance">
+        <item name="fontFamily">@font/bai_jamjuree_medium</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
     </style>
 
     <style name="PrimaryTF" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="fontFamily">@font/bai_jamjuree_regular</item>
-        <item name="android:textColor">@color/authentication_text_color</item>
+        <item name="android:textColor">@color/primary_text_color</item>
         <item name="android:textSize">@dimen/regular_text_size</item>
-        <item name="android:textColorHint">@color/input_box_hint_color</item>
+        <item name="android:textColorHint">@color/authentication_second_text_color</item>
         <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
         <item name="android:layout_marginEnd">@dimen/horizontal_margin</item>
         <item name="android:hint">This is a hint</item>
@@ -72,7 +59,6 @@
         <item name="boxStrokeColor">@color/input_layout_box_stroke_color</item>
         <item name="boxBackgroundMode">filled</item>
         <item name="android:layout_marginTop">@dimen/text_field_margin_top</item>
-        <item name="colorAccent">@color/authentication_text_color</item>
         <item name="endIconTint">@null</item>
     </style>
 
@@ -82,19 +68,8 @@
         <item name="android:singleLine">true</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="fontFamily">@font/bai_jamjuree_regular</item>
+        <item name="android:layout_marginStart">@dimen/edit_text_margin_start</item>
         <item name="android:textCursorDrawable">@null</item>
         <item name="android:inputType">text|textNoSuggestions</item>
-    </style>
-
-    <style name="SmallTextView" parent="AuthentificationHeading2TV">
-        <item name="android:alpha">1</item>
-        <item name="android:textSize">@dimen/small_text_size</item>
-        <item name="android:layout_marginTop">@dimen/authentication_terms_margin_top</item>
-    </style>
-
-    <style name="ErrorTextView" parent="SmallTextView">
-        <item name="alpha">0.6</item>
-        <item name="fontFamily">@font/bai_jamjuree_regular</item>
-        <item name="android:textSize">@dimen/small_text_size</item>
     </style>
 </resources>

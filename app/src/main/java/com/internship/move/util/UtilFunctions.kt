@@ -30,12 +30,3 @@ fun TextView.makeLinks(text: String, action: (() -> Unit)? = null) {
     movementMethod = LinkMovementMethod.getInstance()
     highlightColor = Color.TRANSPARENT
 }
-
-
-fun Button.enableButton() {
-    if (this.isEnabled) {
-        this.alpha = 1F
-    } else {
-        this.alpha = 0.3F
-    }
-}
