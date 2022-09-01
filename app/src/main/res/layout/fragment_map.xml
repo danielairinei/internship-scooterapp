@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".feature.map.MapFragment"
+    tools:context=".presentation.map.MapFragment"
     tools:ignore="HardcodedText">
 
     <TextView
