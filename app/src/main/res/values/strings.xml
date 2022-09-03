@@ -39,4 +39,7 @@
     <string name="authentication_reset_password_new_pw_text_view">New password</string>
     <string name="authentication_reset_password_confirm_pw_text_view">Confirm new password</string>
     <string name="authentication_reset_password_error">Passwords do not match</string>
+    <string name="authentication_forgot_password_dialog_title">Password reset link sent</string>
+    <string name="authentication_forgot_password_dialog_content">Please check your inbox or spam for the email containing the password reset link.</string>
+    <string name="button_ok_text">OK</string>
 </resources>

@@ -23,11 +23,15 @@
     <dimen name="authentication_terms_text_view">232dp</dimen>
     <dimen name="authentication_clickable_margin_top">34dp</dimen>
     <dimen name="authentication_btn_margin_top">32dp</dimen>
-    <dimen name="authentication_register_tv_margin_horizontal">49dp</dimen>
+    <dimen name="authentication_register_tv_margin_horizontal">48dp</dimen>
     <dimen name="authentication_login_tv_margin_horizontal">44dp</dimen>
     <dimen name="authentication_chevron_margin_top">54dp</dimen>
     <dimen name="authentication_forgot_password_title_margin_top">14dp</dimen>
     <dimen name="authentication_forgot_password_heading2_width">328dp</dimen>
     <dimen name="authentication_logo_margin_start">16dp</dimen>
     <dimen name="authentication_logo_margin_top">48dp</dimen>
+    <dimen name="round_corner_radius">16dp</dimen>
+    <dimen name="dialog_width">300dp</dimen>
+    <dimen name="dialog_height">230dp</dimen>
+    <dimen name="dialog_margin">20dp</dimen>
 </resources>

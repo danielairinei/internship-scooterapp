@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.internship.move.R
 import com.internship.move.databinding.FragmentResetPasswordBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
@@ -20,6 +21,10 @@ class ResetPasswordFragment : Fragment(R.layout.fragment_reset_password) {
     }
 
     private fun initListeners() {
+        val args : ResetPasswordFragmentArgs by navArgs()
+
+        binding.tokenTV.text = args.token
+
         binding.backIV.setOnClickListener {
             findNavController().navigate(ResetPasswordFragmentDirections.actionResetPasswordFragmentToLoginFragment())
         }

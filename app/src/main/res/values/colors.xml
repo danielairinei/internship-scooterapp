@@ -18,6 +18,7 @@
     <color name="pink_lemonade">#4DE53062</color>
     <!--App Colors-->
     <color name="background_color">@color/jagger</color>
+    <color name="dialog_background_color">@color/indigo</color>
     <color name="onboarding_fragment_text">@color/indigo</color>
     <color name="button_background_color">@color/magenta</color>
     <color name="onboarding_fragment_skip">@color/grey</color>
