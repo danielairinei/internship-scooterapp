@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_view_text_size">24sp</dimen>
-    <!--Onboarding dimens-->
     <dimen name="heading1_text_size">32sp</dimen>
     <dimen name="heading2_text_size">20sp</dimen>
     <dimen name="button1_text_size">16sp</dimen>
-    <dimen name="onboarding_text_view_content">16sp</dimen>
-    <dimen name="onboarding_text_view_skip">14sp</dimen>
+    <dimen name="regular_text_size">16sp</dimen>
+    <dimen name="small_text_size">12sp</dimen>
+    <dimen name="medium_text_size">14sp</dimen>
     <dimen name="onboarding_btn_corner_radius">16dp</dimen>
     <dimen name="onboarding_btn_height">54dp</dimen>
     <dimen name="onboarding_btn_width">100dp</dimen>
-    <dimen name="onboarding_horizontal_margin">24dp</dimen>
+    <dimen name="horizontal_margin">24dp</dimen>
     <dimen name="onboarding_button_margin_bottom">74dp</dimen>
     <dimen name="onboarding_skip_margin_top">34dp</dimen>
     <dimen name="onboarding_text_view_content_width">282dp</dimen>
@@ -18,4 +18,20 @@
     <dimen name="onboarding_content_margin_top">12dp</dimen>
     <dimen name="onboarding_dots_indicator_margin_btm">98dp</dimen>
     <dimen name="onboarding_btn_margin_top">698dp</dimen>
+    <dimen name="authentication_headings_top_margin">20dp</dimen>
+    <dimen name="text_field_margin_top">18dp</dimen>
+    <dimen name="authentication_terms_text_view">232dp</dimen>
+    <dimen name="authentication_clickable_margin_top">34dp</dimen>
+    <dimen name="authentication_btn_margin_top">32dp</dimen>
+    <dimen name="authentication_register_tv_margin_horizontal">48dp</dimen>
+    <dimen name="authentication_login_tv_margin_horizontal">44dp</dimen>
+    <dimen name="authentication_chevron_margin_top">54dp</dimen>
+    <dimen name="authentication_forgot_password_title_margin_top">14dp</dimen>
+    <dimen name="authentication_forgot_password_heading2_width">328dp</dimen>
+    <dimen name="authentication_logo_margin_start">16dp</dimen>
+    <dimen name="authentication_logo_margin_top">48dp</dimen>
+    <dimen name="round_corner_radius">16dp</dimen>
+    <dimen name="dialog_width">300dp</dimen>
+    <dimen name="dialog_height">230dp</dimen>
+    <dimen name="dialog_margin">20dp</dimen>
 </resources>

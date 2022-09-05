@@ -1,29 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:background="@drawable/bg_app"
     android:orientation="vertical"
-    tools:context=".feature.authentification.register.RegisterFragment"
-    tools:ignore="HardcodedText">
+    tools:context=".presentation.authentification.register.RegisterFragment"
+    tools:ignore="ContentDescription">
+
+    <ImageView
+        android:id="@+id/logoIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/authentication_logo_margin_start"
+        android:layout_marginTop="@dimen/authentication_logo_margin_top"
+        android:src="@drawable/ic_logo" />
 
     <TextView
-        android:id="@+id/registerFragmentTV"
+        android:id="@+id/getStartedTV"
+        style="@style/Heading1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register Fragment"
-        android:textSize="@dimen/text_view_text_size" />
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/authentication_headings_top_margin"
+        android:text="@string/register_get_started_heading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/heading2TV"
+        style="@style/Heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/authentication_headings_top_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:text="@string/register_heading2_text" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailTIL"
+        style="@style/PrimaryTF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/authentication_email_address_et_hint"
+        app:endIconDrawable="@drawable/ic_clear_text"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailTIET"
+            style="@style/PrimaryET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress|textNoSuggestions" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/usernameTIL"
+        style="@style/PrimaryTF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/authentication_username_et_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailTIL">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/usernameTIET"
+            style="@style/PrimaryET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text|textNoSuggestions" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTIL"
+        style="@style/PrimaryTF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/authentication_password_et_hint"
+        app:endIconDrawable="@drawable/ic_password_toggle"
+        app:endIconMode="password_toggle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usernameTIL">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordTIET"
+            style="@style/PrimaryET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword|textNoSuggestions" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/termsTV"
+        style="@style/SmallText"
+        android:layout_width="@dimen/authentication_terms_text_view"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/authentication_clickable_margin_top"
+        android:alpha="1"
+        android:text="@string/register_terms_and_conditions_text_view"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordTIL" />
 
     <Button
-        android:id="@+id/registerFragmentLoginBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/getStartedBtn"
+        style="@style/PrimaryButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/authentication_btn_margin_top"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:background="@drawable/bg_primary_button"
+        android:enabled="false"
+        android:text="@string/get_started_button"
+        android:textColor="@color/primary_button_text_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/termsTV" />
 
-    <Button
-        android:id="@+id/registerFragmentHomeBtn"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/registerToLoginTV"
+        style="@style/SmallText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Home" />
+        android:layout_marginStart="@dimen/authentication_register_tv_margin_horizontal"
+        android:layout_marginTop="@dimen/authentication_clickable_margin_top"
+        android:layout_marginEnd="@dimen/authentication_register_tv_margin_horizontal"
+        android:text="@string/authentication_register_to_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/getStartedBtn" />
 </LinearLayout>

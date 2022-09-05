@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Move</string>
+    <!--    Onboarding strings-->
     <string name="onboarding_safety_title">Safety</string>
     <string name="onboarding_scan_title">Scan</string>
     <string name="onboarding_parking_title">Parking</string>
@@ -10,5 +11,35 @@
     <string name="onboarding_parking_tutorial">If convenient, park at a bike rack. If not, park close to the edge of the sidewalk closest to the street. Do not block sidewalks, doors or ramps.</string>
     <string name="onboarding_rules_tutorial">You must be 18 years or and older with a valid driving licence to operate a scooter. Please follow all street signs, signals and markings, and obey local traffic laws.</string>
     <string name="onboarding_next_button">Next</string>
-    <string name="onboarding_get_started_button">Get Started</string>
+    <string name="onboarding_ride_title">Ride</string>
+    <string name="onboarding_ride_tutorial">Step on the scooter with one foot and kick off the ground. When the scooter starts to coast, push the right throttle to accelerate.</string>
+    <!--    Authentication Strings-->
+    <string name="get_started_button">Get started</string>
+    <string name="saved_splash_next_fragment">Splash Next Fragment</string>
+    <string name="shared_pref_default_value">Default</string>
+    <string name="register_get_started_heading">Let\'s get started</string>
+    <string name="register_heading2_text">Sign up or login and start riding right away</string>
+    <string name="authentication_email_address_et_hint">Email address</string>
+    <string name="authentication_username_et_hint">Username</string>
+    <string name="authentication_password_et_hint">Password</string>
+    <string name="register_terms_and_conditions_text_view">By continuing you agree to Move’s Terms and Conditions and Privacy Policy</string>
+    <string name="authentication_register_to_login">You already have an account? You can log in here</string>
+    <string name="authentication_login_text">Login</string>
+    <string name="authentication_login_heading2">Enter your account credentials and start riding away</string>
+    <string name="authentication_login_forgot_password">Forgot your password?</string>
+    <string name="authentication_login_to_register">Don’t have an account? You can start with one here</string>
+    <string name="key_terms_and_conditions">Terms and Conditions</string>
+    <string name="key_privacy_policy">Privacy Policy</string>
+    <string name="key_register_to_login">log in here</string>
+    <string name="key_login_to_register">start with one here</string>
+    <string name="authentication_forgot_password_title">Forgot password</string>
+    <string name="authentication_send_reset_btn">Send Reset Link</string>
+    <string name="authentication_forgot_password_heading2">Enter the email address you\'re using for your account bellow and we\'ll send you a password reset link.</string>
+    <string name="authentication_reset_password_text">Reset Password</string>
+    <string name="authentication_reset_password_new_pw_text_view">New password</string>
+    <string name="authentication_reset_password_confirm_pw_text_view">Confirm new password</string>
+    <string name="authentication_reset_password_error">Passwords do not match</string>
+    <string name="authentication_forgot_password_dialog_title">Password reset link sent</string>
+    <string name="authentication_forgot_password_dialog_content">Please check your inbox or spam for the email containing the password reset link.</string>
+    <string name="button_ok_text">OK</string>
 </resources>

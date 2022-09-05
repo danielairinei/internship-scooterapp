@@ -18,31 +18,35 @@
 
     <TextView
         android:id="@+id/onboardingHeadingTV"
+        style="@style/Heading1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/onboarding_horizontal_margin"
-        android:layout_marginTop="@dimen/onboarding_horizontal_margin"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/horizontal_margin"
         android:text="@string/onboarding_safety_title"
+        android:textColor="@color/onboarding_fragment_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboardingIV" />
 
     <TextView
         android:id="@+id/onboardingSkipTV"
-        style="@style/OnboardingSkipTV"
+        style="@style/MediumText"
+        android:textColor="@color/grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/onboarding_skip_margin_top"
-        android:layout_marginEnd="@dimen/onboarding_horizontal_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin"
         android:text="@string/onboarding_skip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboardingIV" />
 
     <TextView
         android:id="@+id/onboardingContentTV"
-        style="@style/OnboardingContentTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/onboarding_horizontal_margin"
+        style="@style/TextAppearance"
+        android:textColor="@color/onboarding_fragment_text"
+        android:layout_width="@dimen/onboarding_text_view_content_width"
+        android:layout_height="@dimen/onboarding_text_view_content_height"
+        android:layout_marginStart="@dimen/horizontal_margin"
         android:layout_marginTop="@dimen/onboarding_content_margin_top"
         android:text="@string/onboarding_safety_tutorial"
         app:layout_constraintStart_toStartOf="parent"
