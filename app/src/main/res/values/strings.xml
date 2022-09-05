@@ -15,6 +15,8 @@
     <string name="onboarding_ride_tutorial">Step on the scooter with one foot and kick off the ground. When the scooter starts to coast, push the right throttle to accelerate.</string>
     <!--    Authentication Strings-->
     <string name="get_started_button">Get started</string>
+    <string name="saved_splash_next_fragment">Splash Next Fragment</string>
+    <string name="shared_pref_default_value">Default</string>
     <string name="register_get_started_heading">Let\'s get started</string>
     <string name="register_heading2_text">Sign up or login and start riding right away</string>
     <string name="authentication_email_address_et_hint">Email address</string>
@@ -36,5 +38,8 @@
     <string name="authentication_reset_password_text">Reset Password</string>
     <string name="authentication_reset_password_new_pw_text_view">New password</string>
     <string name="authentication_reset_password_confirm_pw_text_view">Confirm new password</string>
-    <string name="authentication_reset_password_error">Passwords do not match.</string>
+    <string name="authentication_reset_password_error">Passwords do not match</string>
+    <string name="authentication_forgot_password_dialog_title">Password reset link sent</string>
+    <string name="authentication_forgot_password_dialog_content">Please check your inbox or spam for the email containing the password reset link.</string>
+    <string name="button_ok_text">OK</string>
 </resources>

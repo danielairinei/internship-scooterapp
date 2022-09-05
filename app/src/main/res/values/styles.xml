@@ -52,7 +52,9 @@
         <item name="android:textColorHint">@color/authentication_second_text_color</item>
         <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
         <item name="android:layout_marginEnd">@dimen/horizontal_margin</item>
+        <item name="android:hint">This is a hint</item>
         <item name="hintTextColor">@color/authentication_second_text_color</item>
+        <item name="endIconMode">custom</item>
         <item name="boxStrokeWidth">2dp</item>
         <item name="boxStrokeColor">@color/input_layout_box_stroke_color</item>
         <item name="boxBackgroundMode">filled</item>
@@ -62,11 +64,10 @@
 
     <style name="PrimaryET" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
         <item name="android:textSize">@dimen/regular_text_size</item>
-        <item name="android:textColor">@color/primary_text_color</item>
+        <item name="android:textColor">@color/authentication_second_text_color</item>
         <item name="android:singleLine">true</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="fontFamily">@font/bai_jamjuree_regular</item>
-        <item name="android:layout_marginStart">@dimen/edit_text_margin_start</item>
         <item name="android:textCursorDrawable">@null</item>
         <item name="android:inputType">text|textNoSuggestions</item>
     </style>

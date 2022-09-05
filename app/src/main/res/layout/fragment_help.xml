@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".feature.help.HelpFragment">
+    tools:context=".presentation.help.HelpFragment">
 
     <TextView
         android:id="@+id/helpTV"
