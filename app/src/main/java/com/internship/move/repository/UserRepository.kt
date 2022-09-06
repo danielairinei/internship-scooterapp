@@ -1,6 +1,7 @@
 package com.internship.move.repository
 
-import com.internship.move.data.dto.UserApi
+import com.internship.move.data.dto.user.UserApi
+import com.internship.move.data.dto.user.UserRegisterRequestDto
 import com.internship.move.data.model.User
 import com.internship.move.utils.InternalStorageManager
 
@@ -21,7 +22,7 @@ class UserRepository(
         internalStorageManager.setIsUserLoggedIn(boolean)
     }
 
-    suspend fun register(user : User){
-        userApi.register(user)
+    suspend fun registerRequest(newRegisterRequestDto: UserRegisterRequestDto) {
+        userApi.registerRequest(newRegisterRequestDto)
     }
 }

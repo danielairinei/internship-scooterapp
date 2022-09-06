@@ -1,8 +1,7 @@
-package com.internship.move.data.dto
+package com.internship.move.data.dto.user
 
 import com.internship.move.data.model.User
 import retrofit2.http.Body
-import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.POST
 
@@ -12,8 +11,8 @@ interface UserApi {
     suspend fun getUsers(): List<User>
 
     @POST("/user/register")
-    suspend fun register(@Body user: User): User
+    suspend fun registerRequest(@Body userRegisterRequestDto: UserRegisterRequestDto): UserRegisterResponseDto
 
     @POST("/user/login")
-    suspend fun login(@Field("email") email: String, @Field("password") password: String)
+    suspend fun loginRequest(@Body userLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto
 }
