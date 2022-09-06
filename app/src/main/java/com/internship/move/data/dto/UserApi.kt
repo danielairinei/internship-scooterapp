@@ -1,6 +1,5 @@
 package com.internship.move.data.dto
 
-import com.internship.move.data.model.LoginResponse
 import com.internship.move.data.model.User
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -16,5 +15,5 @@ interface UserApi {
     suspend fun register(@Body user: User): User
 
     @POST("/user/login")
-    suspend fun login(@Field("email") email: String, @Field("password") password: String) : LoginResponse
+    suspend fun login(@Field("email") email: String, @Field("password") password: String)
 }
