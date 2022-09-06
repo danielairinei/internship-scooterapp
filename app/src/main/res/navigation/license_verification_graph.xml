@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/drivingLicenseFragment"
-        android:name="com.internship.move.presentation.authentification.register.DrivingLicenseFragment"
+        android:name="com.internship.move.presentation.authentification.register.verification.DrivingLicenseFragment"
         android:label="fragment_driving_license"
         tools:layout="@layout/fragment_driving_license">
 
@@ -20,5 +20,55 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/drivingLicenseFragment"
             app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_drivingLicenseFragment_to_pendingVerificationFragment"
+            app:destination="@id/pendingVerificationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/drivingLicenseFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+
+    <fragment
+        android:id="@+id/pendingVerificationFragment"
+        android:name="com.internship.move.presentation.authentification.register.verification.PendingVerificationFragment"
+        android:label="fragment_pending_verification"
+        tools:layout="@layout/fragment_pending_verification">
+
+        <action
+            android:id="@+id/action_pendingVerificationFragment_to_successValidationFragment"
+            app:destination="@id/successValidationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/pendingVerificationFragment"
+            app:popUpToInclusive="true" />
+
+        <argument
+            android:name="photoUri"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/successValidationFragment"
+        android:name="com.internship.move.presentation.authentification.register.verification.SuccessValidationFragment"
+        android:label="fragment_success_validation"
+        tools:layout="@layout/fragment_success_validation">
+
+        <action
+            android:id="@+id/action_successValidationFragment_to_home_graph"
+            app:destination="@id/home_graph"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/successValidationFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <include app:graph="@navigation/home_graph" />
 </navigation>

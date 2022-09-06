@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".presentation.authentification.register.verification.PendingVerificationFragment">
+
+    <TextView
+        android:id="@+id/centerTV"
+        style="@style/Heading1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:gravity="center"
+        android:text="@string/authentication_pending_verification_text" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/driving_license_margin_top"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/circular_pb_color" />
+</LinearLayout>

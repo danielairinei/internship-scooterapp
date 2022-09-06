@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    tools:context=".presentation.authentification.register.verification.SuccessValidationFragment">
+
+    <ImageView
+        android:id="@+id/successIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/driving_license_success_ic_margin_top"
+        android:src="@drawable/ic_success_validation"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/centerTV"
+        style="@style/Heading1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/driving_license_success_heading_margin_top"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:gravity="center"
+        android:text="@string/authentication_success_verification_text" />
+
+    <Button
+        android:id="@+id/findScooterBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/driving_licenes_success_btn_margin_top"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:text="@string/authentication_success_btn_text" />
+</LinearLayout>
