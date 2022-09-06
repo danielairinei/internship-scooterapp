@@ -42,6 +42,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     binding.passwordTIET.text.toString()
                 )
             )
+            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLicenseVerificationGraph())
         }
 
         binding.emailTIET.doOnTextChanged { _, _, _, _ ->

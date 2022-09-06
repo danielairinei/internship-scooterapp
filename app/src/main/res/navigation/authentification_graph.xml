@@ -20,6 +20,17 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/registerFragment"
             app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_registerFragment_to_license_verification_graph"
+            app:destination="@id/license_verification_graph"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/registerFragment"
+            app:popUpToInclusive="true" />
+
     </fragment>
 
     <fragment
@@ -104,4 +115,5 @@
     </fragment>
 
     <include app:graph="@navigation/home_graph" />
+    <include app:graph="@navigation/license_verification_graph" />
 </navigation>
