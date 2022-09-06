@@ -88,8 +88,5 @@ dependencies {
     //Camera
     implementation "androidx.activity:activity-ktx:1.5.1"
     implementation "androidx.fragment:fragment-ktx:1.5.2"
-
-    //DotsLoader
-    implementation 'com.github.agrawalsuneet:DotLoadersPack-Android:v1.4.2'
 }
 
