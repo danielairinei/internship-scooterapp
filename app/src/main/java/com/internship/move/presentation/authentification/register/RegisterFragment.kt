@@ -42,7 +42,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     binding.passwordTIET.text.toString()
                 )
             )
-            
         }
 
         binding.emailTIET.doOnTextChanged { _, _, _, _ ->
