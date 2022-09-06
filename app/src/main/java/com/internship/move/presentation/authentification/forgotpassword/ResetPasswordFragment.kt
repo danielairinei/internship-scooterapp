@@ -23,7 +23,7 @@ class ResetPasswordFragment : Fragment(R.layout.fragment_reset_password) {
     private fun initListeners() {
         val args : ResetPasswordFragmentArgs by navArgs()
 
-        binding.tokenTV.text = args.token
+        binding.tokenTV.text = args.resettoken
 
         binding.backIV.setOnClickListener {
             findNavController().navigate(ResetPasswordFragmentDirections.actionResetPasswordFragmentToLoginFragment())

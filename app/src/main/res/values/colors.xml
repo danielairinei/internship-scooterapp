@@ -28,4 +28,5 @@
     <color name="input_box_stroke_color">@color/white</color>
     <color name="input_box_stroke_focused_color">@color/white_grey</color>
     <color name="authentication_second_text_color">@color/white_grey</color>
+    <color name="secondary_text_color">@color/indigo</color>
 </resources>

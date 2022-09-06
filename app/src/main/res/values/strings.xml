@@ -42,4 +42,8 @@
     <string name="authentication_forgot_password_dialog_title">Password reset link sent</string>
     <string name="authentication_forgot_password_dialog_content">Please check your inbox or spam for the email containing the password reset link.</string>
     <string name="button_ok_text">OK</string>
+    <string name="authentication_driving_license_title">Driving License</string>
+    <string name="authentication_driving_license_heading">Before you can start riding</string>
+    <string name="authentication_driving_license_content">Please take a photo or upload the front side of your driving license so we can make sure that it is valid.</string>
+    <string name="authentication_driving_license_btn_text">Add driving license</string>
 </resources>

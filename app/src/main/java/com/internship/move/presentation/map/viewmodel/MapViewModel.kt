@@ -1,10 +1,10 @@
 package com.internship.move.presentation.map.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.internship.move.repository.Repository
+import com.internship.move.repository.UserRepository
 
 class MapViewModel(
-    private val repo: Repository
+    private val repo: UserRepository
 ) : ViewModel() {
 
     fun logOut() {

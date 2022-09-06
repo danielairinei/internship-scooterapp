@@ -7,6 +7,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.internship.move.R
+import com.internship.move.data.model.User
 import com.internship.move.databinding.FragmentRegisterBinding
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
 import com.internship.move.utils.extensions.makeLinks
@@ -34,8 +35,14 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         binding.passwordTIL.isEndIconVisible = false
 
         binding.getStartedBtn.setOnClickListener {
-            viewModel.register("email", "user", "pass")
-            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToHomeGraph())
+            viewModel.register(
+                User(
+                    binding.emailTIET.text.toString(),
+                    binding.usernameTIET.text.toString(),
+                    binding.passwordTIET.text.toString()
+                )
+            )
+            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLicenseVerificationGraph())
         }
 
         binding.emailTIET.doOnTextChanged { _, _, _, _ ->

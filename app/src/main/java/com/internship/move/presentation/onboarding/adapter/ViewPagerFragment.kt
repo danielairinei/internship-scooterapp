@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.internship.move.R
-import com.internship.move.data.model.OnboardingViewPagerItem
 import com.internship.move.databinding.ItemOnboardingPageBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 

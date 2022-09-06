@@ -9,7 +9,7 @@ import com.internship.move.databinding.FragmentOnboardingBinding
 import com.internship.move.presentation.onboarding.adapter.OnSkipListener
 import com.internship.move.presentation.onboarding.adapter.ViewPagerAdapter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
-import com.internship.move.data.model.OnboardingViewPagerItem
+import com.internship.move.presentation.onboarding.adapter.OnboardingViewPagerItem
 
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding), OnSkipListener {
 
