@@ -18,6 +18,14 @@ class DrivingLicenseFragment : Fragment(R.layout.fragment_driving_license) {
 
     private val binding by viewBinding(FragmentDrivingLicenseBinding::bind)
     private var latestTmpUri: Uri? = null
+    private val takeImageResult = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
+        if (isSuccess) {
+            latestTmpUri?.let { uri ->
+                findNavController().navigate(DrivingLicenseFragmentDirections.actionDrivingLicenseFragmentToPendingVerificationFragment(uri.toString()))
+            }
+
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,7 +33,7 @@ class DrivingLicenseFragment : Fragment(R.layout.fragment_driving_license) {
         initListeners()
     }
 
-    private fun initListeners(){
+    private fun initListeners() {
         binding.backIV.setOnClickListener {
             findNavController().navigate(DrivingLicenseFragmentDirections.actionDrivingLicenseFragmentToAuthentificationGraph())
         }
@@ -51,14 +59,5 @@ class DrivingLicenseFragment : Fragment(R.layout.fragment_driving_license) {
         }
 
         return context?.let { FileProvider.getUriForFile(it, "${BuildConfig.APPLICATION_ID}.provider", tmpFile) }
-    }
-
-    private val takeImageResult = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
-        if (isSuccess) {
-            latestTmpUri?.let { uri ->
-                findNavController().navigate(DrivingLicenseFragmentDirections.actionDrivingLicenseFragmentToPendingVerificationFragment(uri.toString()))
-            }
-
-        }
     }
 }

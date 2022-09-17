@@ -7,7 +7,8 @@ import com.internship.move.presentation.splash.viewmodel.SplashViewModel
 import com.internship.move.repository.UserRepository
 import com.internship.move.utils.InternalStorageManager
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -20,8 +21,11 @@ val internalStorage = module {
     single { InternalStorageManager(androidContext()) }
 }
 
-val repositories = module {
-    single { UserRepository(get(), provideUserApi()) }
+val userRepository = module {
+    single { provideMoshi() }
+    single { provideOkHttpClient() }
+    single { provideRetrofit(get(), get()) }
+    single { UserRepository(get(), provideUserApi(get())) }
 }
 
 val viewModels = module {
@@ -30,12 +34,14 @@ val viewModels = module {
     viewModel { SplashViewModel(get()) }
 }
 
-fun provideUserApi(): UserApi {
-    return Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .build()
-        .create(UserApi::class.java)
-}
+fun provideMoshi(): Moshi = Moshi.Builder().build()
 
-val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+fun provideOkHttpClient() = OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor()).build()
+
+fun provideRetrofit(moshi: Moshi, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+    .baseUrl(BASE_URL)
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .client(okHttpClient)
+    .build()
+
+fun provideUserApi(retrofit: Retrofit): UserApi = retrofit.create(UserApi::class.java)

@@ -3,7 +3,7 @@ package com.internship.move
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.internship.move.di.internalStorage
-import com.internship.move.di.repositories
+import com.internship.move.di.userRepository
 import com.internship.move.di.viewModels
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                 listOf(
                     internalStorage,
                     viewModels,
-                    repositories
+                    userRepository
                 )
             )
         }

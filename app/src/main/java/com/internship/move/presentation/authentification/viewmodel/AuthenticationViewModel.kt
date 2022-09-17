@@ -1,5 +1,7 @@
 package com.internship.move.presentation.authentification.viewmodel
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.internship.move.data.model.User
@@ -21,7 +23,11 @@ class AuthenticationViewModel(
 
     fun register(newUser : User) {
         viewModelScope.launch(Dispatchers.IO) {
-            repo.register(newUser)
+            try{
+                repo.register(newUser)
+            }catch(e: Exception){
+                e.message?.let { Log.e(TAG, it) }
+            }
         }
     }
 }
