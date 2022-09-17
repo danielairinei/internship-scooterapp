@@ -2,6 +2,7 @@ package com.internship.move.presentation.authentification.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.internship.move.data.dto.user.UserLoginRequestDto
 import com.internship.move.data.dto.user.UserRegisterRequestDto
 import com.internship.move.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
@@ -16,6 +17,13 @@ class AuthenticationViewModel(
     }
 
     fun login(email: String, password: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                repo.loginRequest(UserLoginRequestDto(email, password))
+            }catch(e : Exception){
+                println(e.message)
+            }
+        }
         repo.setIsUserLoggedIn(true)
     }
 

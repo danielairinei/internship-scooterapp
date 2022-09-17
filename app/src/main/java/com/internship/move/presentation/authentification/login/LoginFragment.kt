@@ -29,7 +29,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         binding.loginBtn.setOnClickListener {
             viewModel.login("user", "pass")
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
+//            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
         }
 
         binding.emailTIET.doOnTextChanged { _, _, _, _ ->

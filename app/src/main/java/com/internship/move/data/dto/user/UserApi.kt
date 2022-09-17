@@ -7,12 +7,12 @@ import retrofit2.http.POST
 
 interface UserApi {
 
-    @GET("/user/users")
+    @GET("/auth/users")
     suspend fun getUsers(): List<User>
 
-    @POST("/user/register")
+    @POST("/auth/register")
     suspend fun registerRequest(@Body userRegisterRequestDto: UserRegisterRequestDto): UserRegisterResponseDto
 
-    @POST("/user/login")
+    @POST("/auth/login")
     suspend fun loginRequest(@Body userLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto
 }
