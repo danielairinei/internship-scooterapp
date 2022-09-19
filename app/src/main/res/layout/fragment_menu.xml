@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.menu.MenuFragment">
+
+    <TextView
+        style="@style/Heading1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Menu Fragment"
+        android:textColor="@color/secondary_text_color"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_gravity="bottom|center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log out"
+        android:layout_marginBottom="250dp"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/clearApp"
+        android:layout_gravity="bottom|center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear app"
+        android:layout_marginBottom="170dp"
+        tools:ignore="HardcodedText" />
+</FrameLayout>

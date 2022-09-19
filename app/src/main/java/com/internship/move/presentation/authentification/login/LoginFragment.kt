@@ -65,7 +65,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun initObserver(){
         viewModel.userLoginData.observe(viewLifecycleOwner){
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
-            println(it)
         }
     }
 }

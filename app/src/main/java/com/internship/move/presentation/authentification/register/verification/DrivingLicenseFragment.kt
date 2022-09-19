@@ -34,7 +34,7 @@ class DrivingLicenseFragment : Fragment(R.layout.fragment_driving_license) {
     }
 
     private fun initListeners() {
-        binding.backIV.setOnClickListener {
+        binding.topAppBar.setNavigationOnClickListener {
             findNavController().navigate(DrivingLicenseFragmentDirections.actionDrivingLicenseFragmentToAuthentificationGraph())
         }
 
