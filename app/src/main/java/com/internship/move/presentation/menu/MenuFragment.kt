@@ -19,7 +19,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.logoutBtn.setOnClickListener{
-            viewModel.logOut()
+            viewModel.logout("token")
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
         }
 

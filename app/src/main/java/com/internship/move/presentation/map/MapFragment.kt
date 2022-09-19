@@ -68,22 +68,23 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     private val permissionsResultCallback = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) {
-        when (it) {
-            true -> {
-                binding.locationIV.setImageResource(R.drawable.ic_focus_location)
-                binding.headingTV.setText(R.string.map_header_location_allowed)
-            }
-            false -> {
-                binding.headingTV.setText(R.string.map_header_location_not_allowed)
-                binding.locationIV.setBackgroundResource(R.drawable.ic_allow_location)
-                Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
-            }
+        if (it) {
+            binding.locationIV.setImageResource(R.drawable.ic_focus_location)
+            binding.headingTV.setText(R.string.map_header_location_allowed)
+        } else {
+            binding.headingTV.setText(R.string.map_header_location_not_allowed)
+            binding.locationIV.setBackgroundResource(R.drawable.ic_allow_location)
+            Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
+
+        map.setMaxZoomPreference(MAX_ZOOM_LEVEL)
+        map.setMinZoomPreference(MIN_ZOOM_LEVEL)
         map.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.style_json))
+
         fetchLocation()
     }
 
@@ -98,15 +99,6 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         }
     }
 
-    private fun initMap(latitude: Double, longitude: Double) {
-        val position = LatLng(latitude, longitude)
-
-        map.addMarker(MarkerOptions().position(position).title("Marker in Cluj"))
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, DEFAULT_ZOOM_LEVEL))
-        map.setMaxZoomPreference(MAX_ZOOM_LEVEL)
-        map.setMinZoomPreference(MIN_ZOOM_LEVEL)
-    }
-
     private fun updateMap(latitude: Double, longitude: Double) {
         val position = LatLng(latitude, longitude)
 
@@ -115,7 +107,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     }
 
     companion object {
-        private const val MAX_ZOOM_LEVEL = 20f
+        private const val MAX_ZOOM_LEVEL = 19f
         private const val MIN_ZOOM_LEVEL = 6f
         private const val DEFAULT_ZOOM_LEVEL = 17f
     }

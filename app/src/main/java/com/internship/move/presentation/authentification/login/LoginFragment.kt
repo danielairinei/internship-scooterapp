@@ -6,12 +6,13 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.internship.move.R
+import com.internship.move.data.dto.user.UserLoginRequestDto
 import com.internship.move.databinding.FragmentLoginBinding
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
+import com.internship.move.utils.extensions.CustomDialogFragment
 import com.internship.move.utils.extensions.makeLinks
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.Observer
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -30,7 +31,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding.passwordTIL.isEndIconVisible = false
 
         binding.loginBtn.setOnClickListener {
-            viewModel.login(binding.emailTIET.text.toString(),binding.passwordTIET.text.toString() )
+            viewModel.login(UserLoginRequestDto(binding.emailTIET.text.toString(), binding.passwordTIET.text.toString()))
         }
 
         binding.emailTIET.doOnTextChanged { _, _, _, _ ->
@@ -58,13 +59,24 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
+    private fun initObserver() {
+        viewModel.errorData.observe(viewLifecycleOwner) {
+            if (it == null) {
+                viewModel.userLoginData.observe(viewLifecycleOwner) {
+                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
+                }
+            } else {
+                val dialog = CustomDialogFragment.newInstance("", it.message, getString(R.string.button_ok_text))
+                dialog.show(parentFragmentManager, KEY_ERROR_RESPONSE)
+            }
+        }
+    }
+
     private fun changeBtnState(emailIsNotEmpty: Boolean, passwordIsNotEmpty: Boolean) {
         binding.loginBtn.isEnabled = emailIsNotEmpty && passwordIsNotEmpty
     }
 
-    private fun initObserver(){
-        viewModel.userLoginData.observe(viewLifecycleOwner){
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
-        }
+    companion object {
+        private const val KEY_ERROR_RESPONSE = "KEY_ERROR_RESPONSE"
     }
 }

@@ -1,9 +1,7 @@
 package com.internship.move.data.dto.user
 
 import com.internship.move.data.model.User
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface UserApi {
 
@@ -15,4 +13,7 @@ interface UserApi {
 
     @POST("/auth/login")
     suspend fun loginRequest(@Body userLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto
+
+    @DELETE("/auth/logout")
+    suspend fun logoutRequest(@Field("token") token: String) : UserLogoutResponseDto
 }
