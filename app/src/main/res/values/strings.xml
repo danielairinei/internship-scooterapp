@@ -42,6 +42,7 @@
     <string name="authentication_forgot_password_dialog_title">Password reset link sent</string>
     <string name="authentication_forgot_password_dialog_content">Please check your inbox or spam for the email containing the password reset link.</string>
     <string name="button_ok_text">OK</string>
+    <!--    Driving License Verification Strings-->
     <string name="authentication_driving_license_title">Driving License</string>
     <string name="authentication_driving_license_heading">Before you can start riding</string>
     <string name="authentication_driving_license_content">Please take a photo or upload the front side of your driving license so we can make sure that it is valid.</string>
@@ -50,4 +51,7 @@
     <string name="map_id">da8a2f618a25f60e</string>
     <string name="map_header_location_allowed">Cluj Napoca</string>
     <string name="map_header_location_not_allowed">Allow location</string>
+    <string name="authentication_pending_verification_text">We are currently verifying your driving license</string>
+    <string name="authentication_success_verification_text">We\'ve successfully validated your driving license</string>
+    <string name="authentication_success_btn_text">Find scooters</string>
 </resources>
