@@ -10,11 +10,6 @@ data class UserRegisterResponseDto(
 
 @JsonClass(generateAdapter = true)
 data class UserLoginResponseDto(
-    val userDto: UserDto,
-    val loginToken: String
-)
-
-@JsonClass(generateAdapter = true)
-data class UserErrorResponseDto(
-    val message: String
+    @Json(name = "user") val userDto: UserDto,
+    @Json(name = "token") val loginToken: String
 )

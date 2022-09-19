@@ -11,6 +11,7 @@ import com.internship.move.presentation.authentification.viewmodel.Authenticatio
 import com.internship.move.utils.extensions.makeLinks
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.Observer
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -22,6 +23,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         initClickableTV()
         initListeners()
+        initObserver()
     }
 
     private fun initListeners() {
@@ -29,7 +31,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         binding.loginBtn.setOnClickListener {
             viewModel.login("user", "pass")
-//            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
         }
 
         binding.emailTIET.doOnTextChanged { _, _, _, _ ->
@@ -59,5 +60,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun changeBtnState(emailIsNotEmpty: Boolean, passwordIsNotEmpty: Boolean) {
         binding.loginBtn.isEnabled = emailIsNotEmpty && passwordIsNotEmpty
+    }
+
+    private fun initObserver(){
+        viewModel.userLoginData.observe(viewLifecycleOwner){
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
+            println(it)
+        }
     }
 }

@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 
@@ -90,5 +91,9 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("com.squareup.okhttp3:logging-interceptor")
     implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+
+    //Google Maps
+    implementation "com.google.android.gms:play-services-location:20.0.0"
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 }
 

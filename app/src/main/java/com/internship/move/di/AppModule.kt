@@ -3,6 +3,7 @@ package com.internship.move.di
 import com.internship.move.data.dto.user.UserApi
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
 import com.internship.move.presentation.map.viewmodel.MapViewModel
+import com.internship.move.presentation.menu.viewmodel.MenuViewModel
 import com.internship.move.presentation.splash.viewmodel.SplashViewModel
 import com.internship.move.repository.UserRepository
 import com.internship.move.utils.InternalStorageManager
@@ -32,6 +33,7 @@ val viewModels = module {
     viewModel { AuthenticationViewModel(get()) }
     viewModel { MapViewModel(get()) }
     viewModel { SplashViewModel(get()) }
+    viewModel { MenuViewModel(get()) }
 }
 
 fun provideMoshi(): Moshi = Moshi.Builder().build()

@@ -2,13 +2,13 @@ package com.internship.move.repository
 
 import com.internship.move.data.dto.user.UserApi
 import com.internship.move.data.dto.user.UserLoginRequestDto
+import com.internship.move.data.dto.user.UserLoginResponseDto
 import com.internship.move.data.dto.user.UserRegisterRequestDto
-import com.internship.move.data.model.User
 import com.internship.move.utils.InternalStorageManager
 
 class UserRepository(
     private val internalStorageManager: InternalStorageManager,
-    private val userApi : UserApi
+    private val userApi: UserApi
 ) {
 
     fun getIsUserLoggedIn() = internalStorageManager.getIsUserLoggedIn()
@@ -23,8 +23,8 @@ class UserRepository(
         internalStorageManager.setIsUserLoggedIn(boolean)
     }
 
-    suspend fun loginRequest(newLoginRequestDto: UserLoginRequestDto){
-        userApi.loginRequest(newLoginRequestDto)
+    suspend fun loginRequest(newLoginRequestDto: UserLoginRequestDto) : UserLoginResponseDto {
+        return userApi.loginRequest(newLoginRequestDto)
     }
 
     suspend fun registerRequest(newRegisterRequestDto: UserRegisterRequestDto) {
