@@ -22,14 +22,15 @@
             app:popUpToInclusive="true" />
 
         <action
-            android:id="@+id/action_registerFragment_to_home_graph"
-            app:destination="@id/home_graph"
+            android:id="@+id/action_registerFragment_to_license_verification_graph"
+            app:destination="@id/license_verification_graph"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/registerFragment"
             app:popUpToInclusive="true" />
+
     </fragment>
 
     <fragment
@@ -103,14 +104,16 @@
 
         <deepLink
             android:id="@+id/deepLink"
-            app:uri="http://www.tapptitude.com/move/resetpassword?token=tappresettoken" />
+            android:autoVerify="true"
+            app:uri="http://www.tapptitude.com/move/resetpassword?token={resettoken}" />
 
         <argument
+            android:name="resettoken"
             android:defaultValue=""
-            android:name="token"
             app:argType="string"
             app:nullable="true" />
     </fragment>
 
     <include app:graph="@navigation/home_graph" />
+    <include app:graph="@navigation/license_verification_graph" />
 </navigation>

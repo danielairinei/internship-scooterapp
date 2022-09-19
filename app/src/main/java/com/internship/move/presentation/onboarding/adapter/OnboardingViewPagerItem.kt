@@ -1,4 +1,4 @@
-package com.internship.move.data.model
+package com.internship.move.presentation.onboarding.adapter
 
 import android.os.Parcelable
 import androidx.annotation.DrawableRes

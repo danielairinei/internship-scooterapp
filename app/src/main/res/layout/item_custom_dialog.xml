@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
     android:layout_height="@dimen/dialog_height"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center"
     android:background="@drawable/bg_forgot_password_dialog"
     android:gravity="top|center"
@@ -16,26 +16,28 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dialog_margin"
         android:text="Dialog Title"
+        android:textColor="@color/primary_text_color"
         android:textSize="@dimen/heading2_text_size"
         app:fontFamily="@font/bai_jamjuree_bold" />
 
     <TextView
         android:id="@+id/contentTV"
-        android:fontFamily="@font/bai_jamjuree_medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/horizontal_margin"
         android:layout_marginTop="@dimen/dialog_margin"
         android:layout_marginEnd="@dimen/horizontal_margin"
+        android:fontFamily="@font/bai_jamjuree_medium"
         android:gravity="center"
         android:text="Dialog Content"
+        android:textColor="@color/primary_text_color"
         android:textSize="16sp" />
 
     <Button
         android:id="@+id/dialogBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dialog_margin"
         android:layout_marginTop="@dimen/dialog_margin"
+        android:layout_marginBottom="@dimen/dialog_margin"
         android:text="BtnText" />
 </LinearLayout>

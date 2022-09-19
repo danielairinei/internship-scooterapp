@@ -1,10 +1,16 @@
 package com.internship.move.presentation.authentification.viewmodel
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.internship.move.repository.Repository
+import androidx.lifecycle.viewModelScope
+import com.internship.move.data.model.User
+import com.internship.move.repository.UserRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AuthenticationViewModel(
-    private val repo: Repository
+    private val repo: UserRepository
 ) : ViewModel() {
 
     fun notifyUserHasCompletedOnboarding() {
@@ -15,7 +21,13 @@ class AuthenticationViewModel(
         repo.setIsUserLoggedIn(true)
     }
 
-    fun register(email: String, username: String, password: String) {
-        repo.setIsUserLoggedIn(true)
+    fun register(newUser : User) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try{
+                repo.register(newUser)
+            }catch(e: Exception){
+                println(e.message)
+            }
+        }
     }
 }
