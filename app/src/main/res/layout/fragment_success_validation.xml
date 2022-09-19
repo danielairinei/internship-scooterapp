@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/horizontal_margin"
-        android:layout_marginTop="@dimen/driving_licenes_success_btn_margin_top"
+        android:layout_marginTop="@dimen/driving_license_success_btn_margin_top"
         android:layout_marginEnd="@dimen/horizontal_margin"
         android:text="@string/authentication_success_btn_text" />
 </LinearLayout>

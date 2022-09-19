@@ -1,44 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".presentation.authentification.register.verification.DrivingLicenseFragment"
     tools:ignore="ContentDescription">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/authentication_title_margin_top"
-        android:orientation="horizontal"
-        tools:ignore="UseCompoundDrawables">
+        android:layout_height="@dimen/driving_license_top_bar_height">
 
-        <ImageView
-            android:id="@+id/backIV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/horizontal_margin"
-            android:layout_marginTop="@dimen/driving_license_back_arrow_margin_top"
-            android:src="@drawable/ic_driving_license_arrow_back" />
-
-        <TextView
-            android:id="@+id/titleTV"
+        <com.google.android.material.appbar.MaterialToolbar
+            app:titleTextAppearance="@style/Topbar"
+            app:titleCentered="true"
+            app:titleTextColor="@color/secondary_text_color"
+            android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/horizontal_margin"
-            android:fontFamily="@font/bai_jamjuree_semi_bold"
-            android:gravity="center"
-            android:text="@string/authentication_driving_license_title"
-            android:textColor="@color/secondary_text_color"
-            android:textSize="@dimen/heading3_text_size" />
+            android:layout_height="match_parent"
+            app:navigationIcon="@drawable/ic_driving_license_arrow_back"
+            app:title="@string/authentication_driving_license_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
         android:id="@+id/drivingLicenseIV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/driving_license_margin_top"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_driving_license" />
 
@@ -73,3 +66,4 @@
         android:layout_marginEnd="@dimen/horizontal_margin"
         android:text="@string/authentication_driving_license_btn_text" />
 </LinearLayout>
+</ScrollView>
