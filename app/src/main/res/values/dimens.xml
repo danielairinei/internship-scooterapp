@@ -39,4 +39,7 @@
     <dimen name="driving_license_margin_top">20dp</dimen>
     <dimen name="driving_license_heading_margin_top">14dp</dimen>
     <dimen name="driving_license_button_margin_top">50dp</dimen>
+    <dimen name="map_horizontal_margin">14dp</dimen>
+    <dimen name="map_icons_margin_top">54dp</dimen>
+    <dimen name="map_heading_margin_top">68dp</dimen>
 </resources>
