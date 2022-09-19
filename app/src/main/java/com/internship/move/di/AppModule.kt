@@ -16,7 +16,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-private const val BASE_URL = "https://scooter-app.herokuapp.com/"
+private const val BASE_URL = "https://scooter-app.herokuapp.com"
 
 val internalStorage = module {
     single { InternalStorageManager(androidContext()) }
@@ -38,7 +38,7 @@ val viewModels = module {
 
 fun provideMoshi(): Moshi = Moshi.Builder().build()
 
-fun provideOkHttpClient() = OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor()).build()
+fun provideOkHttpClient() = OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }).build()
 
 fun provideRetrofit(moshi: Moshi, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)

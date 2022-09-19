@@ -30,7 +30,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding.passwordTIL.isEndIconVisible = false
 
         binding.loginBtn.setOnClickListener {
-            viewModel.login("user", "pass")
+            viewModel.login(binding.emailTIET.text.toString(),binding.passwordTIET.text.toString() )
         }
 
         binding.emailTIET.doOnTextChanged { _, _, _, _ ->
