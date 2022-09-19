@@ -26,7 +26,7 @@ class AuthenticationViewModel(
             try{
                 repo.register(newUser)
             }catch(e: Exception){
-                e.message?.let { Log.e(TAG, it) }
+                println(e.message)
             }
         }
     }
