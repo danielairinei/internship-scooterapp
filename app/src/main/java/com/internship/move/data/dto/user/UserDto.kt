@@ -13,5 +13,5 @@ data class UserDto(
     @Json(name = "name") val name: String,
     @Json(name = "password") val password: String,
     @Json(name = "updatedAt") val updatedAt: String,
-    @Json(name = "validated") val validated: Boolean
+    @Json(name = "validated") val validated: Boolean = true
 )

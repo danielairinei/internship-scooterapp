@@ -25,7 +25,7 @@ class AuthenticationViewModel(
     fun login(email: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                userLoginData.value = repo.loginRequest(UserLoginRequestDto(email, password))
+                userLoginData.postValue(repo.loginRequest(UserLoginRequestDto(email, password)))
                 repo.setIsUserLoggedIn(true)
             } catch (e: Exception) {
                 println(e.message)
