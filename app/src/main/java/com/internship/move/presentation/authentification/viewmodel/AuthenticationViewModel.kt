@@ -5,16 +5,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.internship.move.data.dto.user.*
 import com.internship.move.repository.UserRepository
+import com.internship.move.utils.extensions.toErrorResponse
+import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AuthenticationViewModel(
-    private val repo: UserRepository
+    private val repo: UserRepository,
+    private val errorJsonAdapter: JsonAdapter<ErrorResponse>
 ) : ViewModel() {
 
     val userRegisterData: MutableLiveData<UserRegisterResponseDto> = MutableLiveData()
     val userLoginData: MutableLiveData<UserLoginResponseDto> = MutableLiveData()
-    val errorData: MutableLiveData<ErrorResponseDto> = MutableLiveData(null)
+    val errorData: MutableLiveData<ErrorResponse> = MutableLiveData(null)
 
     fun notifyUserHasCompletedOnboarding() {
         repo.setHasUserCompletedOnboarding(true)
@@ -23,10 +26,12 @@ class AuthenticationViewModel(
     fun login(newUserLoginRequestDto: UserLoginRequestDto) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                userLoginData.postValue(repo.loginRequest(newUserLoginRequestDto))
+                val response = repo.loginRequest(newUserLoginRequestDto)
+                userLoginData.postValue(response)
                 repo.setIsUserLoggedIn(true)
+                repo.setLoginToken(response.loginToken)
             } catch (e: Exception) {
-                errorData.postValue(ErrorResponseDto(e.message.toString()))
+                errorData.postValue(e.toErrorResponse(errorJsonAdapter))
             }
         }
     }
@@ -36,8 +41,12 @@ class AuthenticationViewModel(
             try {
                 userRegisterData.postValue(repo.registerRequest(newUserRegisterRequestDto))
             } catch (e: Exception) {
-                errorData.postValue(ErrorResponseDto(e.message.toString()))
+                errorData.postValue(e.toErrorResponse(errorJsonAdapter))
             }
         }
+    }
+
+    companion object{
+        const val KEY_SESSION_TOKEN = "KEY_SESSION_TOKEN"
     }
 }

@@ -20,15 +20,23 @@ class UserRepository(
         internalStorageManager.setIsUserLoggedIn(boolean)
     }
 
-    suspend fun loginRequest(newLoginRequestDto: UserLoginRequestDto) : UserLoginResponseDto {
+    fun setLoginToken(token: String) {
+        internalStorageManager.setLoginToken(token)
+    }
+
+    fun getLoginToken(): String {
+        return internalStorageManager.getLoginToken()
+    }
+
+    suspend fun loginRequest(newLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto {
         return userApi.loginRequest(newLoginRequestDto)
     }
 
-    suspend fun registerRequest(newRegisterRequestDto: UserRegisterRequestDto) : UserRegisterResponseDto {
+    suspend fun registerRequest(newRegisterRequestDto: UserRegisterRequestDto): UserRegisterResponseDto {
         return userApi.registerRequest(newRegisterRequestDto)
     }
 
-    suspend fun logoutRequest(logoutToken : String) : UserLogoutResponseDto{
-        return userApi.logoutRequest(logoutToken)
+    suspend fun logoutRequest(logoutToken: String) {
+        userApi.logoutRequest(logoutToken)
     }
 }

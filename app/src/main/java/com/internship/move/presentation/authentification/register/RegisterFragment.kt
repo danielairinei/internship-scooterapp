@@ -88,14 +88,18 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         binding.getStartedBtn.isEnabled = emailIsNotEmpty && usernameIsNotEmpty && passwordIsNotEmpty
     }
 
-    private fun initObserver(){
+    private fun initObserver() {
         viewModel.errorData.observe(viewLifecycleOwner) {
             if (it == null) {
                 viewModel.userRegisterData.observe(viewLifecycleOwner) {
-                    findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLicenseVerificationGraph())
+                    findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
                 }
             } else {
-                val dialog = CustomDialogFragment.newInstance("", it.message, getString(R.string.button_ok_text))
+                val dialog = CustomDialogFragment.newInstance(
+                    "",
+                    it.message,
+                    getString(R.string.button_ok_text)
+                )
                 dialog.show(parentFragmentManager, KEY_ERROR_RESPONSE)
             }
         }

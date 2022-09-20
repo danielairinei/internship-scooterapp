@@ -3,6 +3,7 @@ package com.internship.move.utils
 import android.content.Context
 import android.content.SharedPreferences
 import com.internship.move.presentation.authentification.register.RegisterFragment
+import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
 import com.internship.move.presentation.menu.MenuFragment
 
 class InternalStorageManager(
@@ -13,7 +14,6 @@ class InternalStorageManager(
 
     fun getIsUserLoggedIn(): Boolean = sharedPreferences.getBoolean(MenuFragment.KEY_IS_USER_LOGGED_IN, false)
 
-
     fun getHasUserCompletedOnboarding(): Boolean = sharedPreferences.getBoolean(RegisterFragment.KEY_HAS_USER_COMPLETED_ONBOARDING, false)
 
 
@@ -23,6 +23,14 @@ class InternalStorageManager(
 
     fun setUserHasCompletedOnboarding(hasUserCompletedOnboarding: Boolean) {
         sharedPreferences.edit().putBoolean(RegisterFragment.KEY_HAS_USER_COMPLETED_ONBOARDING, hasUserCompletedOnboarding).apply()
+    }
+
+    fun setLoginToken(token: String) {
+        sharedPreferences.edit().putString(AuthenticationViewModel.KEY_SESSION_TOKEN, token).apply()
+    }
+
+    fun getLoginToken() : String {
+        return sharedPreferences.getString(AuthenticationViewModel.KEY_SESSION_TOKEN, "").toString()
     }
 
     companion object {

@@ -62,11 +62,19 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun initObserver() {
         viewModel.errorData.observe(viewLifecycleOwner) {
             if (it == null) {
-                viewModel.userLoginData.observe(viewLifecycleOwner) {
-                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
+                viewModel.userLoginData.observe(viewLifecycleOwner) { userResponse ->
+                    if (userResponse.userDto.drivinglicense != "") {
+                        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
+                    } else {
+                        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToLicenseVerificationGraph())
+                    }
                 }
             } else {
-                val dialog = CustomDialogFragment.newInstance("", it.message, getString(R.string.button_ok_text))
+                val dialog = CustomDialogFragment.newInstance(
+                    "",
+                    it.message,
+                    getString(R.string.button_ok_text)
+                )
                 dialog.show(parentFragmentManager, KEY_ERROR_RESPONSE)
             }
         }

@@ -15,8 +15,3 @@ data class UserLoginResponseDto(
 )
 
 class UserLogoutResponseDto
-
-@JsonClass(generateAdapter = true)
-data class ErrorResponseDto(
-    @Json(name = "message") val message: String
-)
