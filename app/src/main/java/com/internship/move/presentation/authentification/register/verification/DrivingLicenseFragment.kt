@@ -53,7 +53,7 @@ class DrivingLicenseFragment : Fragment(R.layout.fragment_driving_license) {
     }
 
     private fun getTmpFileUri(): Uri? {
-        val tmpFile = File.createTempFile("tmp_image_file", ".png").apply {
+        val tmpFile = File.createTempFile("tmp_image_file", ".jpg").apply {
             createNewFile()
             deleteOnExit()
         }

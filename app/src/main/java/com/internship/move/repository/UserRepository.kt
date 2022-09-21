@@ -2,6 +2,10 @@ package com.internship.move.repository
 
 import com.internship.move.data.dto.user.*
 import com.internship.move.utils.InternalStorageManager
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 
 class UserRepository(
     private val internalStorageManager: InternalStorageManager,
@@ -34,6 +38,17 @@ class UserRepository(
 
     suspend fun registerRequest(newRegisterRequestDto: UserRegisterRequestDto): UserRegisterResponseDto {
         return userApi.registerRequest(newRegisterRequestDto)
+    }
+
+    suspend fun licenseVerification(file: File, token: String): UserDto {
+        return userApi.uploadDrivingLicense(
+            token,
+            image = MultipartBody.Part.createFormData(
+                "driving_license",
+                file.name,
+                file.asRequestBody("image/jpg".toMediaTypeOrNull())
+            )
+        )
     }
 
     suspend fun logoutRequest(logoutToken: String) {

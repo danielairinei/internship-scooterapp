@@ -9,6 +9,7 @@ import com.internship.move.utils.extensions.toErrorResponse
 import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
 
 class AuthenticationViewModel(
     private val repo: UserRepository,
@@ -18,6 +19,7 @@ class AuthenticationViewModel(
     val userRegisterData: MutableLiveData<UserRegisterResponseDto> = MutableLiveData()
     val userLoginData: MutableLiveData<UserLoginResponseDto> = MutableLiveData()
     val errorData: MutableLiveData<ErrorResponse> = MutableLiveData(null)
+    val licenseData: MutableLiveData<String> = MutableLiveData("")
 
     fun notifyUserHasCompletedOnboarding() {
         repo.setHasUserCompletedOnboarding(true)
@@ -28,7 +30,6 @@ class AuthenticationViewModel(
             try {
                 val response = repo.loginRequest(newUserLoginRequestDto)
                 userLoginData.postValue(response)
-                repo.setIsUserLoggedIn(true)
                 repo.setLoginToken(response.loginToken)
             } catch (e: Exception) {
                 errorData.postValue(e.toErrorResponse(errorJsonAdapter))
@@ -46,7 +47,18 @@ class AuthenticationViewModel(
         }
     }
 
-    companion object{
+    fun licenseVerification(file: File) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response = repo.licenseVerification(file,"Bearer ${repo.getLoginToken()}")
+                licenseData.postValue(response.drivinglicense)
+            } catch (e: Exception) {
+                println(e.message)
+            }
+        }
+    }
+
+    companion object {
         const val KEY_SESSION_TOKEN = "KEY_SESSION_TOKEN"
     }
 }
