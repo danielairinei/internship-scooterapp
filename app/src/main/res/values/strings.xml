@@ -54,4 +54,7 @@
     <string name="authentication_pending_verification_text">We are currently verifying your driving license</string>
     <string name="authentication_success_verification_text">We\'ve successfully validated your driving license</string>
     <string name="authentication_success_btn_text">Find scooters</string>
+    <string name="scooter_card_view_title">Scooter</string>
+    <string name="scooter_card_view_id">#AB23</string>
+    <string name="scooter_card_view_battery_perc">66%</string>
 </resources>

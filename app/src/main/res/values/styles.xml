@@ -30,6 +30,11 @@
         <item name="android:textSize">@dimen/heading2_text_size</item>
     </style>
 
+    <style name="Heading2SB" parent="TextAppearance">
+        <item name="fontFamily">@font/bai_jamjuree_semi_bold</item>
+        <item name="android:textSize">@dimen/heading2_text_size</item>
+    </style>
+
     <style name="Button1" parent="TextAppearance">
         <item name="fontFamily">@font/bai_jamjuree_bold</item>
         <item name="android:textSize">@dimen/button1_text_size</item>

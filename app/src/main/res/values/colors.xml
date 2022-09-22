@@ -30,5 +30,6 @@
     <color name="authentication_second_text_color">@color/white_grey</color>
     <color name="secondary_text_color">@color/indigo</color>
     <color name="circular_pb_color">@color/white</color>
-    <color name="scooter_cv_background_color">@color/black</color>
+    <color name="scooter_cv_background_color">@color/white</color>
+    <color name="scooter_cv_title_color">@color/dusty_grey</color>
 </resources>
