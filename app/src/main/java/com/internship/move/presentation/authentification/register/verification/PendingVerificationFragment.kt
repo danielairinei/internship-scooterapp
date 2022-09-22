@@ -26,6 +26,7 @@ class PendingVerificationFragment : Fragment(R.layout.fragment_pending_verificat
             viewModel.licenseVerification(file)
             viewModel.licenseData.observe(viewLifecycleOwner) {
                 if (it != "") {
+                    viewModel.setIsUserLoggedIn(true)
                     findNavController().navigate(PendingVerificationFragmentDirections.actionPendingVerificationFragmentToSuccessValidationFragment())
                 }
             }
