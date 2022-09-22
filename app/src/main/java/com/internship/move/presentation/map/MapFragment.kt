@@ -2,7 +2,10 @@ package com.internship.move.presentation.map
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.location.Location
 import android.os.Bundle
 import android.view.View
@@ -17,9 +20,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MapStyleOptions
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.android.gms.tasks.Task
 import com.internship.move.R
 import com.internship.move.databinding.FragmentMapBinding
@@ -33,14 +34,15 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     private val viewModel by viewModel<MapViewModel>()
     private lateinit var map: GoogleMap
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private lateinit var mapFragment: SupportMapFragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mapFragment = childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+        mapFragment = childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
-        permissionInit(mapFragment)
+        permissionInit()
         initListeners()
     }
 
@@ -48,19 +50,22 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         binding.menuIV.setOnClickListener {
             findNavController().navigate(MapFragmentDirections.actionMapFragmentToMenuFragment())
         }
-        binding.locationIV.setOnClickListener {
+        binding.locationAllowedTV.setOnClickListener {
             fetchLocation()
+        }
+
+        binding.locationNotAllowedIV.setOnClickListener {
+            permissionInit()
         }
     }
 
-    private fun permissionInit(mapFragment: SupportMapFragment) {
+    private fun permissionInit() {
         val requestPermissionLauncher = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
 
         if (requestPermissionLauncher != PackageManager.PERMISSION_GRANTED) {
             permissionsResultCallback.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         } else {
-            binding.locationIV.setImageResource(R.drawable.ic_focus_location)
-            binding.headingTV.setText(R.string.map_header_location_allowed)
+            permissionsEnabled()
             mapFragment.getMapAsync(this)
         }
     }
@@ -69,11 +74,9 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         ActivityResultContracts.RequestPermission()
     ) {
         if (it) {
-            binding.locationIV.setImageResource(R.drawable.ic_focus_location)
-            binding.headingTV.setText(R.string.map_header_location_allowed)
+            permissionsEnabled()
         } else {
-            binding.headingTV.setText(R.string.map_header_location_not_allowed)
-            binding.locationIV.setBackgroundResource(R.drawable.ic_allow_location)
+            permissionsDisabled()
             Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
         }
     }
@@ -103,7 +106,33 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         val position = LatLng(latitude, longitude)
 
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, DEFAULT_ZOOM_LEVEL))
-        map.addMarker(MarkerOptions().position(position).title("Your location"))
+        map.addMarker(
+            MarkerOptions()
+                .position(position)
+                .title("Your location")
+                .icon(bitmapDescriptorFromVector(requireContext(),R.drawable.ic_user_location))
+        )
+    }
+
+    private fun permissionsEnabled() {
+        binding.locationAllowedTV.visibility = View.VISIBLE
+        binding.locationNotAllowedIV.visibility = View.INVISIBLE
+        binding.headingTV.setText(R.string.map_header_location_allowed)
+    }
+
+    private fun permissionsDisabled() {
+        binding.headingTV.setText(R.string.map_header_location_not_allowed)
+        binding.locationNotAllowedIV.visibility = View.VISIBLE
+        binding.locationAllowedTV.visibility = View.INVISIBLE
+    }
+
+    private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor? {
+        return ContextCompat.getDrawable(context, vectorResId)?.run {
+            setBounds(0, 0, intrinsicWidth, intrinsicHeight)
+            val bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
+            draw(Canvas(bitmap))
+            BitmapDescriptorFactory.fromBitmap(bitmap)
+        }
     }
 
     companion object {
