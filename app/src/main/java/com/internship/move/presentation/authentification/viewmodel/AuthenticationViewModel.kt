@@ -50,7 +50,7 @@ class AuthenticationViewModel(
     fun licenseVerification(file: File) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = repo.licenseVerification(file,"Bearer ${repo.getLoginToken()}")
+                val response = repo.licenseVerification(file, "Bearer ${repo.getLoginToken()}")
                 licenseData.postValue(response.drivinglicense)
             } catch (e: Exception) {
                 println(e.message)
