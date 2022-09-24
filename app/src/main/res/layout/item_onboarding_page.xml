@@ -45,7 +45,7 @@
         style="@style/TextAppearance"
         android:textColor="@color/onboarding_fragment_text"
         android:layout_width="@dimen/onboarding_text_view_content_width"
-        android:layout_height="@dimen/onboarding_text_view_content_height"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/horizontal_margin"
         android:layout_marginTop="@dimen/onboarding_content_margin_top"
         android:text="@string/onboarding_safety_tutorial"

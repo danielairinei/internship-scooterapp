@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,15 +14,24 @@
         android:layout_height="match_parent"
         android:layout_gravity="center" />
 
+    <include
+        android:id="@+id/scooterBs"
+        layout="@layout/item_scooter_card"
+        android:layout_width="@dimen/scooter_cv_width"
+        android:layout_height="@dimen/scooter_cv_height"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="@dimen/scooter_card_view_margin_bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/mapFragment" />
+
     <ImageView
-        android:visibility="invisible"
         android:id="@+id/locationAllowedTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
         android:layout_marginTop="@dimen/map_icons_margin_top"
         android:layout_marginEnd="@dimen/map_horizontal_margin"
-        android:src="@drawable/ic_focus_location" />
+        android:src="@drawable/ic_focus_location"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/locationNotAllowedIV"

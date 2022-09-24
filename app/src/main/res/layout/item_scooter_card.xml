@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/scooter_cv_width"
     android:layout_height="@dimen/scooter_cv_height"
-    android:layout_gravity="center|bottom"
-    android:layout_marginBottom="@dimen/scooter_card_view_margin_bottom"
+    android:id="@+id/scooterBS"
     android:background="@drawable/bg_scooter_cv"
-    tools:ignore="ContentDescription">
+    tools:ignore="ContentDescription"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <ImageView
         android:id="@+id/rectangleIV"

@@ -58,4 +58,7 @@
     <string name="scooter_card_view_id">#AB23</string>
     <string name="scooter_card_view_battery_perc">96%</string>
     <string name="scooter_card_view_btn_text">Unlock</string>
+    <string name="scooter_bottom_sheet_title">You can unlock this scooter through these methods:</string>
+    <string name="scooter_bottom_sheet_ring">Ring</string>
+    <string name="scooter_bottom_sheet_missing">Missing</string>
 </resources>

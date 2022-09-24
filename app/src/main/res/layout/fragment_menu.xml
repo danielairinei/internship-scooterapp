@@ -3,7 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:ignore="ContentDescription"
     tools:context=".presentation.menu.MenuFragment">
+
+    <ImageView
+        android:id="@+id/backIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:src="@drawable/ic_driving_license_arrow_back" />
 
     <TextView
         style="@style/Heading1"
@@ -16,19 +24,19 @@
 
     <Button
         android:id="@+id/logoutBtn"
-        android:layout_gravity="bottom|center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Log out"
+        android:layout_gravity="bottom|center"
         android:layout_marginBottom="250dp"
+        android:text="Log out"
         tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/clearApp"
-        android:layout_gravity="bottom|center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clear app"
+        android:layout_gravity="bottom|center"
         android:layout_marginBottom="170dp"
+        android:text="Clear app"
         tools:ignore="HardcodedText" />
 </FrameLayout>

@@ -3,6 +3,7 @@ package com.internship.move.presentation.authentification.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.internship.move.data.dto.ErrorResponse
 import com.internship.move.data.dto.user.*
 import com.internship.move.repository.UserRepository
 import com.internship.move.utils.extensions.toErrorResponse

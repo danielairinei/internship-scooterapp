@@ -82,5 +82,7 @@
         <item name="android:textSize">@dimen/heading3_text_size</item>
     </style>
 
-
+    <style name="BottomSheetDialog" parent="Theme.MaterialComponents.BottomSheetDialog">
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
+    </style>
 </resources>

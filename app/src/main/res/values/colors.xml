@@ -32,4 +32,5 @@
     <color name="circular_pb_color">@color/white</color>
     <color name="scooter_cv_background_color">@color/white</color>
     <color name="scooter_cv_title_color">@color/dusty_grey</color>
+    <color name="secondary_button_text_color">@color/magenta</color>
 </resources>

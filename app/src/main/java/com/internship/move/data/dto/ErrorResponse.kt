@@ -1,4 +1,4 @@
-package com.internship.move.data.dto.user
+package com.internship.move.data.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

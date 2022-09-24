@@ -23,6 +23,10 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             viewModel.clearApp()
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
         }
+
+        binding.backIV.setOnClickListener{
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment(viewModel.getLoginToken()))
+        }
     }
 
     private fun initObserver() {
