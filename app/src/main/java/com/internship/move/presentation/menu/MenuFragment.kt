@@ -11,6 +11,7 @@ import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MenuFragment : Fragment(R.layout.fragment_menu) {
+
     private val binding by viewBinding(FragmentMenuBinding::bind)
     private val viewModel by viewModel<MenuViewModel>()
 
@@ -25,7 +26,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         }
 
         binding.backIV.setOnClickListener{
-            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment(viewModel.getLoginToken()))
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment())
         }
     }
 

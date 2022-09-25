@@ -6,18 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.internship.move.R
 import com.internship.move.data.dto.scooter.ScooterDto
 import com.internship.move.databinding.ItemScooterBottomSheetBinding
+import com.internship.move.presentation.map.MapFragmentDirections
 import com.internship.move.utils.extensions.getPhotoByBattery
 
 class ScooterBottomSheetDialogFragment : BottomSheetDialogFragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.BottomSheetDialog)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = ItemScooterBottomSheetBinding.inflate(inflater, container, false)
@@ -39,6 +36,11 @@ class ScooterBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
         binding.qrBtn.setOnClickListener {
             Toast.makeText(requireContext(), "Not available", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.codeBtn.setOnClickListener{
+            this.dismiss()
+            findNavController().navigate(MapFragmentDirections.actionMapFragmentToUnlockFragment())
         }
     }
 
