@@ -14,6 +14,7 @@
         tools:ignore="ContentDescription">
 
         <com.google.android.material.appbar.AppBarLayout
+            app:elevation="0dp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/driving_license_top_bar_height">
 

@@ -72,7 +72,7 @@
 <!--    Menu strings-->
     <string name="menu_ride_history_heading">History</string>
     <string name="menu_ride_history_button_text">See all</string>
-    <string name="menu_settings_heading">General settings</string>
+    <string name="menu_settings_heading">General Settings</string>
     <string name="menu_settings_account">Account</string>
     <string name="menu_settings_change_pw">Change password</string>
     <string name="menu_legal_heading">Legal</string>

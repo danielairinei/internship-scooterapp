@@ -18,28 +18,28 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initObserver()
+//        initObserver()
 
-        binding.clearApp.setOnClickListener {
-            viewModel.clearApp()
-            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
-        }
-
-        binding.backIV.setOnClickListener{
-            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment())
-        }
+//        binding.clearApp.setOnClickListener {
+//            viewModel.clearApp()
+//            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
+//        }
+//
+//        binding.backIV.setOnClickListener{
+//            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment())
+//        }
     }
 
-    private fun initObserver() {
-        binding.logoutBtn.setOnClickListener {
-            viewModel.logout(viewModel.getLoginToken())
-            viewModel.loggedOut.observe(viewLifecycleOwner) {
-                if (it) {
-                    findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
-                }
-            }
-        }
-    }
+//    private fun initObserver() {
+//        binding.logoutBtn.setOnClickListener {
+//            viewModel.logout(viewModel.getLoginToken())
+//            viewModel.loggedOut.observe(viewLifecycleOwner) {
+//                if (it) {
+//                    findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
+//                }
+//            }
+//        }
+//    }
 
     companion object {
         const val KEY_IS_USER_LOGGED_IN = "KEY_IS_USER_LOGGED_IN"

@@ -75,4 +75,10 @@
     <dimen name="scooter_unlock_alternatives_text_horizontal_margin">32dp</dimen>
     <dimen name="scooter_success_unlock_heading_margin_top">134dp</dimen>
     <dimen name="scooter_success_unlock_ic_margin_top">108dp</dimen>
+    <dimen name="menu_history_margin">32dp</dimen>
+    <dimen name="menu_item_margin_top">32dp</dimen>
+    <dimen name="menu_icon_margin_top">34dp</dimen>
+    <dimen name="menu_heading_margin_start">16dp</dimen>
+    <dimen name="menu_heading2_margin_start">64dp</dimen>
+    <dimen name="menu_heading2_margin_top">16dp</dimen>
 </resources>
