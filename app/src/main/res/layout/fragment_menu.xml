@@ -1,42 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:ignore="ContentDescription"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/margin_top_toolbar"
     tools:context=".presentation.menu.MenuFragment">
 
-    <ImageView
-        android:id="@+id/backIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:src="@drawable/ic_driving_license_arrow_back" />
-
-    <TextView
-        style="@style/Heading1"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Menu Fragment"
-        android:textColor="@color/secondary_text_color"
-        tools:ignore="HardcodedText" />
+        android:layout_height="@dimen/driving_license_top_bar_height">
 
-    <Button
-        android:id="@+id/logoutBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="250dp"
-        android:text="Log out"
-        tools:ignore="HardcodedText" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:navigationIcon="@drawable/ic_purple_arrow_back"
+            app:title="Hi conor!"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/Topbar"
+            app:titleTextColor="@color/secondary_text_color" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <Button
-        android:id="@+id/clearApp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="170dp"
-        android:text="Clear app"
-        tools:ignore="HardcodedText" />
-</FrameLayout>
+</LinearLayout>

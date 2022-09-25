@@ -69,4 +69,14 @@
     <string name="scooter_unlock_or">or</string>
     <string name="scooter_success_unlock_heading">Unlock successful</string>
     <string name="scooter_success_unlock_content">Please respect all the driving regulations and other participants in traffic while using our scooters.</string>
+<!--    Menu strings-->
+    <string name="menu_ride_history_heading">History</string>
+    <string name="menu_ride_history_button_text">See all</string>
+    <string name="menu_settings_heading">General settings</string>
+    <string name="menu_settings_account">Account</string>
+    <string name="menu_settings_change_pw">Change password</string>
+    <string name="menu_legal_heading">Legal</string>
+    <string name="menu_legal_terms">Terms and Conditions</string>
+    <string name="menu_legal_privacy">Privacy Policy</string>
+    <string name="menu_rate_us_heading">Rate us</string>
 </resources>
