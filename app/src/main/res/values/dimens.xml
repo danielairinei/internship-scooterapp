@@ -81,4 +81,8 @@
     <dimen name="menu_heading_margin_start">16dp</dimen>
     <dimen name="menu_heading2_margin_start">64dp</dimen>
     <dimen name="menu_heading2_margin_top">16dp</dimen>
+    <dimen name="menu_account_til_margin_top">20dp</dimen>
+    <dimen name="menu_account_logout_margin_bottom">166dp</dimen>
+    <dimen name="menu_account_logout_ic_margin_bottom">170dp</dimen>
+    <dimen name="menu_settings_btn_margin_top">56dp</dimen>
 </resources>

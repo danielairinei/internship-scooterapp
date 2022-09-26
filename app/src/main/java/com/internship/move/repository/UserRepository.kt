@@ -24,19 +24,22 @@ class UserRepository(
         internalStorageManager.setLoginToken(token)
     }
 
-    fun getLoginToken(): String {
-        return internalStorageManager.getLoginToken()
-    }
+    fun getLoginToken(): String =
+        internalStorageManager.getLoginToken()
 
-    suspend fun loginRequest(newLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto {
-        return userApi.loginRequest(newLoginRequestDto)
-    }
 
-    suspend fun registerRequest(newRegisterRequestDto: UserRegisterRequestDto): UserRegisterResponseDto {
-        return userApi.registerRequest(newRegisterRequestDto)
-    }
+    suspend fun loginRequest(newLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto =
+        userApi.loginRequest(newLoginRequestDto)
+
+
+    suspend fun registerRequest(newRegisterRequestDto: UserRegisterRequestDto): UserRegisterResponseDto =
+        userApi.registerRequest(newRegisterRequestDto)
+
 
     suspend fun logoutRequest(logoutToken: String) {
         userApi.logoutRequest(logoutToken)
     }
+
+    suspend fun getUserRequest(authToken: String): UserDto = userApi.getUser(authToken)
+
 }

@@ -2,6 +2,7 @@ package com.internship.move.presentation.menu
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.internship.move.R
@@ -18,16 +19,12 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        initObserver()
+        viewModel.getUserRequest("Bearer ${viewModel.getLoginToken()}")
+        viewModel.userData.observe(viewLifecycleOwner) {
+            binding.toolbar.title = getString(R.string.menu_appbar_heading) + " ${it.name}!"
+        }
 
-//        binding.clearApp.setOnClickListener {
-//            viewModel.clearApp()
-//            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
-//        }
-//
-//        binding.backIV.setOnClickListener{
-//            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment())
-//        }
+        initListeners()
     }
 
 //    private fun initObserver() {
@@ -40,6 +37,30 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
 //            }
 //        }
 //    }
+
+    private fun initListeners() {
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment())
+        }
+        binding.accountTV.setOnClickListener {
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMenuAccountFragment())
+        }
+        binding.historyCard.historyBtn.setOnClickListener {
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMenuHistoryFragment())
+        }
+        binding.changePwTV.setOnClickListener {
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMenuChangePasswordFragment())
+        }
+        binding.termsTV.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.key_terms_and_conditions), Toast.LENGTH_SHORT).show()
+        }
+        binding.privacyTV.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.key_privacy_policy), Toast.LENGTH_SHORT).show()
+        }
+        binding.rateUsTV.setOnClickListener{
+            Toast.makeText(requireContext(), getString(R.string.key_rate_us), Toast.LENGTH_SHORT).show()
+        }
+    }
 
     companion object {
         const val KEY_IS_USER_LOGGED_IN = "KEY_IS_USER_LOGGED_IN"

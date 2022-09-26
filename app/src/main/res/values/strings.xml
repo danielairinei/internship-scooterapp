@@ -61,7 +61,7 @@
     <string name="scooter_bottom_sheet_title">You can unlock this scooter through these methods:</string>
     <string name="scooter_bottom_sheet_ring">Ring</string>
     <string name="scooter_bottom_sheet_missing">Missing</string>
-<!--    Scooter unlock strings-->
+    <!--    Scooter unlock strings-->
     <string name="scooter_unlock_toolbar_title">Enter serial number</string>
     <string name="scooter_unlock_heading">Enter the scooter\'s serial number</string>
     <string name="scooter_unlock_content">You can find it on the scooter\'s front panel</string>
@@ -69,7 +69,7 @@
     <string name="scooter_unlock_or">or</string>
     <string name="scooter_success_unlock_heading">Unlock successful</string>
     <string name="scooter_success_unlock_content">Please respect all the driving regulations and other participants in traffic while using our scooters.</string>
-<!--    Menu strings-->
+    <!--    Menu strings-->
     <string name="menu_ride_history_heading">History</string>
     <string name="menu_ride_history_button_text">See all</string>
     <string name="menu_settings_heading">General Settings</string>
@@ -81,4 +81,10 @@
     <string name="menu_rate_us_heading">Rate us</string>
     <string name="menu_account_heading">Account</string>
     <string name="menu_account_logout">Log out</string>
+    <string name="menu_appbar_heading">Hi</string>
+    <string name="key_rate_us">Thank you!</string>
+    <string name="menu_change_pw_old">Old password</string>
+    <string name="menu_change_pw_new">New password</string>
+    <string name="menu_change_pw_confirm">Confirm new password</string>
+    <string name="menu_settings_save_edits">Save edits</string>
 </resources>

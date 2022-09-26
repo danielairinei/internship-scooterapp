@@ -2,6 +2,7 @@ package com.internship.move.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.internship.move.data.dto.user.UserDto
 import com.internship.move.presentation.authentification.register.RegisterFragment
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
 import com.internship.move.presentation.menu.MenuFragment
@@ -29,9 +30,8 @@ class InternalStorageManager(
         sharedPreferences.edit().putString(AuthenticationViewModel.KEY_SESSION_TOKEN, token).apply()
     }
 
-    fun getLoginToken() : String {
-        return sharedPreferences.getString(AuthenticationViewModel.KEY_SESSION_TOKEN, "").toString()
-    }
+    fun getLoginToken(): String =
+        sharedPreferences.getString(AuthenticationViewModel.KEY_SESSION_TOKEN, "").toString()
 
     companion object {
         const val KEY_APP_PREFERENCES = "KEY_APP_PREFERENCES"

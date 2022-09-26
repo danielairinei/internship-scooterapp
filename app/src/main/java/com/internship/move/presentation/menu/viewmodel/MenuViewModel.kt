@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.internship.move.data.dto.user.UserDto
 import com.internship.move.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,6 +14,7 @@ class MenuViewModel(
 ) : ViewModel() {
 
     val loggedOut: MutableLiveData<Boolean> = MutableLiveData(false)
+    val userData: MutableLiveData<UserDto> = MutableLiveData()
 
     fun logout(logoutToken: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -26,9 +28,14 @@ class MenuViewModel(
         }
     }
 
-    fun clearApp() {
-        repo.setIsUserLoggedIn(false)
-        repo.setHasUserCompletedOnboarding(false)
+    fun getUserRequest(authToken: String) {
+        viewModelScope.launch {
+            try {
+                userData.postValue(repo.getUserRequest(authToken))
+            } catch (e: Exception) {
+                Log.e("ERROR", e.message.toString())
+            }
+        }
     }
 
     fun getLoginToken(): String {
