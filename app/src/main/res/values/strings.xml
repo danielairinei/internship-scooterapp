@@ -87,4 +87,8 @@
     <string name="menu_change_pw_new">New password</string>
     <string name="menu_change_pw_confirm">Confirm new password</string>
     <string name="menu_settings_save_edits">Save edits</string>
+    <string name="history_card_view_start_heading">From</string>
+    <string name="history_card_view_end_heading">To</string>
+    <string name="history_card_view_time_heading">Travel time</string>
+    <string name="history_card_view_distance_heading">Distance</string>
 </resources>

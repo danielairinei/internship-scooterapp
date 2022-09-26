@@ -85,4 +85,6 @@
     <dimen name="menu_account_logout_margin_bottom">166dp</dimen>
     <dimen name="menu_account_logout_ic_margin_bottom">170dp</dimen>
     <dimen name="menu_settings_btn_margin_top">56dp</dimen>
+    <dimen name="history_card_view_horizontal_margin">20dp</dimen>
+    <dimen name="history_card_view_heading_margin_top">16dp</dimen>
 </resources>

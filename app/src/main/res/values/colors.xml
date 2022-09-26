@@ -40,4 +40,6 @@
     <color name="pin_view_default">@color/pearl_purple</color>
     <color name="background_unlock_button">@color/white_25</color>
     <color name="alert_text_color">@color/ruby_red</color>
+    <color name="background_history_card_view_stroke">@color/indigo</color>
+    <color name="history_card_view_heading">@color/dusty_grey</color>
 </resources>

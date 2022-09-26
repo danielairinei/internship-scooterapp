@@ -1,6 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="328dp"
+    android:layout_height="160dp"
+    android:background="@drawable/bg_history_cardview"
+    tools:ignore="ContentDescription,HardcodedText">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_card_view_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fromTV"
+        style="@style/Heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/history_card_view_horizontal_margin"
+        android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
+        android:text="@string/history_card_view_start_heading"
+        android:textColor="@color/history_card_view_heading"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/startLocationTV"
+        style="@style/Heading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/history_card_view_horizontal_margin"
+        android:text="Strada Lunii 2A"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fromTV" />
+
+    <TextView
+        android:id="@+id/toTV"
+        style="@style/Heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/history_card_view_horizontal_margin"
+        android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
+        android:text="@string/history_card_view_start_heading"
+        android:textColor="@color/history_card_view_heading"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/startLocationTV" />
+
+    <TextView
+        android:id="@+id/endLocationTV"
+        style="@style/Heading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/history_card_view_horizontal_margin"
+        android:text="Strada Observatorului 100"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toTV" />
+
+    <TextView
+        android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
+        android:id="@+id/travelHeadingTV"
+        style="@style/Heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/history_card_view_horizontal_margin"
+        android:text="@string/history_card_view_time_heading"
+        android:textColor="@color/history_card_view_heading"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/travelTimeTV"
+        style="@style/Heading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/history_card_view_horizontal_margin"
+        android:text="00:42 min"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/travelHeadingTV" />
+
+    <TextView
+        android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
+        android:id="@+id/distanceHeadingTV"
+        style="@style/Heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/history_card_view_horizontal_margin"
+        android:text="@string/history_card_view_distance_heading"
+        android:textColor="@color/history_card_view_heading"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/travelTimeTV" />
+
+    <TextView
+        android:id="@+id/distanceTV"
+        style="@style/Heading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/history_card_view_horizontal_margin"
+        android:text="7.8 km"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/distanceHeadingTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

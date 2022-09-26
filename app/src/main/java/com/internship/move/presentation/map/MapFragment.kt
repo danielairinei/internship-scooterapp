@@ -62,7 +62,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
             findNavController().navigate(MapFragmentDirections.actionMapFragmentToMenuFragment())
         }
         binding.locationAllowedTV.setOnClickListener {
-            fetchLocation()
+            mapFragment.getMapAsync(this)
         }
 
         binding.locationNotAllowedIV.setOnClickListener {
