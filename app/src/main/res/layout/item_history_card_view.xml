@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="328dp"
-    android:layout_height="160dp"
+    android:layout_width="@dimen/history_card_view_width"
+    android:layout_height="@dimen/history_card_view_height"
+    android:layout_gravity="center|top"
     android:background="@drawable/bg_history_cardview"
     tools:ignore="ContentDescription,HardcodedText">
 
@@ -47,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/history_card_view_horizontal_margin"
         android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
-        android:text="@string/history_card_view_start_heading"
+        android:text="@string/history_card_view_end_heading"
         android:textColor="@color/history_card_view_heading"
         android:textSize="@dimen/small_text_size"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,11 +67,11 @@
         app:layout_constraintTop_toBottomOf="@id/toTV" />
 
     <TextView
-        android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
         android:id="@+id/travelHeadingTV"
         style="@style/Heading2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
         android:layout_marginEnd="@dimen/history_card_view_horizontal_margin"
         android:text="@string/history_card_view_time_heading"
         android:textColor="@color/history_card_view_heading"
@@ -91,11 +92,11 @@
         app:layout_constraintTop_toBottomOf="@id/travelHeadingTV" />
 
     <TextView
-        android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
         android:id="@+id/distanceHeadingTV"
         style="@style/Heading2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
         android:layout_marginEnd="@dimen/history_card_view_horizontal_margin"
         android:text="@string/history_card_view_distance_heading"
         android:textColor="@color/history_card_view_heading"
