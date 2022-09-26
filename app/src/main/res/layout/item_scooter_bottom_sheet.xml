@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/scooter_bottom_sheet_height"
+    android:layout_height="wrap_content"
     android:background="@drawable/bg_bottom_sheet"
     app:behavior_hideable="false"
-    app:behavior_peekHeight = "438dp"
+    app:behavior_peekHeight = "0dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     tools:ignore="ContentDescription,HardcodedText">
 
@@ -142,6 +142,8 @@
         android:background="@drawable/bg_primary_button_disabled"
         android:text="NFC"
         android:textColor="@color/secondary_button_text_color"
+        app:layout_constraintTop_toBottomOf="@id/scooterIV"
+        android:layout_marginTop="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
