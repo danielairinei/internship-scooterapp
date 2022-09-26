@@ -79,4 +79,6 @@
     <string name="menu_legal_terms">Terms and Conditions</string>
     <string name="menu_legal_privacy">Privacy Policy</string>
     <string name="menu_rate_us_heading">Rate us</string>
+    <string name="menu_account_heading">Account</string>
+    <string name="menu_account_logout">Log out</string>
 </resources>
