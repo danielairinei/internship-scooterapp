@@ -28,9 +28,7 @@ class MenuHistoryFragment : Fragment(R.layout.fragment_menu_history) {
         binding.historyRV.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.historyRV.addItemDecoration(RideHistoryItemDecorator(resources.getDimension(R.dimen.history_card_view_spacing)))
 
-
         recyclerAdapter.submitList(getRides())
-
     }
 
     private fun getRides(): List<RideHistoryItem> = (1..10).map { index -> RideHistoryItem(index) }

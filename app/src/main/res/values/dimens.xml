@@ -92,4 +92,9 @@
     <dimen name="recycler_view_margin_top">20dp</dimen>
     <dimen name="history_card_view_height">160dp</dimen>
     <dimen name="history_card_view_width">328dp</dimen>
+    <dimen name="start_ride_bottom_sheet_heading_margin_top">110dp</dimen>
+    <dimen name="start_ride_bottom_iv_margin_top">20dp</dimen>
+    <dimen name="bottom_sheet_peek_height">10dp</dimen>
+    <dimen name="start_ride_bottom_sheet_btn_margin_bottom">46dp</dimen>
+    <dimen name="start_ride_bottom_sheet_btn_margin_top">24dp</dimen>
 </resources>

@@ -9,6 +9,7 @@ class RideHistoryAdapter : ListAdapter<RideHistoryItem, RideHistoryViewHolder>(R
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RideHistoryViewHolder {
         val binding = ItemHistoryCardViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
         return RideHistoryViewHolder(binding)
     }
 
