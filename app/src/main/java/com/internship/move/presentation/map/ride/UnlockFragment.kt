@@ -21,7 +21,7 @@ class UnlockFragment : Fragment(R.layout.fragment_unlock) {
 
         binding.codePinView.doOnTextChanged { _, _, _, _ ->
             //unlock api call
-            if (binding.codePinView.text.toString().length == SCOOTER_SERIAL_NUMBER_LENGTH){
+            if (binding.codePinView.text.toString().length == SCOOTER_SERIAL_NUMBER_LENGTH) {
                 findNavController().navigate(UnlockFragmentDirections.actionUnlockFragmentToSuccessUnlockFragment())
             }
         }

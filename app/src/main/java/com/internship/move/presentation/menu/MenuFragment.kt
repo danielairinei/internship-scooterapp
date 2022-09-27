@@ -27,17 +27,6 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         initListeners()
     }
 
-//    private fun initObserver() {
-//        binding.logoutBtn.setOnClickListener {
-//            viewModel.logout(viewModel.getLoginToken())
-//            viewModel.loggedOut.observe(viewLifecycleOwner) {
-//                if (it) {
-//                    findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
-//                }
-//            }
-//        }
-//    }
-
     private fun initListeners() {
         binding.toolbar.setNavigationOnClickListener {
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment())
@@ -57,7 +46,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         binding.privacyTV.setOnClickListener {
             Toast.makeText(requireContext(), getString(R.string.key_privacy_policy), Toast.LENGTH_SHORT).show()
         }
-        binding.rateUsTV.setOnClickListener{
+        binding.rateUsTV.setOnClickListener {
             Toast.makeText(requireContext(), getString(R.string.key_rate_us), Toast.LENGTH_SHORT).show()
         }
     }
