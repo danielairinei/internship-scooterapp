@@ -26,6 +26,7 @@ import com.google.maps.android.clustering.ClusterManager
 import com.internship.move.R
 import com.internship.move.data.dto.scooter.ScooterDto
 import com.internship.move.databinding.FragmentMapBinding
+import com.internship.move.presentation.map.adapter.RideBottomSheetDialogFragment
 import com.internship.move.presentation.map.adapter.ScooterBottomSheetDialogFragment
 import com.internship.move.presentation.map.adapter.ScooterPlace
 import com.internship.move.presentation.map.adapter.ScooterPlaceRenderer
@@ -33,12 +34,14 @@ import com.internship.move.presentation.map.viewmodel.MapViewModel
 import com.internship.move.utils.extensions.bitmapDescriptorFromVector
 import com.internship.move.utils.extensions.getPhotoByBattery
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
+    private val sharedViewModel by sharedViewModel<MapViewModel>()
     private val viewModel by viewModel<MapViewModel>()
     private lateinit var map: GoogleMap
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -74,6 +77,11 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         viewModel.scooterList.observe(viewLifecycleOwner) { scooters ->
             if (scooters != null) {
                 addClusteredMarkers(scooters)
+            }
+        }
+        sharedViewModel.rideStarted.observe(viewLifecycleOwner) { scooter ->
+            if (scooter) {
+                showRideInfoBottomSheetDialog()
             }
         }
     }
@@ -124,6 +132,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         viewModel.findScooters(latitude, longitude)
 
         val position = LatLng(latitude, longitude)
+        viewModel.saveUserLocation(position)
 
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, DEFAULT_ZOOM_LEVEL))
         userLocation?.remove()
@@ -208,6 +217,12 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         val bottomSheetDialogFragment = ScooterBottomSheetDialogFragment.newInstance(currScooter)
 
         bottomSheetDialogFragment.show(childFragmentManager, ScooterBottomSheetDialogFragment::class.java.canonicalName)
+    }
+
+    private fun showRideInfoBottomSheetDialog(){
+        val infoBottomSheetDialogFragment = RideBottomSheetDialogFragment.newInstance()
+
+        infoBottomSheetDialogFragment.show(childFragmentManager, RideBottomSheetDialogFragment::class.java.canonicalName)
     }
 
     companion object {

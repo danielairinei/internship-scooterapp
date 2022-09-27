@@ -22,6 +22,6 @@ class SuccessUnlockFragment : Fragment(R.layout.fragment_success_unlock) {
     }
 
     companion object {
-        private const val NAVIGATION_DELAY = 2000L
+        private const val NAVIGATION_DELAY = 3000L
     }
 }

@@ -21,6 +21,7 @@ class MapViewModel(
 ) : ViewModel() {
 
     val scooterList: MutableLiveData<List<ScooterDto>> = MutableLiveData()
+    val rideStarted: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun findScooters(latitude: Double, longitude: Double) {
         viewModelScope.launch {
@@ -47,7 +48,61 @@ class MapViewModel(
         return markers
     }
 
+    fun simulateRide() {
+        rideStarted.postValue(true)
+    }
+
+    fun endRide() {
+        rideStarted.postValue(false)
+    }
+
     fun getScooterByNumber(scooterNumber: Int?): ScooterDto? = scooterList.value?.find {
         it.number == scooterNumber
+    }
+
+//    fun unlockScooter(token: String, scooter: ScooterDto) {
+//        viewModelScope.launch {
+//            try {
+//                scooterRepo.unlockScooter("Bearer $token", scooter._id)
+//                unlockedScooter.postValue(scooter)
+//            } catch (e: Exception) {
+//                Log.e("ERROR", e.toErrorResponse(errorResponseJsonAdapter).toString())
+//            }
+//        }
+//    }
+
+    ////START RIDE
+//    fun startRide(scooter: ScooterDto?, userLocation: LatLng, token: String) {
+//        viewModelScope.launch {
+//            try {
+//                if (scooter != null) {
+//                    scooterRepo.startRide(
+//                        "Bearer $token",
+//                        RideRequestDto(
+//                            scooter._id,
+//                            userLocation.latitude,
+//                            userLocation.longitude,
+//                            scooter.number
+//                        )
+//                    )
+//                    rideStarted.postValue(scooter)
+//                }
+//            } catch (e: Exception) {
+//                Log.e("ERROR", e.toErrorResponse(errorResponseJsonAdapter).toString())
+//            }
+//        }
+//    }
+
+    fun getLoginToken(): String = userRepo.getLoginToken()
+
+    fun saveUserLocation(position: LatLng) {
+        userRepo.saveUserLocation(position)
+    }
+
+    fun getUserLocation(): LatLng = userRepo.getUserLocation()
+
+    companion object {
+        const val KEY_LATITUDE = "KEY_LATITUDE"
+        const val KEY_LONGITUDE = "KEY_LONGITUDE"
     }
 }

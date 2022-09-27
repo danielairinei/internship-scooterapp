@@ -24,7 +24,7 @@
         android:layout_marginStart="@dimen/history_card_view_horizontal_margin"
         android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
         android:text="@string/history_card_view_start_heading"
-        android:textColor="@color/history_card_view_heading"
+        android:textColor="@color/bottom_sheet_heading"
         android:textSize="@dimen/small_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +49,7 @@
         android:layout_marginStart="@dimen/history_card_view_horizontal_margin"
         android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
         android:text="@string/history_card_view_end_heading"
-        android:textColor="@color/history_card_view_heading"
+        android:textColor="@color/bottom_sheet_heading"
         android:textSize="@dimen/small_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/startLocationTV" />
@@ -74,7 +74,7 @@
         android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
         android:layout_marginEnd="@dimen/history_card_view_horizontal_margin"
         android:text="@string/history_card_view_time_heading"
-        android:textColor="@color/history_card_view_heading"
+        android:textColor="@color/bottom_sheet_heading"
         android:textSize="@dimen/small_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -99,7 +99,7 @@
         android:layout_marginTop="@dimen/history_card_view_heading_margin_top"
         android:layout_marginEnd="@dimen/history_card_view_horizontal_margin"
         android:text="@string/history_card_view_distance_heading"
-        android:textColor="@color/history_card_view_heading"
+        android:textColor="@color/bottom_sheet_heading"
         android:textSize="@dimen/small_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/travelTimeTV" />

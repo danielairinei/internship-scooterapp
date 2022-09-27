@@ -2,9 +2,10 @@ package com.internship.move.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.internship.move.data.dto.user.UserDto
+import com.google.android.gms.maps.model.LatLng
 import com.internship.move.presentation.authentification.register.RegisterFragment
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
+import com.internship.move.presentation.map.viewmodel.MapViewModel
 import com.internship.move.presentation.menu.MenuFragment
 
 class InternalStorageManager(
@@ -32,6 +33,16 @@ class InternalStorageManager(
 
     fun getLoginToken(): String =
         sharedPreferences.getString(AuthenticationViewModel.KEY_SESSION_TOKEN, "").toString()
+
+    fun saveUserLocation(position: LatLng) {
+        sharedPreferences.edit().putFloat(MapViewModel.KEY_LATITUDE, position.latitude.toFloat()).apply()
+        sharedPreferences.edit().putFloat(MapViewModel.KEY_LONGITUDE, position.longitude.toFloat()).apply()
+    }
+
+    fun getUserLocation(): LatLng = LatLng(
+        sharedPreferences.getFloat(MapViewModel.KEY_LATITUDE, 1f).toDouble(),
+        sharedPreferences.getFloat(MapViewModel.KEY_LONGITUDE, 1f).toDouble()
+    )
 
     companion object {
         const val KEY_APP_PREFERENCES = "KEY_APP_PREFERENCES"

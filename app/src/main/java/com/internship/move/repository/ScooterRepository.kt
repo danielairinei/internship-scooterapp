@@ -1,5 +1,6 @@
 package com.internship.move.repository
 
+import com.internship.move.data.dto.scooter.RideRequestDto
 import com.internship.move.data.dto.scooter.ScooterApi
 import com.internship.move.data.dto.scooter.ScooterDto
 import com.internship.move.utils.InternalStorageManager
@@ -15,5 +16,13 @@ class ScooterRepository(
 
     suspend fun getScooterByNumber(scooterNumber: Int): ScooterDto {
         return scooterApi.getScooterByNumber(scooterNumber)
+    }
+
+    suspend fun unlockScooter(token: String, scooterId: String) {
+        scooterApi.unlockScooter(token, scooterId)
+    }
+
+    suspend fun startRide(token: String, rideRequestDto: RideRequestDto) {
+        scooterApi.startRide(token, rideRequestDto)
     }
 }

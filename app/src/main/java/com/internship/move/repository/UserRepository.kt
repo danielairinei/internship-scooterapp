@@ -1,5 +1,6 @@
 package com.internship.move.repository
 
+import com.google.android.gms.maps.model.LatLng
 import com.internship.move.data.dto.user.*
 import com.internship.move.utils.InternalStorageManager
 
@@ -27,6 +28,11 @@ class UserRepository(
     fun getLoginToken(): String =
         internalStorageManager.getLoginToken()
 
+    fun saveUserLocation(position: LatLng) {
+        internalStorageManager.saveUserLocation(position)
+    }
+
+    fun getUserLocation(): LatLng = internalStorageManager.getUserLocation()
 
     suspend fun loginRequest(newLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto =
         userApi.loginRequest(newLoginRequestDto)
@@ -41,5 +47,4 @@ class UserRepository(
     }
 
     suspend fun getUserRequest(authToken: String): UserDto = userApi.getUser(authToken)
-
 }

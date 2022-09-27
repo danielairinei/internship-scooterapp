@@ -41,5 +41,6 @@
     <color name="background_unlock_button">@color/white_25</color>
     <color name="alert_text_color">@color/ruby_red</color>
     <color name="background_history_card_view_stroke">@color/indigo</color>
-    <color name="history_card_view_heading">@color/dusty_grey</color>
+    <color name="bottom_sheet_heading">@color/dusty_grey</color>
+    <color name="transparent_button">@color/magenta</color>
 </resources>
