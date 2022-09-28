@@ -66,8 +66,4 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             Toast.makeText(requireContext(), getString(R.string.key_rate_us), Toast.LENGTH_SHORT).show()
         }
     }
-
-    companion object {
-        const val KEY_IS_USER_LOGGED_IN = "KEY_IS_USER_LOGGED_IN"
-    }
 }
