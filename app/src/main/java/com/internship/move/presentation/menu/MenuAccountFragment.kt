@@ -18,7 +18,7 @@ class MenuAccountFragment : Fragment(R.layout.fragment_menu_account) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getUserRequest("Bearer ${viewModel.getLoginToken()}")
+        viewModel.getUserRequest()
 
         initListeners()
         initObserver()
@@ -27,10 +27,10 @@ class MenuAccountFragment : Fragment(R.layout.fragment_menu_account) {
 
     private fun initListeners() {
         binding.logoutIV.setOnClickListener {
-            viewModel.logout(viewModel.getLoginToken())
+            viewModel.logout()
         }
         binding.logoutTV.setOnClickListener {
-            viewModel.logout(viewModel.getLoginToken())
+            viewModel.logout()
         }
         binding.toolbar.setNavigationOnClickListener {
             findNavController().navigate(MenuAccountFragmentDirections.actionMenuAccountFragmentToMenuFragment())

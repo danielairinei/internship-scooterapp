@@ -19,16 +19,16 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getUserRequest("Bearer ${viewModel.getLoginToken()}")
-        viewModel.userData.observe(viewLifecycleOwner) {
-            binding.toolbar.title = getString(R.string.menu_appbar_heading) + " ${it.name}!"
+        viewModel.getUserRequest()
+        viewModel.userData.observe(viewLifecycleOwner) { user ->
+            binding.topAppBar.title = getString(R.string.menu_appbar_heading) + " ${user.name}!"
         }
 
         initListeners()
     }
 
     private fun initListeners() {
-        binding.toolbar.setNavigationOnClickListener {
+        binding.topAppBar.setNavigationOnClickListener {
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment())
         }
         binding.accountTV.setOnClickListener {

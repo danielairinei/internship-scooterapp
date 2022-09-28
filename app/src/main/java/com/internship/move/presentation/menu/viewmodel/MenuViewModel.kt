@@ -17,6 +17,9 @@ class MenuViewModel(
     private val errorResponseJsonAdapter: JsonAdapter<ErrorResponse>
 ) : ViewModel() {
 
+    private val _userData: MutableLiveData<UserDto> = MutableLiveData()
+    val userData: LiveData<UserDto>
+        get() = _userData
     private val _loggedOut: MutableLiveData<Boolean> = MutableLiveData(false)
     val loggedOut: LiveData<Boolean>
         get() = _loggedOut
@@ -36,12 +39,12 @@ class MenuViewModel(
         }
     }
 
-    fun getUserRequest(authToken: String) {
+    fun getUserRequest() {
         viewModelScope.launch {
             try {
-                userData.postValue(repo.getUserRequest(authToken))
+                _userData.postValue(repo.getUserRequest())
             } catch (e: Exception) {
-                Log.e("ERROR", e.message.toString())
+                _errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
             }
         }
     }
