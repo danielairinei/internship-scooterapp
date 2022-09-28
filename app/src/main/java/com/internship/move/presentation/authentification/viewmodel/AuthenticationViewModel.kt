@@ -1,5 +1,6 @@
 package com.internship.move.presentation.authentification.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,29 +11,42 @@ import com.internship.move.utils.extensions.toErrorResponse
 import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
 
 class AuthenticationViewModel(
     private val repo: UserRepository,
     private val errorJsonAdapter: JsonAdapter<ErrorResponse>
 ) : ViewModel() {
 
-    val userRegisterData: MutableLiveData<UserRegisterResponseDto> = MutableLiveData()
-    val userLoginData: MutableLiveData<UserLoginResponseDto> = MutableLiveData()
-    val errorData: MutableLiveData<ErrorResponse> = MutableLiveData(null)
+    private val _userRegisterData: MutableLiveData<UserRegisterResponseDto> = MutableLiveData()
+    val userRegisterData: LiveData<UserRegisterResponseDto>
+        get() = _userRegisterData
+    private val _userLoginData: MutableLiveData<UserLoginResponseDto> = MutableLiveData()
+    val userLoginData: LiveData<UserLoginResponseDto>
+        get() = _userLoginData
+    private val _errorData: MutableLiveData<ErrorResponse> = MutableLiveData(null)
+    val errorData: LiveData<ErrorResponse>
+        get() = _errorData
+    private val _licenseData: MutableLiveData<String> = MutableLiveData("")
+    val licenseData: LiveData<String>
+        get() = _licenseData
 
     fun notifyUserHasCompletedOnboarding() {
         repo.setHasUserCompletedOnboarding(true)
+    }
+
+    fun setIsUserLoggedIn(boolean: Boolean) {
+        repo.setIsUserLoggedIn(boolean)
     }
 
     fun login(newUserLoginRequestDto: UserLoginRequestDto) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = repo.loginRequest(newUserLoginRequestDto)
-                userLoginData.postValue(response)
-                repo.setIsUserLoggedIn(true)
+                _userLoginData.postValue(response)
                 repo.setLoginToken(response.loginToken)
             } catch (e: Exception) {
-                errorData.postValue(e.toErrorResponse(errorJsonAdapter))
+                _errorData.postValue(e.toErrorResponse(errorJsonAdapter))
             }
         }
     }
@@ -40,14 +54,21 @@ class AuthenticationViewModel(
     fun register(newUserRegisterRequestDto: UserRegisterRequestDto) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                userRegisterData.postValue(repo.registerRequest(newUserRegisterRequestDto))
+                _userRegisterData.postValue(repo.registerRequest(newUserRegisterRequestDto))
             } catch (e: Exception) {
-                errorData.postValue(e.toErrorResponse(errorJsonAdapter))
+                _errorData.postValue(e.toErrorResponse(errorJsonAdapter))
             }
         }
     }
 
-    companion object{
-        const val KEY_SESSION_TOKEN = "KEY_SESSION_TOKEN"
+    fun licenseVerification(file: File) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response = repo.licenseVerification(file)
+                _licenseData.postValue(response.drivinglicense)
+            } catch (e: Exception) {
+                println(e.message)
+            }
+        }
     }
 }

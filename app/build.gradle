@@ -103,5 +103,8 @@ dependencies {
 
     //PinView
     implementation 'io.github.chaosleung:pinview:1.4.4'
+
+    //Compressor
+    implementation 'id.zelory:compressor:3.0.1'
 }
 

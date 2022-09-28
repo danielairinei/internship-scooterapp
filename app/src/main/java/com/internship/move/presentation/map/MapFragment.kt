@@ -40,8 +40,9 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
     private val viewModel by viewModel<MapViewModel>()
-    private lateinit var map: GoogleMap
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var map: GoogleMap? = null
+    private var fusedLocationProviderClient: FusedLocationProviderClient? = null
+    private val permissionsResultCallback = initPermissionsResultCallback()
     private lateinit var mapFragment: SupportMapFragment
     private var userLocation: Marker? = null
 
@@ -55,6 +56,14 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         initPermission()
         initListeners()
         initObserver()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        map?.clear()
+        map = null
+        fusedLocationProviderClient = null
     }
 
     private fun initListeners() {
@@ -78,6 +87,20 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         }
     }
 
+    private fun initPermissionsResultCallback() = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { permissionAllowed ->
+        if (permissionAllowed) {
+            binding.locationIV.setImageResource(R.drawable.ic_focus_location)
+            binding.headingTV.setText(R.string.map_header_location_allowed)
+        } else {
+            binding.headingTV.setText(R.string.map_header_location_not_allowed)
+            binding.locationIV.setBackgroundResource(R.drawable.ic_allow_location)
+            Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun permissionInit(mapFragment: SupportMapFragment) {
     private fun initPermission() {
         val requestPermissionLauncher = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
 
@@ -111,11 +134,11 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
     @SuppressLint("MissingPermission")
     private fun fetchLocation() {
-        val task: Task<Location> = fusedLocationProviderClient.lastLocation
+        val task: Task<Location>? = fusedLocationProviderClient?.lastLocation
 
-        task.addOnSuccessListener {
-            if (it != null) {
-                updateMap(it.latitude, it.longitude)
+        task?.addOnSuccessListener { userLocation ->
+            if (userLocation != null) {
+                updateMap(userLocation.latitude, userLocation.longitude)
             }
         }
     }
@@ -208,6 +231,8 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         val bottomSheetDialogFragment = ScooterBottomSheetDialogFragment.newInstance(currScooter)
 
         bottomSheetDialogFragment.show(childFragmentManager, ScooterBottomSheetDialogFragment::class.java.canonicalName)
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(position, DEFAULT_ZOOM_LEVEL))
+        map?.addMarker(MarkerOptions().position(position).title("Your location"))
     }
 
     companion object {
