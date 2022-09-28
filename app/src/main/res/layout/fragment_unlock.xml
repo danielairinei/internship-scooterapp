@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_toolbar"
+        android:orientation="vertical"
+        tools:context=".presentation.map.ride.UnlockFragment"
+        tools:ignore="HardcodedText">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:navigationIcon="@drawable/ic_close"
+            app:title="@string/scooter_unlock_toolbar_title"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/Topbar"
+            app:titleTextColor="@color/primary_text_color" />
+
+
+        <TextView
+            android:id="@+id/headingTV"
+            style="@style/Heading1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/scooter_unlock_heading_margin_top"
+            android:gravity="center"
+            android:text="@string/scooter_unlock_heading" />
+
+        <TextView
+            android:id="@+id/contentTV"
+            style="@style/Heading2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/scooter_unlock_content_horizontal_margin"
+            android:layout_marginTop="@dimen/scooter_unlock_content_margin_top"
+            android:gravity="center"
+            android:text="@string/scooter_unlock_content"
+            android:textColor="@color/input_box_stroke_focused_color"
+            android:textSize="@dimen/regular_text_size" />
+
+        <com.chaos.view.PinView
+            android:id="@+id/codePinView"
+            style="@style/PinWidget.PinView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/scooter_unlock_pinview_margin_top"
+            android:gravity="center"
+            android:inputType="number"
+            android:itemBackground="@color/pin_view_default"
+            android:textColor="@color/secondary_text_color"
+            app:cursorColor="@color/secondary_text_color"
+            app:itemHeight="@dimen/pin_view_size"
+            app:itemRadius="@dimen/round_corner_radius"
+            app:itemSpacing="@dimen/pin_view_spacing"
+            app:itemWidth="@dimen/pin_view_size"
+            app:lineColor="@drawable/bg_pin_view"
+            app:viewType="rectangle" />
+
+        <TextView
+            android:id="@+id/alternativeTV"
+            style="@style/Heading2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/scooter_unlock_bottom_tv_margin_top"
+            android:text="@string/scooter_unlock_alternative"
+            android:textColor="@color/input_box_stroke_focused_color"
+            android:textSize="@dimen/regular_text_size" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/scooter_unlock_alternatives_margin_top"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/qrBtn"
+                style="@style/UnlockButton"
+                android:text="QR" />
+
+            <TextView
+                style="@style/Heading2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/scooter_unlock_alternatives_text_horizontal_margin"
+                android:text="@string/scooter_unlock_or"
+                android:textSize="@dimen/regular_text_size" />
+
+            <Button
+                android:id="@+id/nfcBtn"
+                style="@style/UnlockButton"
+                android:text="NFC" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -25,13 +25,13 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             viewModel.clearApp()
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
         }
-        binding.logoutBtn.setOnClickListener {
-            viewModel.logout()
+
+        binding.backIV.setOnClickListener{
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment())
         }
     }
 
     private fun initObserver() {
-
         viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
             if (errorResponse.message.isNotEmpty()) {
                 Toast.makeText(requireContext(), errorResponse.message, Toast.LENGTH_SHORT).show()

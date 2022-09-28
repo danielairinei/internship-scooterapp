@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.internship.move.di.accessors
 import com.internship.move.di.internalStorage
+import com.internship.move.di.scooterRepository
 import com.internship.move.di.userRepository
 import com.internship.move.di.viewModels
 import org.koin.android.ext.koin.androidContext
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
                     internalStorage,
                     viewModels,
                     userRepository,
+                    scooterRepository,
                     accessors
                 )
             )

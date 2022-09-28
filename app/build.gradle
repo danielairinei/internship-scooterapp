@@ -9,12 +9,12 @@ plugins {
 
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.internship.move"
         minSdk 24
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -40,7 +40,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -88,8 +88,8 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     //Camera
-    implementation "androidx.activity:activity-ktx:1.5.1"
-    implementation "androidx.fragment:fragment-ktx:1.5.2"
+    implementation "androidx.activity:activity-ktx:1.6.0"
+    implementation "androidx.fragment:fragment-ktx:1.5.3"
 
     //OkHttp
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
@@ -99,8 +99,15 @@ dependencies {
     //Google Maps
     implementation "com.google.android.gms:play-services-location:20.0.0"
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.maps.android:android-maps-utils:1.1.0'
+
+    //PinView
+    implementation 'io.github.chaosleung:pinview:1.4.4'
 
     //Compressor
     implementation 'id.zelory:compressor:3.0.1'
+
+    //Tapadoo
+    //implementation 'com.github.tapadoo:alerter:7.2.4'
 }
 

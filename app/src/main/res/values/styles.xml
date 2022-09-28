@@ -30,6 +30,11 @@
         <item name="android:textSize">@dimen/heading2_text_size</item>
     </style>
 
+    <style name="Heading2SB" parent="TextAppearance">
+        <item name="fontFamily">@font/bai_jamjuree_semi_bold</item>
+        <item name="android:textSize">@dimen/heading2_text_size</item>
+    </style>
+
     <style name="Button1" parent="TextAppearance">
         <item name="fontFamily">@font/bai_jamjuree_bold</item>
         <item name="android:textSize">@dimen/button1_text_size</item>
@@ -77,5 +82,10 @@
         <item name="android:textSize">@dimen/heading3_text_size</item>
     </style>
 
-
+    <style name="UnlockButton" parent="PrimaryButton">
+        <item name="android:background">@drawable/bg_unlock_button</item>
+        <item name="android:layout_width">@dimen/scooter_unlock_button_size</item>
+        <item name="android:layout_height">@dimen/scooter_unlock_button_size</item>
+        <item name="android:fontFamily">@font/bai_jamjuree_regular</item>
+    </style>
 </resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/scooter_cv_width"
+    android:layout_height="@dimen/scooter_cv_height"
+    android:id="@+id/scooterBS"
+    android:background="@drawable/bg_scooter_cv"
+    tools:ignore="ContentDescription"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <ImageView
+        android:id="@+id/rectangleIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_rectangle_cv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/scooterIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_scooter_cv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleTV"
+        style="@style/Heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/scooter_card_view_title_margin_top"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:text="@string/scooter_card_view_title"
+        android:textColor="@color/scooter_cv_title_color"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/scooterIdTV"
+        style="@style/Heading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:text="@string/scooter_card_view_id"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/heading2_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTV" />
+
+    <ImageView
+        android:id="@+id/batteryIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/scooter_card_view_battery_iv_margin_end"
+        android:src="@drawable/ic_battery_100"
+        app:layout_constraintEnd_toStartOf="@+id/batteryTV"
+        app:layout_constraintTop_toBottomOf="@id/scooterIdTV" />
+
+    <TextView
+        android:id="@+id/batteryTV"
+        style="@style/Heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:text="@string/scooter_card_view_battery_perc"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scooterIdTV" />
+
+    <ImageView
+        android:id="@+id/bellIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/scooter_card_view_icons_margin_top"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:src="@drawable/ic_bell"
+        app:layout_constraintEnd_toStartOf="@+id/locationIV"
+        app:layout_constraintTop_toBottomOf="@+id/batteryIV" />
+
+    <ImageView
+        android:id="@+id/locationIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/scooter_card_view_icons_margin_top"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:src="@drawable/ic_location_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/batteryTV" />
+
+    <ImageView
+        android:id="@+id/locationPinIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/scooter_card_view_margin_vertical"
+        android:src="@drawable/ic_location_pin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scooterIV" />
+
+    <TextView
+        android:id="@+id/locationTV"
+        style="@style/Heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/scooter_card_view_location_text_margin_start"
+        android:layout_marginTop="@dimen/scooter_card_view_margin_vertical"
+        android:text="@string/map_header_location_not_allowed"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintStart_toEndOf="@+id/locationPinIV"
+        app:layout_constraintTop_toBottomOf="@+id/scooterIV" />
+
+    <Button
+        android:id="@+id/unlockBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:layout_marginBottom="@dimen/scooter_card_view_margin_vertical"
+        android:text="@string/scooter_card_view_btn_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
