@@ -20,7 +20,7 @@ class MenuHistoryFragment : Fragment(R.layout.fragment_menu_history) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbar.setNavigationOnClickListener {
+        binding.topAppBar.setNavigationOnClickListener {
             findNavController().navigate(MenuHistoryFragmentDirections.actionMenuHistoryFragmentToMenuFragment())
         }
 

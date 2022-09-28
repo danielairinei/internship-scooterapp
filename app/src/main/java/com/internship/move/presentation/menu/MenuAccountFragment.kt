@@ -22,17 +22,18 @@ class MenuAccountFragment : Fragment(R.layout.fragment_menu_account) {
 
         initListeners()
         initObserver()
-
     }
 
     private fun initListeners() {
         binding.logoutIV.setOnClickListener {
             viewModel.logout()
         }
+
         binding.logoutTV.setOnClickListener {
             viewModel.logout()
         }
-        binding.toolbar.setNavigationOnClickListener {
+
+        binding.topAppBar.setNavigationOnClickListener {
             findNavController().navigate(MenuAccountFragmentDirections.actionMenuAccountFragmentToMenuFragment())
         }
     }
@@ -42,6 +43,7 @@ class MenuAccountFragment : Fragment(R.layout.fragment_menu_account) {
             binding.usernameTIET.setText(it.name)
             binding.emailTIET.setText(it.email)
         }
+
         viewModel.loggedOut.observe(viewLifecycleOwner) {
             if (it) {
                 findNavController().navigate(MenuAccountFragmentDirections.actionMenuAccountFragmentToSplashGraph())

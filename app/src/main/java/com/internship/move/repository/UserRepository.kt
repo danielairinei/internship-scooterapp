@@ -36,14 +36,12 @@ class UserRepository(
     fun getLoginToken(): String =
         internalStorageManager.getLoginToken()
 
-
     suspend fun loginRequest(newLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto =
         userApi.loginRequest(newLoginRequestDto)
 
 
     suspend fun registerRequest(newRegisterRequestDto: UserRegisterRequestDto): UserRegisterResponseDto =
         userApi.registerRequest(newRegisterRequestDto)
-
 
     suspend fun licenseVerification(file: File): UserDto = userApi.uploadDrivingLicense(
             image = MultipartBody.Part.createFormData(
@@ -63,5 +61,4 @@ class UserRepository(
         private const val KEY_DRIVING_LICENSE_TAG = "drivinglicense"
         private const val KEY_DRIVING_LICENSE_TYPE = "image/jpg"
     }
-
 }

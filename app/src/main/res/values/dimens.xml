@@ -94,6 +94,7 @@
     <dimen name="history_card_view_spacing">12dp</dimen>
     <dimen name="recycler_view_margin_bottom">50dp</dimen>
     <dimen name="recycler_view_margin_top">20dp</dimen>
+    <dimen name="history_card_height">112dp</dimen>
     <dimen name="history_card_view_height">160dp</dimen>
     <dimen name="history_card_view_width">328dp</dimen>
     <dimen name="start_ride_bottom_sheet_heading_margin_top">110dp</dimen>
@@ -102,4 +103,8 @@
     <dimen name="start_ride_bottom_sheet_btn_margin_bottom">46dp</dimen>
     <dimen name="start_ride_bottom_sheet_btn_margin_top">24dp</dimen>
     <dimen name="transparent_button_stroke">1dp</dimen>
+    <dimen name="menu_account_logout_margin_start">10dp</dimen>
+    <dimen name="menu_account_icon_margin_end">84dp</dimen>
+    <dimen name="card_view_radius">30dp</dimen>
+    <dimen name="card_view_stroke">1dp</dimen>
 </resources>
