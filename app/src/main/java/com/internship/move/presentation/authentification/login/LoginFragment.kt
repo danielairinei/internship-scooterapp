@@ -6,8 +6,10 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.internship.move.R
+import com.internship.move.data.dto.user.UserLoginRequestDto
 import com.internship.move.databinding.FragmentLoginBinding
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
+import com.internship.move.utils.extensions.InfoDialogFragment
 import com.internship.move.utils.extensions.makeLinks
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,14 +24,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         initClickableTV()
         initListeners()
+        initObserver()
     }
 
     private fun initListeners() {
         binding.passwordTIL.isEndIconVisible = false
 
         binding.loginBtn.setOnClickListener {
-            viewModel.login("user", "pass")
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
+            viewModel.login(UserLoginRequestDto(binding.emailTIET.text.toString(), binding.passwordTIET.text.toString()))
         }
 
         binding.emailTIET.doOnTextChanged { _, _, _, _ ->
@@ -57,7 +59,32 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
+    private fun initObserver() {
+        viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
+            if (errorResponse == null) {
+                viewModel.userLoginData.observe(viewLifecycleOwner) { userResponse ->
+                    if (userResponse.userDto.drivinglicense.isNotEmpty()) {
+                        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
+                    } else {
+                        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToLicenseVerificationGraph())
+                    }
+                }
+            } else {
+                val dialog = InfoDialogFragment.newInstance(
+                    "",
+                    errorResponse.message,
+                    getString(R.string.button_ok_text)
+                )
+                dialog.show(parentFragmentManager, KEY_ERROR_RESPONSE)
+            }
+        }
+    }
+
     private fun changeBtnState(emailIsNotEmpty: Boolean, passwordIsNotEmpty: Boolean) {
         binding.loginBtn.isEnabled = emailIsNotEmpty && passwordIsNotEmpty
+    }
+
+    companion object {
+        private const val KEY_ERROR_RESPONSE = "KEY_ERROR_RESPONSE"
     }
 }

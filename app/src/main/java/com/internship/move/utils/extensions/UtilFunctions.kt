@@ -8,6 +8,9 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
+import com.internship.move.data.dto.user.ErrorResponse
+import com.squareup.moshi.JsonAdapter
+import retrofit2.HttpException
 
 fun TextView.makeLinks(text: String, action: (() -> Unit)? = null) {
     val spannableString = SpannableString(this.text)
@@ -29,3 +32,11 @@ fun TextView.makeLinks(text: String, action: (() -> Unit)? = null) {
     movementMethod = LinkMovementMethod.getInstance()
     highlightColor = Color.TRANSPARENT
 }
+
+fun Exception.toErrorResponse(errorResponseDtoJsonAdapter: JsonAdapter<ErrorResponse>): ErrorResponse =
+    if (this is HttpException) {
+        errorResponseDtoJsonAdapter.fromJson(response()?.errorBody()?.string().toString())
+            ?: ErrorResponse(message.toString())
+    } else {
+        ErrorResponse(message.toString())
+    }

@@ -2,6 +2,7 @@ package com.internship.move
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.internship.move.di.accessors
 import com.internship.move.di.internalStorage
 import com.internship.move.di.userRepository
 import com.internship.move.di.viewModels
@@ -23,7 +24,8 @@ class MainActivity : AppCompatActivity() {
                 listOf(
                     internalStorage,
                     viewModels,
-                    userRepository
+                    userRepository,
+                    accessors
                 )
             )
         }

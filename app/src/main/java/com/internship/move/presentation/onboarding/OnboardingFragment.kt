@@ -42,7 +42,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding), OnSkipListene
         findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToAuthentificationGraph())
     }
 
-    private fun getList(): List<OnboardingViewPagerItem> = listOf<OnboardingViewPagerItem>(
+    private fun getList(): List<OnboardingViewPagerItem> = listOf(
         OnboardingViewPagerItem(
             R.drawable.ic_onboarding_safety,
             R.string.onboarding_safety_title,

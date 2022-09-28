@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.internship.move.R
 import com.internship.move.databinding.FragmentForgotPasswordBinding
-import com.internship.move.utils.extensions.CustomDialogFragment
+import com.internship.move.utils.extensions.InfoDialogFragment
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 
 class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
@@ -37,10 +37,10 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
     }
 
     private fun showNoticeDialog() {
-        val dialog = CustomDialogFragment.newInstance(
-            R.string.authentication_forgot_password_dialog_title,
-            R.string.authentication_forgot_password_dialog_content,
-            R.string.button_ok_text
+        val dialog = InfoDialogFragment.newInstance(
+            getString(R.string.authentication_forgot_password_dialog_title),
+            getString(R.string.authentication_forgot_password_dialog_content),
+            getString(R.string.button_ok_text)
         )
         dialog.show(parentFragmentManager, KEY_FORGOT_PASSWORD_DIALOG)
     }

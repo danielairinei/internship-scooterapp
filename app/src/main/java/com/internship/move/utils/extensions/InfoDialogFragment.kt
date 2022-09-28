@@ -9,7 +9,7 @@ import com.internship.move.R
 import com.internship.move.databinding.ItemCustomDialogBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 
-class CustomDialogFragment : DialogFragment(R.layout.item_custom_dialog) {
+class InfoDialogFragment : DialogFragment(R.layout.item_custom_dialog) {
 
     private val binding by viewBinding(ItemCustomDialogBinding::bind)
 
@@ -23,9 +23,9 @@ class CustomDialogFragment : DialogFragment(R.layout.item_custom_dialog) {
     private fun initDialog() {
 
         arguments?.let {
-            binding.titleTV.text = getString(it.getInt(KEY_CUSTOM_DIALOG_TITLE))
-            binding.contentTV.text = getString(it.getInt(KEY_CUSTOM_DIALOG_CONTENT))
-            binding.dialogBtn.text = getString(it.getInt(KEY_CUSTOM_DIALOG_TEXT_BTN))
+            binding.titleTV.text = it.getString(KEY_CUSTOM_DIALOG_TITLE)
+            binding.contentTV.text = it.getString(KEY_CUSTOM_DIALOG_CONTENT)
+            binding.dialogBtn.text = it.getString(KEY_CUSTOM_DIALOG_TEXT_BTN)
         }
 
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -44,10 +44,10 @@ class CustomDialogFragment : DialogFragment(R.layout.item_custom_dialog) {
 
         private val bundle = Bundle()
 
-        fun newInstance(title: Int, content: Int, textBtn: Int): CustomDialogFragment = CustomDialogFragment().apply {
-            bundle.putInt(KEY_CUSTOM_DIALOG_TITLE, title)
-            bundle.putInt(KEY_CUSTOM_DIALOG_CONTENT, content)
-            bundle.putInt(KEY_CUSTOM_DIALOG_TEXT_BTN, textBtn)
+        fun newInstance(title: String, content: String, textBtn: String): InfoDialogFragment = InfoDialogFragment().apply {
+            bundle.putString(KEY_CUSTOM_DIALOG_TITLE, title)
+            bundle.putString(KEY_CUSTOM_DIALOG_CONTENT, content)
+            bundle.putString(KEY_CUSTOM_DIALOG_TEXT_BTN, textBtn)
 
             arguments = bundle
         }
