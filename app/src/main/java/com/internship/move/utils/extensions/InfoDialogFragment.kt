@@ -9,7 +9,7 @@ import com.internship.move.R
 import com.internship.move.databinding.ItemCustomDialogBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 
-class CustomDialogFragment : DialogFragment(R.layout.item_custom_dialog) {
+class InfoDialogFragment : DialogFragment(R.layout.item_custom_dialog) {
 
     private val binding by viewBinding(ItemCustomDialogBinding::bind)
 
@@ -44,7 +44,7 @@ class CustomDialogFragment : DialogFragment(R.layout.item_custom_dialog) {
 
         private val bundle = Bundle()
 
-        fun newInstance(title: String, content: String, textBtn: String): CustomDialogFragment = CustomDialogFragment().apply {
+        fun newInstance(title: String, content: String, textBtn: String): InfoDialogFragment = InfoDialogFragment().apply {
             bundle.putString(KEY_CUSTOM_DIALOG_TITLE, title)
             bundle.putString(KEY_CUSTOM_DIALOG_CONTENT, content)
             bundle.putString(KEY_CUSTOM_DIALOG_TEXT_BTN, textBtn)

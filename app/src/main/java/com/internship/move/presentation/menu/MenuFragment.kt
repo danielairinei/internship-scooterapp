@@ -41,7 +41,6 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
                     Toast.makeText(requireContext(), errorResponse.message, Toast.LENGTH_SHORT).show()
                 }
             }
-
         }
     }
 }

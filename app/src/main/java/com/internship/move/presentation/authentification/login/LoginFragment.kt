@@ -9,7 +9,7 @@ import com.internship.move.R
 import com.internship.move.data.dto.user.UserLoginRequestDto
 import com.internship.move.databinding.FragmentLoginBinding
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
-import com.internship.move.utils.extensions.CustomDialogFragment
+import com.internship.move.utils.extensions.InfoDialogFragment
 import com.internship.move.utils.extensions.makeLinks
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -70,7 +70,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     }
                 }
             } else {
-                val dialog = CustomDialogFragment.newInstance(
+                val dialog = InfoDialogFragment.newInstance(
                     "",
                     errorResponse.message,
                     getString(R.string.button_ok_text)

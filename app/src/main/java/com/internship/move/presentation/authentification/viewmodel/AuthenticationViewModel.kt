@@ -23,7 +23,7 @@ class AuthenticationViewModel(
     private val _userLoginData: MutableLiveData<UserLoginResponseDto> = MutableLiveData()
     val userLoginData: LiveData<UserLoginResponseDto>
         get() = _userLoginData
-    private val _errorData: MutableLiveData<ErrorResponse> = MutableLiveData(null)
+    private val _errorData: MutableLiveData<ErrorResponse> = MutableLiveData(ErrorResponse(""))
     val errorData: LiveData<ErrorResponse>
         get() = _errorData
     private val _licenseData: MutableLiveData<String> = MutableLiveData("")
@@ -69,9 +69,5 @@ class AuthenticationViewModel(
                 println(e.message)
             }
         }
-    }
-
-    companion object {
-        const val KEY_SESSION_TOKEN = "KEY_SESSION_TOKEN"
     }
 }

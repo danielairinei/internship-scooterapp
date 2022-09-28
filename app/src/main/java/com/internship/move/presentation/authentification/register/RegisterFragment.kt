@@ -10,7 +10,7 @@ import com.internship.move.R
 import com.internship.move.data.dto.user.UserRegisterRequestDto
 import com.internship.move.databinding.FragmentRegisterBinding
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
-import com.internship.move.utils.extensions.CustomDialogFragment
+import com.internship.move.utils.extensions.InfoDialogFragment
 import com.internship.move.utils.extensions.makeLinks
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -95,7 +95,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
                 }
             } else {
-                val dialog = CustomDialogFragment.newInstance(
+                val dialog = InfoDialogFragment.newInstance(
                     "",
                     it.message,
                     getString(R.string.button_ok_text)
