@@ -35,7 +35,7 @@ class AuthenticationViewModel(
         repo.setHasUserCompletedOnboarding(true)
     }
 
-    fun setIsUserLoggedIn(boolean: Boolean) {
+    fun setIsUserLoggedIn(boolean: Boolean){
         repo.setIsUserLoggedIn(boolean)
     }
 

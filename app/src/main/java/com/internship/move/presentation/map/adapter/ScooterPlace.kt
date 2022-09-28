@@ -8,6 +8,7 @@ data class ScooterPlace(
     val name: String,
     val id: String
 ) : ClusterItem {
+
     override fun getPosition(): LatLng = latLng
 
     override fun getTitle(): String = name

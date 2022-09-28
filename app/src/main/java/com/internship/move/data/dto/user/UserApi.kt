@@ -1,11 +1,7 @@
 package com.internship.move.data.dto.user
 
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.PUT
 import okhttp3.MultipartBody
+import retrofit2.http.*
 
 interface UserApi {
 

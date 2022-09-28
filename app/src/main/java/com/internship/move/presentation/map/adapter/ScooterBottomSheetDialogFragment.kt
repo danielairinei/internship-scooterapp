@@ -30,21 +30,21 @@ class ScooterBottomSheetDialogFragment : BottomSheetDialogFragment() {
         binding.batteryIV.setImageResource(getPhotoByBattery(arguments?.getInt(KEY_SCOOTER_BATTERY)))
 
         binding.nfcBtn.setOnClickListener {
-            Toast.makeText(requireContext(), "Not available", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), KEY_FEATURE_NOT_AVAILABLE, Toast.LENGTH_SHORT).show()
         }
 
         binding.qrBtn.setOnClickListener {
-            Toast.makeText(requireContext(), "Not available", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), KEY_FEATURE_NOT_AVAILABLE, Toast.LENGTH_SHORT).show()
         }
 
         binding.codeBtn.setOnClickListener {
-            this.dismiss()
+            dismiss()
             findNavController().navigate(MapFragmentDirections.actionMapFragmentToUnlockFragment())
         }
     }
 
     companion object {
-
+        private const val KEY_FEATURE_NOT_AVAILABLE = "Not available"
         private const val KEY_SCOOTER_NUMBER = "KEY_SCOOTER_NUMBER"
         private const val KEY_SCOOTER_BATTERY = "KEY_SCOOTER_BATTERY"
 

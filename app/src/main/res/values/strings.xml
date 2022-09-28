@@ -61,7 +61,9 @@
     <string name="scooter_bottom_sheet_title">You can unlock this scooter through these methods:</string>
     <string name="scooter_bottom_sheet_ring">Ring</string>
     <string name="scooter_bottom_sheet_missing">Missing</string>
-<!--    Scooter unlock strings-->
+    <string name="scooter_bottom_sheet_number">#%d</string>
+    <string name="scooter_bottom_sheet_battery_level">%d%%</string>
+    <!--    Scooter unlock strings-->
     <string name="scooter_unlock_toolbar_title">Enter serial number</string>
     <string name="scooter_unlock_heading">Enter the scooter\'s serial number</string>
     <string name="scooter_unlock_content">You can find it on the scooter\'s front panel</string>

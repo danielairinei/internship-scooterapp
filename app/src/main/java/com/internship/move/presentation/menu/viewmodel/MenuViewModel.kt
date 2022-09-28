@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.internship.move.data.dto.user.ErrorResponse
+import com.internship.move.data.dto.ErrorResponse
 import com.internship.move.repository.UserRepository
 import com.internship.move.utils.extensions.toErrorResponse
 import com.squareup.moshi.JsonAdapter

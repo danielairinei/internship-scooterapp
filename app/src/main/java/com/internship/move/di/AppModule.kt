@@ -1,11 +1,10 @@
 package com.internship.move.di
 
-import com.internship.move.data.dto.ErrorResponse
-import com.internship.move.data.dto.scooter.ScooterApi
 import com.internship.move.data.AuthenticationTokenProvider
 import com.internship.move.data.RuntimeAuthenticationTokenProvider
 import com.internship.move.data.SessionInterceptor
-import com.internship.move.data.dto.user.ErrorResponse
+import com.internship.move.data.dto.ErrorResponse
+import com.internship.move.data.dto.scooter.ScooterApi
 import com.internship.move.data.dto.user.UserApi
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
 import com.internship.move.presentation.map.viewmodel.MapViewModel
@@ -39,14 +38,14 @@ val userRepository = module {
     factory { provideErrorResponseJsonAdapter(get()) }
 }
 
-}
-
-val scooterRepository = module{
+val scooterRepository = module {
     single { provideMoshi() }
-    single { provideOkHttpClient() }
+    single { provideSessionInterceptor(get()) }
+    single { provideOkHttpClient(get()) }
     single { provideRetrofit(get(), get()) }
     single { ScooterRepository(get(), provideScooterApi(get())) }
     factory { provideErrorResponseJsonAdapter(get()) }
+}
 
 val accessors = module {
     factory<AuthenticationTokenProvider> { RuntimeAuthenticationTokenProvider(get()) }
@@ -54,9 +53,7 @@ val accessors = module {
 
 val viewModels = module {
     viewModel { AuthenticationViewModel(get(), get()) }
-    viewModel { MapViewModel(get()) }
-    viewModel { AuthenticationViewModel(get(),get()) }
-    viewModel { MapViewModel(get(),get(),get()) }
+    viewModel { MapViewModel(get(), get(), get()) }
     viewModel { SplashViewModel(get()) }
     viewModel { MenuViewModel(get(), get()) }
 }
@@ -82,3 +79,5 @@ private fun provideRetrofit(moshi: Moshi, okHttpClient: OkHttpClient): Retrofit 
     .build()
 
 private fun provideUserApi(retrofit: Retrofit): UserApi = retrofit.create(UserApi::class.java)
+
+private fun provideScooterApi(retrofit: Retrofit): ScooterApi = retrofit.create(ScooterApi::class.java)

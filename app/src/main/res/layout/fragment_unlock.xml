@@ -14,22 +14,16 @@
         tools:context=".presentation.map.ride.UnlockFragment"
         tools:ignore="HardcodedText">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:background="@null"
-            app:elevation="0dp"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/driving_license_top_bar_height">
+            android:layout_height="match_parent"
+            app:navigationIcon="@drawable/ic_close"
+            app:title="@string/scooter_unlock_toolbar_title"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/Topbar"
+            app:titleTextColor="@color/primary_text_color" />
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:navigationIcon="@drawable/ic_close"
-                app:title="@string/scooter_unlock_toolbar_title"
-                app:titleCentered="true"
-                app:titleTextAppearance="@style/Topbar"
-                app:titleTextColor="@color/primary_text_color" />
-        </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
             android:id="@+id/headingTV"
@@ -75,22 +69,22 @@
             app:viewType="rectangle" />
 
         <TextView
-            android:layout_marginTop="@dimen/scooter_unlock_bottom_tv_margin_top"
             android:id="@+id/alternativeTV"
             style="@style/Heading2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="@dimen/scooter_unlock_bottom_tv_margin_top"
             android:text="@string/scooter_unlock_alternative"
             android:textColor="@color/input_box_stroke_focused_color"
             android:textSize="@dimen/regular_text_size" />
 
         <LinearLayout
-            android:layout_margin="@dimen/scooter_unlock_alternatives_margin_top"
-            android:gravity="center"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/scooter_unlock_alternatives_margin_top"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
@@ -99,10 +93,10 @@
                 android:text="QR" />
 
             <TextView
-                android:layout_marginHorizontal="@dimen/scooter_unlock_alternatives_text_horizontal_margin"
                 style="@style/Heading2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/scooter_unlock_alternatives_text_horizontal_margin"
                 android:text="@string/scooter_unlock_or"
                 android:textSize="@dimen/regular_text_size" />
 
