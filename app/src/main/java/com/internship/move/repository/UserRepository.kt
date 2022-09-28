@@ -1,6 +1,5 @@
 package com.internship.move.repository
 
-import com.internship.move.data.dto.user.UserApi
 import com.internship.move.data.dto.user.UserDto
 import com.internship.move.data.dto.user.UserLoginRequestDto
 import com.internship.move.data.dto.user.UserLoginResponseDto

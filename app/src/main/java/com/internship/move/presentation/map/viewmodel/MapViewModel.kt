@@ -98,8 +98,6 @@ class MapViewModel(
 //        }
 //    }
 
-    fun getLoginToken(): String = userRepo.getLoginToken()
-
     fun saveUserLocation(position: LatLng) {
         userRepo.saveUserLocation(position)
     }
