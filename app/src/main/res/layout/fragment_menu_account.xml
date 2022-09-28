@@ -5,30 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="@dimen/margin_top_toolbar"
-    android:orientation="vertical"
     tools:context=".presentation.menu.MenuAccountFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:elevation="0dp"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_purple_arrow_back"
+        app:title="@string/menu_account_heading"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/Topbar"
+        app:titleTextColor="@color/secondary_text_color" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:navigationIcon="@drawable/ic_purple_arrow_back"
-            app:title="@string/menu_account_heading"
-            app:titleCentered="true"
-            app:titleTextAppearance="@style/Topbar"
-            app:titleTextColor="@color/secondary_text_color" />
-    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameTIL"
@@ -49,8 +41,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/bai_jamjuree_semi_bold"
             android:inputType="text|textNoSuggestions"
-            android:text="Username"
-            android:textColor="@color/secondary_text_color" />
+            android:textColor="@color/secondary_text_color"
+            tools:ignore="HardcodedText" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -73,27 +65,28 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/bai_jamjuree_semi_bold"
             android:inputType="text|textNoSuggestions"
-            android:text="Email"
-            android:textColor="@color/secondary_text_color" />
+            android:textColor="@color/secondary_text_color"
+            tools:ignore="HardcodedText" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
         android:id="@+id/logoutIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/menu_account_icon_margin_end"
         android:layout_marginBottom="@dimen/menu_account_logout_ic_margin_bottom"
         android:src="@drawable/ic_logout"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd = "84dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
 
     <TextView
-        android:layout_marginStart="10dp"
         android:id="@+id/logoutTV"
         style="@style/Heading2SB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/menu_account_logout_margin_start"
         android:layout_marginBottom="@dimen/menu_account_logout_margin_bottom"
         android:text="@string/menu_account_logout"
         android:textColor="@color/alert_text_color"

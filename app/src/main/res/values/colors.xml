@@ -32,7 +32,7 @@
     <color name="authentication_second_text_color">@color/white_grey</color>
     <color name="secondary_text_color">@color/indigo</color>
     <color name="circular_pb_color">@color/white</color>
-    <color name="scooter_cv_background_color">@color/white</color>
+    <color name="bottom_sheet_background_color">@color/white</color>
     <color name="scooter_cv_title_color">@color/dusty_grey</color>
     <color name="secondary_button_text_color">@color/magenta</color>
     <color name="toolbar_bg_color">@android:color/transparent</color>
@@ -43,4 +43,6 @@
     <color name="background_history_card_view_stroke">@color/indigo</color>
     <color name="bottom_sheet_heading">@color/dusty_grey</color>
     <color name="transparent_button">@color/magenta</color>
+    <color name="history_card_view_heading">@color/dusty_grey</color>
+    <color name="stroke_unlock_button">@color/white</color>
 </resources>

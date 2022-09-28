@@ -7,6 +7,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -43,8 +44,9 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     private val binding by viewBinding(FragmentMapBinding::bind)
     private val sharedViewModel by sharedViewModel<MapViewModel>()
     private val viewModel by viewModel<MapViewModel>()
-    private lateinit var map: GoogleMap
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var map: GoogleMap? = null
+    private var fusedLocationProviderClient: FusedLocationProviderClient? = null
+    private val permissionsResultCallback = initPermissionsResultCallback()
     private lateinit var mapFragment: SupportMapFragment
     private var userLocation: Marker? = null
 
@@ -60,11 +62,19 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         initObserver()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        map?.clear()
+        map = null
+        fusedLocationProviderClient = null
+    }
+
     private fun initListeners() {
         binding.menuIV.setOnClickListener {
             findNavController().navigate(MapFragmentDirections.actionMapFragmentToMenuFragment())
         }
-        binding.locationAllowedTV.setOnClickListener {
+        binding.locationAllowedIV.setOnClickListener {
             mapFragment.getMapAsync(this)
         }
 
@@ -84,6 +94,11 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
                 showRideInfoBottomSheetDialog()
             }
         }
+        viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
+            if (errorResponse != null) {
+                Toast.makeText(requireContext(), errorResponse.message, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun initPermission() {
@@ -97,10 +112,10 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         }
     }
 
-    private val permissionsResultCallback = registerForActivityResult(
+    private fun initPermissionsResultCallback() = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
-    ) {
-        if (it) {
+    ) { permissionAreEnabled ->
+        if (permissionAreEnabled) {
             permissionsEnabled()
         } else {
             permissionsDisabled()
@@ -119,9 +134,9 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
     @SuppressLint("MissingPermission")
     private fun fetchLocation() {
-        val task: Task<Location> = fusedLocationProviderClient.lastLocation
+        val task: Task<Location>? = fusedLocationProviderClient?.lastLocation
 
-        task.addOnSuccessListener {
+        task?.addOnSuccessListener {
             if (it != null) {
                 updateMap(it.latitude, it.longitude)
             }
@@ -134,9 +149,9 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         val position = LatLng(latitude, longitude)
         viewModel.saveUserLocation(position)
 
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, DEFAULT_ZOOM_LEVEL))
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(position, DEFAULT_ZOOM_LEVEL))
         userLocation?.remove()
-        userLocation = map.addMarker(
+        userLocation = map?.addMarker(
             MarkerOptions()
                 .position(position)
                 .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_user_location))
@@ -144,7 +159,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     }
 
     private fun permissionsEnabled() {
-        binding.locationAllowedTV.visibility = View.VISIBLE
+        binding.locationAllowedIV.visibility = View.VISIBLE
         binding.locationNotAllowedIV.visibility = View.INVISIBLE
         binding.headingTV.setText(R.string.map_header_location_allowed)
     }
@@ -152,13 +167,13 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     private fun permissionsDisabled() {
         binding.headingTV.setText(R.string.map_header_location_not_allowed)
         binding.locationNotAllowedIV.visibility = View.VISIBLE
-        binding.locationAllowedTV.visibility = View.INVISIBLE
+        binding.locationAllowedIV.visibility = View.INVISIBLE
     }
 
     private fun addClusteredMarkers(scooterList: List<ScooterDto>) {
         val scootersPlace = viewModel.getMarkerList(scooterList)
         val clusterManager = ClusterManager<ScooterPlace>(requireContext(), map)
-        val clusterRenderer = ScooterPlaceRenderer(requireContext(), map, clusterManager)
+        val clusterRenderer = ScooterPlaceRenderer(requireContext(), map!!, clusterManager)
         var lastMarker: Marker? = null
 
         clusterManager.renderer = clusterRenderer
@@ -175,7 +190,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
         clusterManager.cluster()
 
-        map.apply {
+        map?.apply {
             setOnMapClickListener {
                 lastMarker?.setIcon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_pin_not_selected))
                 binding.scooterBs.scooterBS.visibility = View.INVISIBLE
@@ -191,26 +206,26 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
     @SuppressLint("SetTextI18n")
     private fun onMarkerClicked(scooterPlace: Marker) {
-        map.animateCamera(CameraUpdateFactory.newLatLng(scooterPlace.position))
+        map?.animateCamera(CameraUpdateFactory.newLatLng(scooterPlace.position))
 
-        val currScooter = viewModel.getScooterByNumber(scooterPlace.title?.toInt())
+        val currentScooter = viewModel.getScooterByNumber(scooterPlace.title?.toInt())
 
         scooterPlace.setIcon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_pin_selected))
 
-        binding.scooterBs.scooterIdTV.text = "#${currScooter?.number.toString()}"
-        binding.scooterBs.batteryTV.text = "${currScooter?.battery.toString()}%"
-        binding.scooterBs.batteryIV.setImageResource(getPhotoByBattery(currScooter?.battery))
+        binding.scooterBs.scooterIdTV.text = "#${currentScooter?.number.toString()}"
+        binding.scooterBs.batteryTV.text = "${currentScooter?.battery.toString()}%"
+        binding.scooterBs.batteryIV.setImageResource(getPhotoByBattery(currentScooter?.battery))
         binding.scooterBs.locationTV.text = getAddressFromLocation(scooterPlace.position)
         binding.scooterBs.scooterBS.visibility = View.VISIBLE
         binding.scooterBs.unlockBtn.setOnClickListener {
-            if (currScooter != null) {
-                showBottomSheetDialog(currScooter)
-            }
+            currentScooter ?: return@setOnClickListener
+            showBottomSheetDialog(currentScooter)
         }
     }
 
-    private fun getAddressFromLocation(position: LatLng): String =
-        Geocoder(requireContext(), Locale.getDefault()).getFromLocation(position.latitude, position.longitude, 1)[0].thoroughfare
+    @Suppress("DEPRECATION")
+    private fun getAddressFromLocation(position: LatLng): String? =
+        Geocoder(requireContext(), Locale.getDefault()).getFromLocation(position.latitude, position.longitude, 1)?.get(0)?.thoroughfare
 
     private fun showBottomSheetDialog(currScooter: ScooterDto) {
         binding.scooterBs.scooterBS.visibility = View.INVISIBLE

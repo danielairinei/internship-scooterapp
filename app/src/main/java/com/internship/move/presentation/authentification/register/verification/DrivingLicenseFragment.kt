@@ -18,10 +18,11 @@ class DrivingLicenseFragment : Fragment(R.layout.fragment_driving_license) {
 
     private val binding by viewBinding(FragmentDrivingLicenseBinding::bind)
     private var latestTmpUri: Uri? = null
+    private lateinit var licenseAbsolutePath : String
     private val takeImageResult = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
         if (isSuccess) {
-            latestTmpUri?.let { uri ->
-                findNavController().navigate(DrivingLicenseFragmentDirections.actionDrivingLicenseFragmentToPendingVerificationFragment(uri.toString()))
+            licenseAbsolutePath.let { path ->
+                findNavController().navigate(DrivingLicenseFragmentDirections.actionDrivingLicenseFragmentToPendingVerificationFragment(path))
             }
 
         }
@@ -53,10 +54,12 @@ class DrivingLicenseFragment : Fragment(R.layout.fragment_driving_license) {
     }
 
     private fun getTmpFileUri(): Uri? {
-        val tmpFile = File.createTempFile("tmp_image_file", ".png").apply {
+        val tmpFile = File.createTempFile("tmp_image_file", ".jpeg").apply {
             createNewFile()
             deleteOnExit()
         }
+
+        licenseAbsolutePath = tmpFile.absolutePath
 
         return context?.let { FileProvider.getUriForFile(it, "${BuildConfig.APPLICATION_ID}.provider", tmpFile) }
     }

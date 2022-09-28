@@ -10,13 +10,7 @@ class ScooterRepository(
     private val scooterApi: ScooterApi
 ) {
 
-    suspend fun findScooters(latitude: Double, longitude: Double): List<ScooterDto> {
-        return scooterApi.findScooters(latitude, longitude)
-    }
-
-    suspend fun getScooterByNumber(scooterNumber: Int): ScooterDto {
-        return scooterApi.getScooterByNumber(scooterNumber)
-    }
+    suspend fun findScooters(latitude: Double, longitude: Double): List<ScooterDto> = scooterApi.findScooters(latitude, longitude)
 
     suspend fun unlockScooter(token: String, scooterId: String) {
         scooterApi.unlockScooter(token, scooterId)
@@ -25,4 +19,6 @@ class ScooterRepository(
     suspend fun startRide(token: String, rideRequestDto: RideRequestDto) {
         scooterApi.startRide(token, rideRequestDto)
     }
+
+    suspend fun getScooterByNumber(scooterNumber: Int): ScooterDto = scooterApi.getScooterByNumber(scooterNumber)
 }

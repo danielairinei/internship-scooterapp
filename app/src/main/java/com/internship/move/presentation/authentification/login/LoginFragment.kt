@@ -9,7 +9,7 @@ import com.internship.move.R
 import com.internship.move.data.dto.user.UserLoginRequestDto
 import com.internship.move.databinding.FragmentLoginBinding
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
-import com.internship.move.utils.extensions.CustomDialogFragment
+import com.internship.move.utils.extensions.InfoDialogFragment
 import com.internship.move.utils.extensions.makeLinks
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -60,19 +60,19 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun initObserver() {
-        viewModel.errorData.observe(viewLifecycleOwner) {
-            if (it == null) {
+        viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
+            if (errorResponse == null) {
                 viewModel.userLoginData.observe(viewLifecycleOwner) { userResponse ->
-                    if (userResponse.userDto.drivinglicense != "") {
+                    if (userResponse.userDto.drivinglicense.isNotEmpty()) {
                         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
                     } else {
                         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToLicenseVerificationGraph())
                     }
                 }
             } else {
-                val dialog = CustomDialogFragment.newInstance(
+                val dialog = InfoDialogFragment.newInstance(
                     "",
-                    it.message,
+                    errorResponse.message,
                     getString(R.string.button_ok_text)
                 )
                 dialog.show(parentFragmentManager, KEY_ERROR_RESPONSE)

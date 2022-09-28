@@ -1,6 +1,11 @@
 package com.internship.move.data.dto.scooter
 
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.PATCH
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ScooterApi {
 

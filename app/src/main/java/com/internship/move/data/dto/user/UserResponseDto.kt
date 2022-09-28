@@ -13,5 +13,3 @@ data class UserLoginResponseDto(
     @Json(name = "user") val userDto: UserDto,
     @Json(name = "token") val loginToken: String
 )
-
-class UserLogoutResponseDto

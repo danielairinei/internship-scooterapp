@@ -1,6 +1,6 @@
 package com.internship.move.presentation.map.viewmodel
 
-import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,15 +20,20 @@ class MapViewModel(
     private val errorResponseJsonAdapter: JsonAdapter<ErrorResponse>
 ) : ViewModel() {
 
-    val scooterList: MutableLiveData<List<ScooterDto>> = MutableLiveData()
+    private val _scooterList: MutableLiveData<List<ScooterDto>> = MutableLiveData()
+    val scooterList: LiveData<List<ScooterDto>>
+        get() = _scooterList
+    private val _errorData: MutableLiveData<ErrorResponse> = MutableLiveData()
+    val errorData: LiveData<ErrorResponse>
+        get() = _errorData
     val rideStarted: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun findScooters(latitude: Double, longitude: Double) {
         viewModelScope.launch {
             try {
-                scooterList.postValue(scooterRepo.findScooters(latitude, longitude))
+                _scooterList.postValue(scooterRepo.findScooters(latitude, longitude))
             } catch (e: Exception) {
-                Log.e("Find scooter :", e.toErrorResponse(errorResponseJsonAdapter).toString())
+                _errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
             }
         }
     }
@@ -40,7 +45,7 @@ class MapViewModel(
                     ScooterPlace(
                         LatLng(scooter.location.coordinates[1], scooter.location.coordinates[0]),
                         scooter.number.toString(),
-                        scooter._id
+                        scooter.id
                     )
                 )
             }

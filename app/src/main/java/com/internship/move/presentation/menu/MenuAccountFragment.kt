@@ -18,21 +18,22 @@ class MenuAccountFragment : Fragment(R.layout.fragment_menu_account) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getUserRequest("Bearer ${viewModel.getLoginToken()}")
+        viewModel.getUserRequest()
 
         initListeners()
         initObserver()
-
     }
 
     private fun initListeners() {
         binding.logoutIV.setOnClickListener {
-            viewModel.logout(viewModel.getLoginToken())
+            viewModel.logout()
         }
+
         binding.logoutTV.setOnClickListener {
-            viewModel.logout(viewModel.getLoginToken())
+            viewModel.logout()
         }
-        binding.toolbar.setNavigationOnClickListener {
+
+        binding.topAppBar.setNavigationOnClickListener {
             findNavController().navigate(MenuAccountFragmentDirections.actionMenuAccountFragmentToMenuFragment())
         }
     }
@@ -42,6 +43,7 @@ class MenuAccountFragment : Fragment(R.layout.fragment_menu_account) {
             binding.usernameTIET.setText(it.name)
             binding.emailTIET.setText(it.email)
         }
+
         viewModel.loggedOut.observe(viewLifecycleOwner) {
             if (it) {
                 findNavController().navigate(MenuAccountFragmentDirections.actionMenuAccountFragmentToSplashGraph())

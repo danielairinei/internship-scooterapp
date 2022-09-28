@@ -62,6 +62,9 @@
     <string name="scooter_bottom_sheet_ring">Ring</string>
     <string name="scooter_bottom_sheet_missing">Missing</string>
     <!--    Scooter unlock strings-->
+    <string name="scooter_bottom_sheet_number">#%d</string>
+    <string name="scooter_bottom_sheet_battery_level">%d%%</string>
+    <!--    Scooter unlock strings-->
     <string name="scooter_unlock_toolbar_title">Enter serial number</string>
     <string name="scooter_unlock_heading">Enter the scooter\'s serial number</string>
     <string name="scooter_unlock_content">You can find it on the scooter\'s front panel</string>
@@ -92,6 +95,7 @@
     <string name="history_card_view_time_heading">Travel time</string>
     <string name="history_card_view_distance_heading">Distance</string>
     <string name="start_ride_btn_text">Start ride</string>
+    <string name="history_card_view_distance">%f km</string>
     <string name="ride_info_bottom_sheet_heading">Trip details</string>
     <string name="ride_info_time_heading">Travel time</string>
     <string name="ride_info_chronometer_unit">min</string>

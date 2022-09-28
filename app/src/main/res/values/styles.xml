@@ -82,10 +82,6 @@
         <item name="android:textSize">@dimen/heading3_text_size</item>
     </style>
 
-    <style name="BottomSheetDialog" parent="Theme.MaterialComponents.BottomSheetDialog">
-        <item name="android:background">@drawable/bg_bottom_sheet</item>
-    </style>
-
     <style name="UnlockButton" parent="PrimaryButton">
         <item name="android:background">@drawable/bg_unlock_button</item>
         <item name="android:layout_width">@dimen/scooter_unlock_button_size</item>
