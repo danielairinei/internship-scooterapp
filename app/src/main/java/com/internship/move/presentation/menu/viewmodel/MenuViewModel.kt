@@ -23,10 +23,10 @@ class MenuViewModel(
     val errorData: LiveData<ErrorResponse>
         get() = _errorData
 
-    fun logout(logoutToken: String) {
+    fun logout() {
         viewModelScope.launch(IO) {
             try {
-                repo.logoutRequest("Bearer $logoutToken")
+                repo.logoutRequest()
                 repo.setIsUserLoggedIn(false)
                 _loggedOut.postValue(true)
             } catch (e: Exception) {

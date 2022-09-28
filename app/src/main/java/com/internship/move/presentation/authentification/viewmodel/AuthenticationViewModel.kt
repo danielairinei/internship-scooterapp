@@ -23,7 +23,7 @@ class AuthenticationViewModel(
     private val _userLoginData: MutableLiveData<UserLoginResponseDto> = MutableLiveData()
     val userLoginData: LiveData<UserLoginResponseDto>
         get() = _userLoginData
-    private val _errorData: MutableLiveData<ErrorResponse> = MutableLiveData(ErrorResponse(""))
+    private val _errorData: MutableLiveData<ErrorResponse> = MutableLiveData(null)
     val errorData: LiveData<ErrorResponse>
         get() = _errorData
     private val _licenseData: MutableLiveData<String> = MutableLiveData("")
@@ -63,7 +63,7 @@ class AuthenticationViewModel(
     fun licenseVerification(file: File) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = repo.licenseVerification(file, "Bearer ${repo.getLoginToken()}")
+                val response = repo.licenseVerification(file)
                 _licenseData.postValue(response.drivinglicense)
             } catch (e: Exception) {
                 println(e.message)

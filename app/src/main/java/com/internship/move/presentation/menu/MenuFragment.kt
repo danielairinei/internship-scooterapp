@@ -25,21 +25,21 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             viewModel.clearApp()
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
         }
+        binding.logoutBtn.setOnClickListener {
+            viewModel.logout()
+        }
     }
 
     private fun initObserver() {
-        binding.logoutBtn.setOnClickListener {
-            viewModel.logout(viewModel.getLoginToken())
-            viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
-                if (errorResponse.message.isEmpty()) {
-                    viewModel.loggedOut.observe(viewLifecycleOwner) { isLoggedOut ->
-                        if (isLoggedOut) {
-                            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
-                        }
-                    }
-                } else {
-                    Toast.makeText(requireContext(), errorResponse.message, Toast.LENGTH_SHORT).show()
-                }
+
+        viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
+            if (errorResponse.message.isNotEmpty()) {
+                Toast.makeText(requireContext(), errorResponse.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+        viewModel.loggedOut.observe(viewLifecycleOwner) { isLoggedOut ->
+            if (isLoggedOut) {
+                findNavController().navigate(com.internship.move.presentation.menu.MenuFragmentDirections.actionMenuFragmentToSplashGraph())
             }
         }
     }

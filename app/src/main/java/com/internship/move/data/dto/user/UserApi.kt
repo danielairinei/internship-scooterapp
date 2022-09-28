@@ -12,9 +12,9 @@ interface UserApi {
     suspend fun loginRequest(@Body userLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto
 
     @DELETE("/auth/logout")
-    suspend fun logoutRequest(@Header("Authorization") token: String)
+    suspend fun logoutRequest()
 
     @Multipart
     @PUT("/auth/driving-license")
-    suspend fun uploadDrivingLicense(@Header("Authorization") token: String, @Part image: MultipartBody.Part): UserDto
+    suspend fun uploadDrivingLicense(@Part image: MultipartBody.Part): UserDto
 }

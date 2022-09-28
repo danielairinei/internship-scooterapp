@@ -61,7 +61,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun initObserver() {
         viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
-            if (errorResponse.message.isEmpty()) {
+            if (errorResponse == null) {
                 viewModel.userLoginData.observe(viewLifecycleOwner) { userResponse ->
                     if (userResponse.userDto.drivinglicense.isNotEmpty()) {
                         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())

@@ -40,9 +40,8 @@ class UserRepository(
         return userApi.registerRequest(newRegisterRequestDto)
     }
 
-    suspend fun licenseVerification(file: File, token: String): UserDto {
+    suspend fun licenseVerification(file: File): UserDto {
         return userApi.uploadDrivingLicense(
-            token,
             image = MultipartBody.Part.createFormData(
                 KEY_DRIVING_LICENSE_TAG,
                 file.name,
@@ -51,12 +50,12 @@ class UserRepository(
         )
     }
 
-    suspend fun logoutRequest(logoutToken: String) {
-        userApi.logoutRequest(logoutToken)
+    suspend fun logoutRequest() {
+        userApi.logoutRequest()
     }
 
     companion object {
-        private const val KEY_DRIVING_LICENSE_TAG = "KEY_DRIVING_LICENSE_TAG"
+        private const val KEY_DRIVING_LICENSE_TAG = "drivinglicense"
         private const val KEY_DRIVING_LICENSE_TYPE = "image/jpg"
     }
 }

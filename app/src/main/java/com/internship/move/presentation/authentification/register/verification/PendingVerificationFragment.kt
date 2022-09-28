@@ -10,6 +10,11 @@ import com.internship.move.R
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
 import id.zelory.compressor.Compressor
 import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
