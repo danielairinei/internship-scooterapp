@@ -16,7 +16,7 @@
 
     <include
         android:id="@+id/scooterBs"
-        layout="@layout/item_scooter_card"
+        layout="@layout/dialog_start_ride"
         android:layout_width="@dimen/scooter_cv_width"
         android:layout_height="@dimen/scooter_cv_height"
         android:layout_gravity="bottom|center"

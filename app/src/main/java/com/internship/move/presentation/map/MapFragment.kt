@@ -71,7 +71,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         binding.menuIV.setOnClickListener {
             findNavController().navigate(MapFragmentDirections.actionMapFragmentToMenuFragment())
         }
-        binding.locationAllowedTV.setOnClickListener {
+        binding.locationAllowedIV.setOnClickListener {
             mapFragment.getMapAsync(this)
         }
 
@@ -214,8 +214,9 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         }
     }
 
-    private fun getAddressFromLocation(position: LatLng): String =
-        Geocoder(requireContext(), Locale.getDefault()).getFromLocation(position.latitude, position.longitude, 1)[0].thoroughfare
+    @Suppress("DEPRECATION")
+    private fun getAddressFromLocation(position: LatLng): String? =
+        Geocoder(requireContext(), Locale.getDefault()).getFromLocation(position.latitude, position.longitude, 1)?.get(0)?.thoroughfare
 
     private fun showBottomSheetDialog(currScooter: ScooterDto) {
         binding.scooterBs.scooterBS.visibility = View.INVISIBLE
