@@ -106,7 +106,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     companion object {
-        const val KEY_HAS_USER_COMPLETED_ONBOARDING = "KEY_HAS_USER_COMPLETED_ONBOARDING"
         private const val KEY_ERROR_RESPONSE = "KEY_ERROR_RESPONSE"
     }
 }

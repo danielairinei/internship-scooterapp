@@ -44,14 +44,19 @@ class UserRepository(
         return userApi.uploadDrivingLicense(
             token,
             image = MultipartBody.Part.createFormData(
-                "driving_license",
+                KEY_DRIVING_LICENSE_TAG,
                 file.name,
-                file.asRequestBody("image/jpg".toMediaTypeOrNull())
+                file.asRequestBody(KEY_DRIVING_LICENSE_TYPE.toMediaTypeOrNull())
             )
         )
     }
 
     suspend fun logoutRequest(logoutToken: String) {
         userApi.logoutRequest(logoutToken)
+    }
+
+    companion object {
+        private const val KEY_DRIVING_LICENSE_TAG = "KEY_DRIVING_LICENSE_TAG"
+        private const val KEY_DRIVING_LICENSE_TYPE = "image/jpg"
     }
 }

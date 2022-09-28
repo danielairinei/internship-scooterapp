@@ -13,32 +13,34 @@
         android:layout_height="match_parent"
         android:layout_gravity="center" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/locationIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
         android:layout_marginTop="@dimen/map_icons_margin_top"
         android:layout_marginEnd="@dimen/map_horizontal_margin"
+        android:background="@null"
         android:src="@drawable/ic_allow_location" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/menuIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|start"
         android:layout_marginStart="@dimen/map_horizontal_margin"
         android:layout_marginTop="@dimen/map_icons_margin_top"
+        android:background="@null"
         android:src="@drawable/ic_menu_rectangle" />
 
     <TextView
         android:id="@+id/headingTV"
         style="@style/Heading1"
-        android:layout_gravity="center|top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="@dimen/map_heading_margin_top"
         android:text="@string/map_header_location_not_allowed"
         android:textColor="@color/secondary_text_color"
-        android:layout_marginTop="@dimen/map_heading_margin_top"
-        android:textSize="@dimen/regular_text_size"/>
+        android:textSize="@dimen/regular_text_size" />
 </FrameLayout>

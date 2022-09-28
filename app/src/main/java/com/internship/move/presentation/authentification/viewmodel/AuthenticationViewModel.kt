@@ -1,5 +1,6 @@
 package com.internship.move.presentation.authentification.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,16 +17,24 @@ class AuthenticationViewModel(
     private val errorJsonAdapter: JsonAdapter<ErrorResponse>
 ) : ViewModel() {
 
-    val userRegisterData: MutableLiveData<UserRegisterResponseDto> = MutableLiveData()
-    val userLoginData: MutableLiveData<UserLoginResponseDto> = MutableLiveData()
-    val errorData: MutableLiveData<ErrorResponse> = MutableLiveData(null)
-    val licenseData: MutableLiveData<String> = MutableLiveData("")
+    private val _userRegisterData: MutableLiveData<UserRegisterResponseDto> = MutableLiveData()
+    val userRegisterData: LiveData<UserRegisterResponseDto>
+        get() = _userRegisterData
+    private val _userLoginData: MutableLiveData<UserLoginResponseDto> = MutableLiveData()
+    val userLoginData: LiveData<UserLoginResponseDto>
+        get() = _userLoginData
+    private val _errorData: MutableLiveData<ErrorResponse> = MutableLiveData(null)
+    val errorData: LiveData<ErrorResponse>
+        get() = _errorData
+    private val _licenseData: MutableLiveData<String> = MutableLiveData("")
+    val licenseData: LiveData<String>
+        get() = _licenseData
 
     fun notifyUserHasCompletedOnboarding() {
         repo.setHasUserCompletedOnboarding(true)
     }
 
-    fun setIsUserLoggedIn(boolean: Boolean){
+    fun setIsUserLoggedIn(boolean: Boolean) {
         repo.setIsUserLoggedIn(boolean)
     }
 
@@ -33,10 +42,10 @@ class AuthenticationViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = repo.loginRequest(newUserLoginRequestDto)
-                userLoginData.postValue(response)
+                _userLoginData.postValue(response)
                 repo.setLoginToken(response.loginToken)
             } catch (e: Exception) {
-                errorData.postValue(e.toErrorResponse(errorJsonAdapter))
+                _errorData.postValue(e.toErrorResponse(errorJsonAdapter))
             }
         }
     }
@@ -44,9 +53,9 @@ class AuthenticationViewModel(
     fun register(newUserRegisterRequestDto: UserRegisterRequestDto) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                userRegisterData.postValue(repo.registerRequest(newUserRegisterRequestDto))
+                _userRegisterData.postValue(repo.registerRequest(newUserRegisterRequestDto))
             } catch (e: Exception) {
-                errorData.postValue(e.toErrorResponse(errorJsonAdapter))
+                _errorData.postValue(e.toErrorResponse(errorJsonAdapter))
             }
         }
     }
@@ -55,7 +64,7 @@ class AuthenticationViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = repo.licenseVerification(file, "Bearer ${repo.getLoginToken()}")
-                licenseData.postValue(response.drivinglicense)
+                _licenseData.postValue(response.drivinglicense)
             } catch (e: Exception) {
                 println(e.message)
             }

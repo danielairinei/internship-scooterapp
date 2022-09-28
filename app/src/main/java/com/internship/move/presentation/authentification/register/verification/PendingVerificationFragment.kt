@@ -21,15 +21,16 @@ class PendingVerificationFragment : Fragment(R.layout.fragment_pending_verificat
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.licenseData.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                viewModel.setIsUserLoggedIn(true)
+                findNavController().navigate(PendingVerificationFragmentDirections.actionPendingVerificationFragmentToSuccessValidationFragment())
+            }
+        }
+
         lifecycleScope.launch {
             val file = Compressor.compress(requireActivity().applicationContext, File(args.photoUri))
             viewModel.licenseVerification(file)
-            viewModel.licenseData.observe(viewLifecycleOwner) {
-                if (it != "") {
-                    viewModel.setIsUserLoggedIn(true)
-                    findNavController().navigate(PendingVerificationFragmentDirections.actionPendingVerificationFragmentToSuccessValidationFragment())
-                }
-            }
         }
     }
 }

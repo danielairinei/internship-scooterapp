@@ -60,10 +60,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun initObserver() {
-        viewModel.errorData.observe(viewLifecycleOwner) {
-            if (it == null) {
+        viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
+            if (errorResponse.message.isEmpty()) {
                 viewModel.userLoginData.observe(viewLifecycleOwner) { userResponse ->
-                    if (userResponse.userDto.drivinglicense != "") {
+                    if (userResponse.userDto.drivinglicense.isNotEmpty()) {
                         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeGraph())
                     } else {
                         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToLicenseVerificationGraph())
@@ -72,7 +72,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             } else {
                 val dialog = CustomDialogFragment.newInstance(
                     "",
-                    it.message,
+                    errorResponse.message,
                     getString(R.string.button_ok_text)
                 )
                 dialog.show(parentFragmentManager, KEY_ERROR_RESPONSE)

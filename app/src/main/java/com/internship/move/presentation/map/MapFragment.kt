@@ -31,8 +31,9 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
     private val viewModel by viewModel<MapViewModel>()
-    private lateinit var map: GoogleMap
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var map: GoogleMap? = null
+    private var fusedLocationProviderClient: FusedLocationProviderClient? = null
+    private val permissionsResultCallback = initPermissionsResultCallback()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,12 +45,33 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         initListeners()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        map?.clear()
+        map = null
+        fusedLocationProviderClient = null
+    }
+
     private fun initListeners() {
         binding.menuIV.setOnClickListener {
             findNavController().navigate(MapFragmentDirections.actionMapFragmentToMenuFragment())
         }
         binding.locationIV.setOnClickListener {
             fetchLocation()
+        }
+    }
+
+    private fun initPermissionsResultCallback() = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { permissionAllowed ->
+        if (permissionAllowed) {
+            binding.locationIV.setImageResource(R.drawable.ic_focus_location)
+            binding.headingTV.setText(R.string.map_header_location_allowed)
+        } else {
+            binding.headingTV.setText(R.string.map_header_location_not_allowed)
+            binding.locationIV.setBackgroundResource(R.drawable.ic_allow_location)
+            Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -65,36 +87,23 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         }
     }
 
-    private val permissionsResultCallback = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) {
-        if (it) {
-            binding.locationIV.setImageResource(R.drawable.ic_focus_location)
-            binding.headingTV.setText(R.string.map_header_location_allowed)
-        } else {
-            binding.headingTV.setText(R.string.map_header_location_not_allowed)
-            binding.locationIV.setBackgroundResource(R.drawable.ic_allow_location)
-            Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
-        }
-    }
-
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
 
-        map.setMaxZoomPreference(MAX_ZOOM_LEVEL)
-        map.setMinZoomPreference(MIN_ZOOM_LEVEL)
-        map.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.style_json))
+        map?.setMaxZoomPreference(MAX_ZOOM_LEVEL)
+        map?.setMinZoomPreference(MIN_ZOOM_LEVEL)
+        map?.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.style_json))
 
         fetchLocation()
     }
 
     @SuppressLint("MissingPermission")
     private fun fetchLocation() {
-        val task: Task<Location> = fusedLocationProviderClient.lastLocation
+        val task: Task<Location>? = fusedLocationProviderClient?.lastLocation
 
-        task.addOnSuccessListener {
-            if (it != null) {
-                updateMap(it.latitude, it.longitude)
+        task?.addOnSuccessListener { userLocation ->
+            if (userLocation != null) {
+                updateMap(userLocation.latitude, userLocation.longitude)
             }
         }
     }
@@ -102,8 +111,8 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     private fun updateMap(latitude: Double, longitude: Double) {
         val position = LatLng(latitude, longitude)
 
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, DEFAULT_ZOOM_LEVEL))
-        map.addMarker(MarkerOptions().position(position).title("Your location"))
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(position, DEFAULT_ZOOM_LEVEL))
+        map?.addMarker(MarkerOptions().position(position).title("Your location"))
     }
 
     companion object {

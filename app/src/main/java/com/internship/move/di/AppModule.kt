@@ -1,5 +1,8 @@
 package com.internship.move.di
 
+import com.internship.move.data.AuthenticationTokenProvider
+import com.internship.move.data.RuntimeAuthenticationTokenProvider
+import com.internship.move.data.SessionInterceptor
 import com.internship.move.data.dto.user.ErrorResponse
 import com.internship.move.data.dto.user.UserApi
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
@@ -26,32 +29,42 @@ val internalStorage = module {
 
 val userRepository = module {
     single { provideMoshi() }
-    single { provideOkHttpClient() }
+    single { provideSessionInterceptor(get()) }
+    single { provideOkHttpClient(get()) }
     single { provideRetrofit(get(), get()) }
     single { UserRepository(get(), provideUserApi(get())) }
     factory { provideErrorResponseJsonAdapter(get()) }
+}
 
+val accessors = module {
+    factory<AuthenticationTokenProvider> { RuntimeAuthenticationTokenProvider(get()) }
 }
 
 val viewModels = module {
-    viewModel { AuthenticationViewModel(get(),get()) }
+    viewModel { AuthenticationViewModel(get(), get()) }
     viewModel { MapViewModel(get()) }
     viewModel { SplashViewModel(get()) }
-    viewModel { MenuViewModel(get()) }
+    viewModel { MenuViewModel(get(), get()) }
 }
 
-fun provideErrorResponseJsonAdapter(moshi: Moshi): JsonAdapter<ErrorResponse> =
+private fun provideSessionInterceptor(authenticationTokenProvider: AuthenticationTokenProvider): SessionInterceptor =
+    SessionInterceptor(authenticationTokenProvider)
+
+private fun provideErrorResponseJsonAdapter(moshi: Moshi): JsonAdapter<ErrorResponse> =
     moshi.adapter(ErrorResponse::class.java).lenient()
 
-fun provideMoshi(): Moshi = Moshi.Builder().build()
+private fun provideMoshi(): Moshi = Moshi.Builder().build()
 
-fun provideOkHttpClient() =
-    OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }).build()
+private fun provideOkHttpClient(sessionInterceptor: SessionInterceptor) =
+    OkHttpClient.Builder()
+        .addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
+        .addInterceptor(sessionInterceptor)
+        .build()
 
-fun provideRetrofit(moshi: Moshi, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+private fun provideRetrofit(moshi: Moshi, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .client(okHttpClient)
     .build()
 
-fun provideUserApi(retrofit: Retrofit): UserApi = retrofit.create(UserApi::class.java)
+private fun provideUserApi(retrofit: Retrofit): UserApi = retrofit.create(UserApi::class.java)
