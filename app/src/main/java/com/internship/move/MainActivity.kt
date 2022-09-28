@@ -2,6 +2,7 @@ package com.internship.move
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.internship.move.di.accessors
 import com.internship.move.di.internalStorage
 import com.internship.move.di.scooterRepository
 import com.internship.move.di.userRepository
@@ -25,7 +26,8 @@ class MainActivity : AppCompatActivity() {
                     internalStorage,
                     viewModels,
                     userRepository,
-                    scooterRepository
+                    scooterRepository,
+                    accessors
                 )
             )
         }

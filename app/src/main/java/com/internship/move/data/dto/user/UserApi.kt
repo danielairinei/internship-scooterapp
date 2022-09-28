@@ -1,6 +1,6 @@
 package com.internship.move.data.dto.user
 
-import retrofit2.http.*
+import okhttp3.MultipartBody
 
 interface UserApi {
 
@@ -11,6 +11,11 @@ interface UserApi {
     suspend fun loginRequest(@Body userLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto
 
     @DELETE("/auth/logout")
+    suspend fun logoutRequest()
+
+    @Multipart
+    @PUT("/auth/driving-license")
+    suspend fun uploadDrivingLicense(@Part image: MultipartBody.Part): UserDto
     suspend fun logoutRequest(@Header("Authorization") token: String)
 
     @GET("/user/currUser")

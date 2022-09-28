@@ -1,27 +1,36 @@
 package com.internship.move.presentation.authentification.register.verification
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.internship.move.R
+import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
+import id.zelory.compressor.Compressor
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
 
 class PendingVerificationFragment : Fragment(R.layout.fragment_pending_verification) {
+
+    private val viewModel by viewModel<AuthenticationViewModel>()
+    private val args: PendingVerificationFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Handler(Looper.getMainLooper()).postDelayed(
-            {
+        viewModel.licenseData.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                viewModel.setIsUserLoggedIn(true)
                 findNavController().navigate(PendingVerificationFragmentDirections.actionPendingVerificationFragmentToSuccessValidationFragment())
-            },
-            PENDING_DELAY
-        )
-    }
+            }
+        }
 
-    companion object {
-        private const val PENDING_DELAY = 10000L
+        lifecycleScope.launch {
+            val file = Compressor.compress(requireActivity().applicationContext, File(args.photoUri))
+            viewModel.licenseVerification(file)
+        }
     }
 }

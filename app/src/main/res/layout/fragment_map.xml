@@ -21,35 +21,38 @@
         android:layout_height="@dimen/scooter_cv_height"
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="@dimen/scooter_card_view_margin_bottom"
-        app:layout_constraintBottom_toBottomOf="@+id/mapFragment" />
+        app:layout_constraintBottom_toBottomOf="@id/mapFragment" />
 
-    <ImageView
-        android:id="@+id/locationAllowedTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|end"
-        android:layout_marginTop="@dimen/map_icons_margin_top"
-        android:layout_marginEnd="@dimen/map_horizontal_margin"
-        android:src="@drawable/ic_focus_location"
-        android:visibility="invisible" />
-
-    <ImageView
+    <ImageButton
         android:id="@+id/locationNotAllowedIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
         android:layout_marginTop="@dimen/map_icons_margin_top"
         android:layout_marginEnd="@dimen/map_horizontal_margin"
+        android:background="@null"
         android:src="@drawable/ic_allow_location"
         android:visibility="visible" />
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/locationAllowedIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="@dimen/map_icons_margin_top"
+        android:layout_marginEnd="@dimen/map_horizontal_margin"
+        android:background="@null"
+        android:src="@drawable/ic_focus_location"
+        android:visibility="visible" />
+
+    <ImageButton
         android:id="@+id/menuIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|start"
         android:layout_marginStart="@dimen/map_horizontal_margin"
         android:layout_marginTop="@dimen/map_icons_margin_top"
+        android:background="@null"
         android:src="@drawable/ic_menu_rectangle" />
 
     <TextView

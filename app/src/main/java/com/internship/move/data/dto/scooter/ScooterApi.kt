@@ -11,5 +11,4 @@ interface ScooterApi {
 
     @GET("/scooter")
     suspend fun getScooterByNumber(@Header("Authorization") scooterNumber: Int): ScooterDto
-
 }

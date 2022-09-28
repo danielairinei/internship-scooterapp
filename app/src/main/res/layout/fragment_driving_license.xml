@@ -6,28 +6,23 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_marginTop="@dimen/margin_top_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_toolbar"
         android:orientation="vertical"
         tools:context=".presentation.authentification.register.verification.DrivingLicenseFragment"
         tools:ignore="ContentDescription">
 
-        <com.google.android.material.appbar.AppBarLayout
-            app:elevation="0dp"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/driving_license_top_bar_height">
+            android:layout_height="match_parent"
+            app:navigationIcon="@drawable/ic_driving_license_arrow_back"
+            app:title="@string/authentication_driving_license_title"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/Topbar"
+            app:titleTextColor="@color/secondary_text_color" />
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:navigationIcon="@drawable/ic_purple_arrow_back"
-                app:title="@string/authentication_driving_license_title"
-                app:titleCentered="true"
-                app:titleTextAppearance="@style/Topbar"
-                app:titleTextColor="@color/secondary_text_color" />
-        </com.google.android.material.appbar.AppBarLayout>
 
         <ImageView
             android:id="@+id/drivingLicenseIV"
