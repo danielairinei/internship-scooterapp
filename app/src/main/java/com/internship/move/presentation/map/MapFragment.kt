@@ -90,7 +90,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
             }
         }
         sharedViewModel.rideStarted.observe(viewLifecycleOwner) { scooter ->
-            if (scooter) {
+            if (scooter != null) {
                 showRideInfoBottomSheetDialog()
             }
         }
@@ -234,7 +234,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         bottomSheetDialogFragment.show(childFragmentManager, ScooterBottomSheetDialogFragment::class.java.canonicalName)
     }
 
-    private fun showRideInfoBottomSheetDialog(){
+    private fun showRideInfoBottomSheetDialog() {
         val infoBottomSheetDialogFragment = RideBottomSheetDialogFragment.newInstance()
 
         infoBottomSheetDialogFragment.show(childFragmentManager, RideBottomSheetDialogFragment::class.java.canonicalName)

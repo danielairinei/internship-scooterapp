@@ -1,6 +1,7 @@
 package com.internship.move.presentation.map.adapter
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,8 +26,8 @@ class RideBottomSheetDialogFragment : BottomSheetDialogFragment() {
     @SuppressLint("SetTextI18n")
     private fun initDialog(binding: ItemRideInfoBottomSheetBinding) {
         binding.timeChronometer.start()
-        binding.endRideBtn.setOnClickListener{
-            sharedViewModel.endRide()
+        binding.endRideBtn.setOnClickListener {
+            //sharedViewModel.endRide()
         }
     }
 

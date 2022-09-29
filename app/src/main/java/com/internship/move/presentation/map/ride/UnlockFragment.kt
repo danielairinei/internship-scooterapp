@@ -27,9 +27,8 @@ class UnlockFragment : Fragment(R.layout.fragment_unlock) {
 
         binding.codePinView.doOnTextChanged { _, _, _, _ ->
             val scooterNumber = binding.codePinView.text.toString()
-
             if (scooterNumber.length == SCOOTER_SERIAL_NUMBER_LENGTH) {
-                viewModel.simulateRide()
+                viewModel.startRide(viewModel.getScooterByNumber(scooterNumber.toInt()), viewModel.getUserLocation())
 //                viewModel.startRide(
 //                    viewModel.getScooterByNumber(scooterNumber.toInt()),
 //                    viewModel.getUserLocation(),
@@ -54,8 +53,8 @@ class UnlockFragment : Fragment(R.layout.fragment_unlock) {
     }
 
     private fun initObserver() {
-        viewModel.rideStarted.observe(viewLifecycleOwner) {
-            if (it) {
+        viewModel.rideStarted.observe(viewLifecycleOwner) { unlockedScooter ->
+            if (unlockedScooter != null) {
                 findNavController().navigate(UnlockFragmentDirections.actionUnlockFragmentToSuccessUnlockFragment())
             }
         }

@@ -1,11 +1,13 @@
 package com.internship.move.presentation.map.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import com.internship.move.data.dto.ErrorResponse
+import com.internship.move.data.dto.scooter.RideRequestDto
 import com.internship.move.data.dto.scooter.ScooterDto
 import com.internship.move.presentation.map.adapter.ScooterPlace
 import com.internship.move.repository.ScooterRepository
@@ -26,7 +28,7 @@ class MapViewModel(
     private val _errorData: MutableLiveData<ErrorResponse> = MutableLiveData()
     val errorData: LiveData<ErrorResponse>
         get() = _errorData
-    val rideStarted: MutableLiveData<Boolean> = MutableLiveData(false)
+    val rideStarted: MutableLiveData<ScooterDto?> = MutableLiveData()
 
     fun findScooters(latitude: Double, longitude: Double) {
         viewModelScope.launch {
@@ -53,13 +55,13 @@ class MapViewModel(
         return markers
     }
 
-    fun simulateRide() {
-        rideStarted.postValue(true)
-    }
-
-    fun endRide() {
-        rideStarted.postValue(false)
-    }
+//    fun simulateRide() {
+//        rideStarted.postValue(true)
+//    }
+//
+//    fun endRide() {
+//        rideStarted.postValue(false)
+//    }
 
     fun getScooterByNumber(scooterNumber: Int?): ScooterDto? = scooterList.value?.find {
         it.number == scooterNumber
@@ -76,27 +78,25 @@ class MapViewModel(
 //        }
 //    }
 
-    ////START RIDE
-//    fun startRide(scooter: ScooterDto?, userLocation: LatLng, token: String) {
-//        viewModelScope.launch {
-//            try {
-//                if (scooter != null) {
-//                    scooterRepo.startRide(
-//                        "Bearer $token",
-//                        RideRequestDto(
-//                            scooter._id,
-//                            userLocation.latitude,
-//                            userLocation.longitude,
-//                            scooter.number
-//                        )
-//                    )
-//                    rideStarted.postValue(scooter)
-//                }
-//            } catch (e: Exception) {
-//                Log.e("ERROR", e.toErrorResponse(errorResponseJsonAdapter).toString())
-//            }
-//        }
-//    }
+    fun startRide(scooter: ScooterDto?, userLocation: LatLng) {
+        viewModelScope.launch {
+            try {
+                if (scooter != null) {
+                    scooterRepo.startRide(
+                        RideRequestDto(
+                            scooter.id,
+                            userLocation.latitude,
+                            userLocation.longitude,
+                            scooter.number
+                        )
+                    )
+                    rideStarted.postValue(scooter)
+                }
+            } catch (e: Exception) {
+                Log.e("ERROR", e.toErrorResponse(errorResponseJsonAdapter).toString())
+            }
+        }
+    }
 
     fun saveUserLocation(position: LatLng) {
         userRepo.saveUserLocation(position)

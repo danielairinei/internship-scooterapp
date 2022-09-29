@@ -13,11 +13,11 @@ class ScooterRepository(
     suspend fun findScooters(latitude: Double, longitude: Double): List<ScooterDto> = scooterApi.findScooters(latitude, longitude)
 
     suspend fun unlockScooter(token: String, scooterId: String) {
-        scooterApi.unlockScooter(token, scooterId)
+        scooterApi.unlockScooter(scooterId)
     }
 
-    suspend fun startRide(token: String, rideRequestDto: RideRequestDto) {
-        scooterApi.startRide(token, rideRequestDto)
+    suspend fun startRide(rideRequestDto: RideRequestDto) {
+        scooterApi.startRide(rideRequestDto)
     }
 
     suspend fun getScooterByNumber(scooterNumber: Int): ScooterDto = scooterApi.getScooterByNumber(scooterNumber)

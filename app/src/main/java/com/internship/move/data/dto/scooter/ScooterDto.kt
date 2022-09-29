@@ -11,5 +11,6 @@ data class ScooterDto(
     @Json(name = "bookStatus") val bookStatus: String,
     @Json(name = "location") val location: Location,
     @Json(name = "lockedStatus") val lockedStatus: Boolean,
-    @Json(name = "number") val number: Int
+    @Json(name = "number") val number: Int,
+    @Json(name = "internalId") val internalId: String
 )

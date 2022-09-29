@@ -16,8 +16,11 @@ interface ScooterApi {
     suspend fun getScooterByNumber(@Header("Authorization") scooterNumber: Int): ScooterDto
 
     @PATCH("/scooter/unlock")
-    suspend fun unlockScooter(@Header("Authorization") token: String, @Body scooterId: String)
+    suspend fun unlockScooter(@Body scooterId: String)
 
     @POST("/ride/start")
-    suspend fun startRide(@Header("Authorization") token: String, @Body rideRequestDto: RideRequestDto)
+    suspend fun startRide(@Body rideRequestDto: RideRequestDto)
+
+    @PATCH("/ride/end")
+    suspend fun endRide()
 }
