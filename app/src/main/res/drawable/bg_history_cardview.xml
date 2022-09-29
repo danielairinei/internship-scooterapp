@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="@dimen/card_view_radius" />
+    <stroke
+        android:width="@dimen/card_view_stroke"
+        android:color="@color/background_history_card_view_stroke" />
+    <solid android:color="@android:color/transparent" />
+</shape>

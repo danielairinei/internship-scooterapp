@@ -88,4 +88,21 @@
         <item name="android:layout_height">@dimen/scooter_unlock_button_size</item>
         <item name="android:fontFamily">@font/bai_jamjuree_regular</item>
     </style>
+
+    <style name="AccountTIL" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="fontFamily">@font/bai_jamjuree_regular</item>
+        <item name="android:textColor">@color/primary_text_color</item>
+        <item name="android:textSize">@dimen/regular_text_size</item>
+        <item name="android:textColorHint">@color/pearl_purple</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
+        <item name="android:layout_marginEnd">@dimen/horizontal_margin</item>
+        <item name="android:hint">This is a hint</item>
+        <item name="hintTextColor">@color/pearl_purple</item>
+        <item name="endIconMode">custom</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeColor">@color/pearl_purple</item>
+        <item name="boxBackgroundMode">filled</item>
+        <item name="android:layout_marginTop">@dimen/text_field_margin_top</item>
+        <item name="endIconTint">@null</item>
+    </style>
 </resources>

@@ -19,28 +19,51 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.getUserRequest()
+
         initObserver()
-
-        binding.clearApp.setOnClickListener {
-            viewModel.clearApp()
-            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToSplashGraph())
-        }
-
-        binding.backIV.setOnClickListener{
-            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment())
-        }
+        initListeners()
     }
 
     private fun initObserver() {
         viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
-            if (errorResponse.message.isNotEmpty()) {
+            if (errorResponse != null) {
                 Toast.makeText(requireContext(), errorResponse.message, Toast.LENGTH_SHORT).show()
             }
         }
-        viewModel.loggedOut.observe(viewLifecycleOwner) { isLoggedOut ->
-            if (isLoggedOut) {
-                findNavController().navigate(com.internship.move.presentation.menu.MenuFragmentDirections.actionMenuFragmentToSplashGraph())
-            }
+
+        viewModel.userData.observe(viewLifecycleOwner) { user ->
+            binding.topAppBar.title = getString(R.string.menu_appbar_heading) + " ${user.name}!"
+        }
+    }
+
+    private fun initListeners() {
+        binding.topAppBar.setNavigationOnClickListener {
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment())
+        }
+
+        binding.accountTV.setOnClickListener {
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMenuAccountFragment())
+        }
+
+        binding.historyCard.historyBtn.setOnClickListener {
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMenuHistoryFragment())
+        }
+
+        binding.changePwTV.setOnClickListener {
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMenuChangePasswordFragment())
+        }
+
+        binding.termsTV.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.key_terms_and_conditions), Toast.LENGTH_SHORT).show()
+        }
+
+        binding.privacyTV.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.key_privacy_policy), Toast.LENGTH_SHORT).show()
+        }
+
+        binding.rateUsTV.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.key_rate_us), Toast.LENGTH_SHORT).show()
         }
     }
 }

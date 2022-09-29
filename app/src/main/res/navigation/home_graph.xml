@@ -39,8 +39,8 @@
         tools:layout="@layout/fragment_menu">
 
         <action
-            android:id="@+id/action_menuFragment_to_splash_graph"
-            app:destination="@id/splash_graph"
+            android:id="@+id/action_menuFragment_to_mapFragment"
+            app:destination="@id/mapFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -49,8 +49,28 @@
             app:popUpToInclusive="true" />
 
         <action
-            android:id="@+id/action_menuFragment_to_mapFragment"
-            app:destination="@id/mapFragment"
+            android:id="@+id/action_menuFragment_to_menuAccountFragment"
+            app:destination="@id/menuAccountFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_menuFragment_to_menuHistoryFragment"
+            app:destination="@id/menuHistoryFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_menuFragment_to_menuChangePasswordFragment"
+            app:destination="@id/menuChangePasswordFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -85,11 +105,12 @@
             app:popUpTo="@id/unlockFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/successUnlockFragment"
         android:name="com.internship.move.presentation.map.ride.SuccessUnlockFragment"
         android:label="fragment_success_unlock"
-        tools:layout="@layout/fragment_success_unlock" >
+        tools:layout="@layout/fragment_success_unlock">
 
         <action
             android:id="@+id/action_successUnlockFragment_to_mapFragment"
@@ -99,6 +120,67 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/successUnlockFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menuAccountFragment"
+        android:name="com.internship.move.presentation.menu.MenuAccountFragment"
+        android:label="fragment_menu_account"
+        tools:layout="@layout/fragment_menu_account">
+
+        <action
+            android:id="@+id/action_menuAccountFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/menuAccountFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_menuAccountFragment_to_splash_graph"
+            app:destination="@id/splash_graph"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/menuAccountFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menuHistoryFragment"
+        android:name="com.internship.move.presentation.menu.MenuHistoryFragment"
+        android:label="fragment_menu_history"
+        tools:layout="@layout/fragment_menu_history">
+
+        <action
+            android:id="@+id/action_menuHistoryFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/menuHistoryFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menuChangePasswordFragment"
+        android:name="com.internship.move.presentation.menu.MenuChangePasswordFragment"
+        android:label="fragment_menu_change_password"
+        tools:layout="@layout/fragment_menu_change_password">
+
+        <action
+            android:id="@+id/action_menuChangePasswordFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/menuChangePasswordFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

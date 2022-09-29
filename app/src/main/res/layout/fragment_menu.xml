@@ -1,42 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="ContentDescription"
-    tools:context=".presentation.menu.MenuFragment">
+    android:layout_marginTop="@dimen/margin_top_toolbar"
+    android:background="@drawable/bg_menu"
+    tools:context=".presentation.menu.MenuFragment"
+    tools:ignore="ContentDescription">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_purple_arrow_back"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/Topbar"
+        app:titleTextColor="@color/secondary_text_color" />
+
+    <include
+        android:id="@+id/historyCard"
+        layout="@layout/item_history_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/menu_item_margin_top"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topAppBar" />
 
     <ImageView
-        android:id="@+id/backIV"
+        android:id="@+id/settingsIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:src="@drawable/ic_driving_license_arrow_back" />
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/menu_icon_margin_top"
+        android:src="@drawable/ic_settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/historyCard" />
 
     <TextView
+        android:id="@+id/settingsTV"
         style="@style/Heading1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Menu Fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/menu_heading_margin_start"
+        android:layout_marginTop="@dimen/menu_item_margin_top"
+        android:text="@string/menu_settings_heading"
         android:textColor="@color/secondary_text_color"
-        tools:ignore="HardcodedText" />
+        android:textSize="@dimen/regular_text_size"
+        app:layout_constraintStart_toEndOf="@id/settingsIV"
+        app:layout_constraintTop_toBottomOf="@id/historyCard" />
 
-    <Button
-        android:id="@+id/logoutBtn"
+    <TextView
+        android:id="@+id/accountTV"
+        style="@style/Heading2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="250dp"
-        android:text="Log out"
-        tools:ignore="HardcodedText" />
+        android:layout_marginStart="@dimen/menu_heading2_margin_start"
+        android:layout_marginTop="@dimen/menu_heading2_margin_top"
+        android:text="@string/menu_settings_account"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settingsTV" />
 
-    <Button
-        android:id="@+id/clearApp"
+    <TextView
+        android:id="@+id/changePwTV"
+        style="@style/Heading2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="170dp"
-        android:text="Clear app"
-        tools:ignore="HardcodedText" />
-</FrameLayout>
+        android:layout_marginStart="@dimen/menu_heading2_margin_start"
+        android:layout_marginTop="@dimen/menu_heading2_margin_top"
+        android:text="@string/menu_settings_change_pw"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/accountTV" />
+
+    <ImageView
+        android:id="@+id/legalIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/menu_icon_margin_top"
+        android:src="@drawable/ic_flag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/changePwTV" />
+
+    <TextView
+        android:id="@+id/legalTV"
+        style="@style/Heading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/menu_heading_margin_start"
+        android:layout_marginTop="@dimen/menu_item_margin_top"
+        android:text="@string/menu_legal_heading"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/regular_text_size"
+        app:layout_constraintStart_toEndOf="@id/settingsIV"
+        app:layout_constraintTop_toBottomOf="@id/changePwTV" />
+
+    <TextView
+        android:id="@+id/termsTV"
+        style="@style/Heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/menu_heading2_margin_start"
+        android:layout_marginTop="@dimen/menu_heading2_margin_top"
+        android:text="@string/menu_legal_terms"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/legalTV" />
+
+    <TextView
+        android:id="@+id/privacyTV"
+        style="@style/Heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/menu_heading2_margin_start"
+        android:layout_marginTop="@dimen/menu_heading2_margin_top"
+        android:text="@string/menu_legal_privacy"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/termsTV" />
+
+    <ImageView
+        android:id="@+id/starIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/menu_icon_margin_top"
+        android:src="@drawable/ic_star"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/privacyTV" />
+
+    <TextView
+        android:id="@+id/rateUsTV"
+        style="@style/Heading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/menu_heading_margin_start"
+        android:layout_marginTop="@dimen/menu_item_margin_top"
+        android:text="@string/menu_rate_us_heading"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/regular_text_size"
+        app:layout_constraintStart_toEndOf="@id/settingsIV"
+        app:layout_constraintTop_toBottomOf="@id/privacyTV" />
+</androidx.constraintlayout.widget.ConstraintLayout>

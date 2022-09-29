@@ -1,6 +1,11 @@
 package com.internship.move.repository
 
-import com.internship.move.data.dto.user.*
+import com.internship.move.data.dto.user.UserApi
+import com.internship.move.data.dto.user.UserDto
+import com.internship.move.data.dto.user.UserLoginRequestDto
+import com.internship.move.data.dto.user.UserLoginResponseDto
+import com.internship.move.data.dto.user.UserRegisterRequestDto
+import com.internship.move.data.dto.user.UserRegisterResponseDto
 import com.internship.move.utils.InternalStorageManager
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -28,31 +33,29 @@ class UserRepository(
         internalStorageManager.setLoginToken(token)
     }
 
-    fun getLoginToken(): String {
-        return internalStorageManager.getLoginToken()
-    }
+    fun getLoginToken(): String =
+        internalStorageManager.getLoginToken()
 
-    suspend fun loginRequest(newLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto {
-        return userApi.loginRequest(newLoginRequestDto)
-    }
+    suspend fun loginRequest(newLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto =
+        userApi.loginRequest(newLoginRequestDto)
 
-    suspend fun registerRequest(newRegisterRequestDto: UserRegisterRequestDto): UserRegisterResponseDto {
-        return userApi.registerRequest(newRegisterRequestDto)
-    }
 
-    suspend fun licenseVerification(file: File): UserDto {
-        return userApi.uploadDrivingLicense(
+    suspend fun registerRequest(newRegisterRequestDto: UserRegisterRequestDto): UserRegisterResponseDto =
+        userApi.registerRequest(newRegisterRequestDto)
+
+    suspend fun licenseVerification(file: File): UserDto = userApi.uploadDrivingLicense(
             image = MultipartBody.Part.createFormData(
                 KEY_DRIVING_LICENSE_TAG,
                 file.name,
                 file.asRequestBody(KEY_DRIVING_LICENSE_TYPE.toMediaTypeOrNull())
             )
         )
-    }
 
     suspend fun logoutRequest() {
         userApi.logoutRequest()
     }
+
+    suspend fun getUserRequest(): UserDto = userApi.getUser()
 
     companion object {
         private const val KEY_DRIVING_LICENSE_TAG = "drivinglicense"

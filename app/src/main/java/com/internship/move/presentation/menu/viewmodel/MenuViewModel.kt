@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.internship.move.data.dto.ErrorResponse
+import com.internship.move.data.dto.user.UserDto
 import com.internship.move.repository.UserRepository
 import com.internship.move.utils.extensions.toErrorResponse
 import com.squareup.moshi.JsonAdapter
@@ -16,6 +17,9 @@ class MenuViewModel(
     private val errorResponseJsonAdapter: JsonAdapter<ErrorResponse>
 ) : ViewModel() {
 
+    private val _userData: MutableLiveData<UserDto> = MutableLiveData()
+    val userData: LiveData<UserDto>
+        get() = _userData
     private val _loggedOut: MutableLiveData<Boolean> = MutableLiveData(false)
     val loggedOut: LiveData<Boolean>
         get() = _loggedOut
@@ -35,11 +39,15 @@ class MenuViewModel(
         }
     }
 
-    fun clearApp() {
-        repo.setIsUserLoggedIn(false)
-        repo.setHasUserCompletedOnboarding(false)
+    fun getUserRequest() {
+        viewModelScope.launch {
+            try {
+                _userData.postValue(repo.getUserRequest())
+            } catch (e: Exception) {
+                _errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
+            }
+        }
     }
 
     fun getLoginToken(): String = repo.getLoginToken()
-
 }
