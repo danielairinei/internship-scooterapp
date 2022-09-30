@@ -9,6 +9,8 @@ import androidx.navigation.fragment.findNavController
 import com.internship.move.R
 import com.internship.move.databinding.FragmentUnlockBinding
 import com.internship.move.presentation.map.viewmodel.MapViewModel
+import com.internship.move.utils.constants.ERROR_TIME
+import com.tapadoo.alerter.Alerter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -28,12 +30,8 @@ class UnlockFragment : Fragment(R.layout.fragment_unlock) {
         binding.codePinView.doOnTextChanged { _, _, _, _ ->
             val scooterNumber = binding.codePinView.text.toString()
             if (scooterNumber.length == SCOOTER_SERIAL_NUMBER_LENGTH) {
-                viewModel.startRide(viewModel.getScooterByNumber(scooterNumber.toInt()), viewModel.getUserLocation())
-//                viewModel.startRide(
-//                    viewModel.getScooterByNumber(scooterNumber.toInt()),
-//                    viewModel.getUserLocation(),
-//                    viewModel.getLoginToken()
-//                )
+                //viewModel.startRide(viewModel.getScooterByNumber(scooterNumber.toInt()), viewModel.getUserLocation())
+                viewModel.fakeStartRide(viewModel.getScooterByNumber(scooterNumber.toInt()))
             }
         }
     }
@@ -53,16 +51,26 @@ class UnlockFragment : Fragment(R.layout.fragment_unlock) {
     }
 
     private fun initObserver() {
-        viewModel.rideStarted.observe(viewLifecycleOwner) { unlockedScooter ->
+        viewModel.rideData.observe(viewLifecycleOwner) { unlockedScooter ->
             if (unlockedScooter != null) {
                 findNavController().navigate(UnlockFragmentDirections.actionUnlockFragmentToSuccessUnlockFragment())
             }
         }
-//        viewModel.rideStarted.observe(viewLifecycleOwner) {
-//            if (it != null) {
-//                findNavController().navigate(UnlockFragmentDirections.actionUnlockFragmentToSuccessUnlockFragment())
-//            }
-//        }
+        viewModel.fakeRide.observe(viewLifecycleOwner) { unlockedScooter ->
+            if (unlockedScooter != null) {
+                findNavController().navigate(UnlockFragmentDirections.actionUnlockFragmentToSuccessUnlockFragment())
+            }
+        }
+        viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
+            if (errorResponse != null) {
+                Alerter.create(requireActivity())
+                    .setTitle(errorResponse.message)
+                    .setTitleAppearance(R.style.AlertTitleAppearance)
+                    .setDuration(ERROR_TIME)
+                    .setBackgroundColorRes(R.color.error_alerter_background)
+                    .show()
+            }
+        }
     }
 
     companion object {

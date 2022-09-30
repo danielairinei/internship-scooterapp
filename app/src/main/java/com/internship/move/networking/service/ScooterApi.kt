@@ -1,10 +1,8 @@
-package com.internship.move.data.dto.scooter
+package com.internship.move.networking.service
 
-import retrofit2.http.Body
+import com.internship.move.data.dto.scooter.ScooterDto
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.PATCH
-import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ScooterApi {
@@ -14,13 +12,4 @@ interface ScooterApi {
 
     @GET("/scooter")
     suspend fun getScooterByNumber(@Header("Authorization") scooterNumber: Int): ScooterDto
-
-    @PATCH("/scooter/unlock")
-    suspend fun unlockScooter(@Body scooterId: String)
-
-    @POST("/ride/start")
-    suspend fun startRide(@Body rideRequestDto: RideRequestDto)
-
-    @PATCH("/ride/end")
-    suspend fun endRide()
 }

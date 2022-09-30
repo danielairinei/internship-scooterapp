@@ -8,6 +8,8 @@ import androidx.navigation.fragment.findNavController
 import com.internship.move.R
 import com.internship.move.databinding.FragmentMenuBinding
 import com.internship.move.presentation.menu.viewmodel.MenuViewModel
+import com.internship.move.utils.constants.ERROR_TIME
+import com.tapadoo.alerter.Alerter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,7 +30,12 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
     private fun initObserver() {
         viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
             if (errorResponse != null) {
-                Toast.makeText(requireContext(), errorResponse.message, Toast.LENGTH_SHORT).show()
+                Alerter.create(requireActivity())
+                    .setTitle(errorResponse.message)
+                    .setTitleAppearance(R.style.AlertTitleAppearance)
+                    .setDuration(ERROR_TIME)
+                    .setBackgroundColorRes(R.color.error_alerter_background)
+                    .show()
             }
         }
 

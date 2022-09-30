@@ -1,4 +1,4 @@
-package com.internship.move.data
+package com.internship.move.networking.interceptor
 
 import okhttp3.Interceptor
 import okhttp3.Request

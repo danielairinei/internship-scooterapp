@@ -3,10 +3,6 @@ package com.internship.move.utils
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.android.gms.maps.model.LatLng
-import com.internship.move.presentation.authentification.register.RegisterFragment
-import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
-import com.internship.move.presentation.map.viewmodel.MapViewModel
-import com.internship.move.presentation.menu.MenuFragment
 
 class InternalStorageManager(
     context: Context
@@ -34,19 +30,28 @@ class InternalStorageManager(
         sharedPreferences.getString(KEY_SESSION_TOKEN, "").toString()
 
     fun saveUserLocation(position: LatLng) {
-        sharedPreferences.edit().putFloat(MapViewModel.KEY_LATITUDE, position.latitude.toFloat()).apply()
-        sharedPreferences.edit().putFloat(MapViewModel.KEY_LONGITUDE, position.longitude.toFloat()).apply()
+        sharedPreferences.edit().putFloat(KEY_LATITUDE, position.latitude.toFloat()).apply()
+        sharedPreferences.edit().putFloat(KEY_LONGITUDE, position.longitude.toFloat()).apply()
     }
 
     fun getUserLocation(): LatLng = LatLng(
-        sharedPreferences.getFloat(MapViewModel.KEY_LATITUDE, 1f).toDouble(),
-        sharedPreferences.getFloat(MapViewModel.KEY_LONGITUDE, 1f).toDouble()
+        sharedPreferences.getFloat(KEY_LATITUDE, 1f).toDouble(),
+        sharedPreferences.getFloat(KEY_LONGITUDE, 1f).toDouble()
     )
+
+    fun saveCurrentScooterInRideId(scooterId: String) {
+        sharedPreferences.edit().putString(KEY_CURRENT_SCOOTER_IN_RIDE_ID, scooterId).apply()
+    }
+
+    fun getCurrentScooterInRideId(): String = sharedPreferences.getString(KEY_CURRENT_SCOOTER_IN_RIDE_ID, "").toString()
 
     companion object {
         const val KEY_APP_PREFERENCES = "KEY_APP_PREFERENCES"
         private const val KEY_IS_USER_LOGGED_IN = "KEY_IS_USER_LOGGED_IN"
         private const val KEY_HAS_USER_COMPLETED_ONBOARDING = "KEY_HAS_USER_COMPLETED_ONBOARDING"
         private const val KEY_SESSION_TOKEN = "KEY_SESSION_TOKEN"
+        private const val KEY_CURRENT_SCOOTER_IN_RIDE_ID = "KEY_CURRENT_SCOOTER_IN_RIDE_ID"
+        private const val KEY_LONGITUDE = "KEY_LONGITUDE"
+        private const val KEY_LATITUDE = "KEY_LATITUDE"
     }
 }

@@ -6,7 +6,7 @@ import com.internship.move.data.dto.user.UserLoginResponseDto
 import com.internship.move.data.dto.user.UserRegisterRequestDto
 import com.internship.move.data.dto.user.UserRegisterResponseDto
 import com.google.android.gms.maps.model.LatLng
-import com.internship.move.data.dto.user.*
+import com.internship.move.networking.service.UserApi
 import com.internship.move.utils.InternalStorageManager
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody

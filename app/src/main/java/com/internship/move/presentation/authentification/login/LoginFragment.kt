@@ -9,8 +9,9 @@ import com.internship.move.R
 import com.internship.move.data.dto.user.UserLoginRequestDto
 import com.internship.move.databinding.FragmentLoginBinding
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
-import com.internship.move.utils.extensions.InfoDialogFragment
+import com.internship.move.utils.constants.ERROR_TIME
 import com.internship.move.utils.extensions.makeLinks
+import com.tapadoo.alerter.Alerter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -70,21 +71,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     }
                 }
             } else {
-                val dialog = InfoDialogFragment.newInstance(
-                    "",
-                    errorResponse.message,
-                    getString(R.string.button_ok_text)
-                )
-                dialog.show(parentFragmentManager, KEY_ERROR_RESPONSE)
+                Alerter.create(requireActivity())
+                    .setTitle(errorResponse.message)
+                    .setTitleAppearance(R.style.AlertTitleAppearance)
+                    .setDuration(ERROR_TIME)
+                    .setBackgroundColorRes(R.color.error_alerter_background)
+                    .show()
             }
         }
     }
 
     private fun changeBtnState(emailIsNotEmpty: Boolean, passwordIsNotEmpty: Boolean) {
         binding.loginBtn.isEnabled = emailIsNotEmpty && passwordIsNotEmpty
-    }
-
-    companion object {
-        private const val KEY_ERROR_RESPONSE = "KEY_ERROR_RESPONSE"
     }
 }

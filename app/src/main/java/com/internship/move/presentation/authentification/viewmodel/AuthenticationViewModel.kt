@@ -45,6 +45,7 @@ class AuthenticationViewModel(
                 val response = repo.loginRequest(newUserLoginRequestDto)
                 _userLoginData.postValue(response)
                 repo.setLoginToken(response.loginToken)
+                repo.setIsUserLoggedIn(true)
             } catch (e: Exception) {
                 _errorData.postValue(e.toErrorResponse(errorJsonAdapter))
             }

@@ -7,9 +7,10 @@ import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -23,17 +24,19 @@ import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.Task
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.maps.android.clustering.ClusterManager
 import com.internship.move.R
 import com.internship.move.data.dto.scooter.ScooterDto
 import com.internship.move.databinding.FragmentMapBinding
-import com.internship.move.presentation.map.adapter.RideBottomSheetDialogFragment
 import com.internship.move.presentation.map.adapter.ScooterBottomSheetDialogFragment
 import com.internship.move.presentation.map.adapter.ScooterPlace
 import com.internship.move.presentation.map.adapter.ScooterPlaceRenderer
 import com.internship.move.presentation.map.viewmodel.MapViewModel
+import com.internship.move.utils.constants.ERROR_TIME
 import com.internship.move.utils.extensions.bitmapDescriptorFromVector
 import com.internship.move.utils.extensions.getPhotoByBattery
+import com.tapadoo.alerter.Alerter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -49,13 +52,21 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     private val permissionsResultCallback = initPermissionsResultCallback()
     private lateinit var mapFragment: SupportMapFragment
     private var userLocation: Marker? = null
+    private lateinit var rideInfoCollapsedBehavior: BottomSheetBehavior<ConstraintLayout>
+    private lateinit var rideInfoExpandedBehavior: BottomSheetBehavior<ConstraintLayout>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         mapFragment = childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
         binding.scooterBs.scooterBS.visibility = View.INVISIBLE
+        binding.rideInfo.rideInfoCollapsed.visibility = View.INVISIBLE
+        binding.rideInfo.rideInfoExpanded.root.visibility = View.INVISIBLE
+
+        rideInfoCollapsedBehavior = BottomSheetBehavior.from(binding.rideInfo.rideInfoCollapsed)
+        rideInfoExpandedBehavior = BottomSheetBehavior.from(binding.rideInfo.rideInfoExpanded.rideInfoExpandedCL)
 
         initPermission()
         initListeners()
@@ -89,14 +100,24 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
                 addClusteredMarkers(scooters)
             }
         }
-        sharedViewModel.rideStarted.observe(viewLifecycleOwner) { scooter ->
+        sharedViewModel.rideData.observe(viewLifecycleOwner) { scooter ->
+            if (scooter != null) {
+                showRideInfoBottomSheetDialog()
+            }
+        }
+        sharedViewModel.fakeRide.observe(viewLifecycleOwner) { scooter ->
             if (scooter != null) {
                 showRideInfoBottomSheetDialog()
             }
         }
         viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
             if (errorResponse != null) {
-                Toast.makeText(requireContext(), errorResponse.message, Toast.LENGTH_SHORT).show()
+                Alerter.create(requireActivity())
+                    .setTitle(errorResponse.message)
+                    .setTitleAppearance(R.style.AlertTitleAppearance)
+                    .setDuration(ERROR_TIME)
+                    .setBackgroundColorRes(R.color.error_alerter_background)
+                    .show()
             }
         }
     }
@@ -235,9 +256,38 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     }
 
     private fun showRideInfoBottomSheetDialog() {
-        val infoBottomSheetDialogFragment = RideBottomSheetDialogFragment.newInstance()
+        binding.rideInfo.rideInfoCollapsed.visibility = View.VISIBLE
+        rideInfoCollapsedBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        val collapsedBottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                rideInfoExpandedBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }
 
-        infoBottomSheetDialogFragment.show(childFragmentManager, RideBottomSheetDialogFragment::class.java.canonicalName)
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                    binding.rideInfo.rideInfoCollapsed.isVisible = !binding.rideInfo.rideInfoCollapsed.isVisible
+                    binding.rideInfo.rideInfoExpanded.root.isVisible = !binding.rideInfo.rideInfoExpanded.root.isVisible
+                    rideInfoExpandedBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                }
+            }
+        }
+
+        val expandedBottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                rideInfoCollapsedBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            }
+
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                    binding.rideInfo.rideInfoCollapsed.isVisible = !binding.rideInfo.rideInfoCollapsed.isVisible
+                    binding.rideInfo.rideInfoExpanded.root.isVisible = !binding.rideInfo.rideInfoExpanded.root.isVisible
+                    rideInfoCollapsedBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                }
+            }
+        }
+
+        rideInfoCollapsedBehavior.addBottomSheetCallback(collapsedBottomSheetCallback)
+        rideInfoExpandedBehavior.addBottomSheetCallback(expandedBottomSheetCallback)
     }
 
     companion object {

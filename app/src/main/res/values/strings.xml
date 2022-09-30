@@ -103,4 +103,5 @@
     <string name="ride_info_btn_lock">Lock</string>
     <string name="ride_info_btn_unlock">Unlock</string>
     <string name="ride_info_btn_end_ride">End ride</string>
+    <string name="bottom_sheet_battery_card_heading">Battery</string>
 </resources>

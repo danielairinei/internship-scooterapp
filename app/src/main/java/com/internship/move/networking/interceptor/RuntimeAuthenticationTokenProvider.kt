@@ -1,4 +1,4 @@
-package com.internship.move.data
+package com.internship.move.networking.interceptor
 
 import com.internship.move.utils.InternalStorageManager
 

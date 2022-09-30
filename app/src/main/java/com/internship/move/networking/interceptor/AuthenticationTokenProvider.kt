@@ -1,4 +1,4 @@
-package com.internship.move.data
+package com.internship.move.networking.interceptor
 
 interface AuthenticationTokenProvider {
 

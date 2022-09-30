@@ -3,6 +3,7 @@ package com.internship.move
 import android.app.Application
 import com.internship.move.di.accessors
 import com.internship.move.di.internalStorage
+import com.internship.move.di.rideRepository
 import com.internship.move.di.scooterRepository
 import com.internship.move.di.userRepository
 import com.internship.move.di.viewModels
@@ -26,6 +27,7 @@ class MoveApp: Application() {
                     viewModels,
                     userRepository,
                     scooterRepository,
+                    rideRepository,
                     accessors
                 )
             )
