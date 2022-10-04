@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -31,6 +32,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.maps.android.clustering.ClusterManager
 import com.internship.move.R
 import com.internship.move.data.dto.ride.EndRideRequestDto
+import com.internship.move.data.dto.ride.UpdateRideRequestDto
+import com.internship.move.data.dto.ride.ViewRideRequestDto
 import com.internship.move.data.dto.ride.ViewRideResponseDto
 import com.internship.move.data.dto.scooter.ScooterDto
 import com.internship.move.databinding.FragmentMapBinding
@@ -45,6 +48,9 @@ import com.internship.move.utils.extensions.bitmapDescriptorFromVector
 import com.internship.move.utils.extensions.getPhotoByBattery
 import com.tapadoo.alerter.Alerter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -63,6 +69,8 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     private var userIsInRide = false
     private lateinit var updateTime: BroadcastReceiver
     private var buttonUnlockedStatus = true
+    private var viewRideDetailsJob: Job? = null
+    private var updateRideDetailsJob: Job? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -135,14 +143,8 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
             }
         }
 
-        sharedViewModel.updateRideData.observe(viewLifecycleOwner) { updateRideResponse ->
-            if (updateRideResponse != null) {
-
-            }
-        }
-
         sharedViewModel.viewRideData.observe(viewLifecycleOwner) { viewRideResponse ->
-            if(viewRideResponse!=null){
+            if (viewRideResponse != null) {
                 updateRideInfo(viewRideResponse)
             }
 
@@ -188,7 +190,12 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
             setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.style_json))
         }
 
-        fetchLocation()
+        lifecycleScope.launch {
+            while (true) {
+                fetchLocation()
+                delay(UPDATE_LOCATION_DELAY)
+            }
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -208,7 +215,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         val position = LatLng(latitude, longitude)
         viewModel.saveUserLocation(position)
 
-        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(position, DEFAULT_ZOOM_LEVEL))
+        map?.animateCamera(CameraUpdateFactory.newLatLngZoom(position, DEFAULT_ZOOM_LEVEL))
         userLocation?.remove()
         userLocation = map?.addMarker(
             MarkerOptions()
@@ -343,11 +350,33 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         rideInfoExpandedBehavior.addBottomSheetCallback(expandedBottomSheetCallback)
 
         initRideInfoBottomSheet(scooterDto)
+
+        viewRideDetailsJob = lifecycleScope.launch {
+            while (true) {
+                sharedViewModel.viewRide(ViewRideRequestDto(sharedViewModel.getCurrentRideId()))
+                delay(RIDE_DATA_DELAY)
+            }
+        }
+
+        updateRideDetailsJob = lifecycleScope.launch {
+            while (true) {
+                sharedViewModel.updateRide(
+                    UpdateRideRequestDto(
+                        scooterDto.id,
+                        sharedViewModel.getUserLocation().longitude,
+                        sharedViewModel.getUserLocation().latitude
+                    )
+                )
+                delay(RIDE_DATA_DELAY)
+            }
+        }
     }
 
     private fun stopRide() {
         userIsInRide = false
 
+        viewRideDetailsJob?.cancel()
+        updateRideDetailsJob?.cancel()
         rideTimer.startStopTimer()
         activity?.unregisterReceiver(updateTime)
         binding.rideInfo.rideInfoCollapsed.visibility = View.INVISIBLE
@@ -359,6 +388,8 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         binding.rideInfo.batteryIV.setImageResource(getPhotoByBattery(scooterDto.battery))
         binding.rideInfo.rideInfoExpanded.batteryTV.text = getString(R.string.scooter_bottom_sheet_battery_level, scooterDto.battery)
         binding.rideInfo.rideInfoExpanded.batteryHeadingIV.setImageResource(getPhotoByBattery(scooterDto.battery))
+        binding.rideInfo.distanceTV.text = getString(R.string.ride_info_default_value)
+        binding.rideInfo.rideInfoExpanded.distanceTV.text = getString(R.string.ride_info_default_value)
 
         binding.rideInfo.lockBtn.setOnClickListener {
             if (buttonUnlockedStatus) {
@@ -395,13 +426,6 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
                     viewModel.getUserLocation().latitude
                 )
             )
-//            sharedViewModel.updateRide(
-//                UpdateRideRequestDto(
-//                    scooterDto.id,
-//                    sharedViewModel.getUserLocation().longitude,
-//                    sharedViewModel.getUserLocation().latitude
-//                )
-//            )
         }
     }
 
@@ -421,13 +445,21 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         }
     }
 
-    private fun updateRideInfo(viewRideResponseDto: ViewRideResponseDto){
+    private fun updateRideInfo(viewRideResponseDto: ViewRideResponseDto) {
         binding.rideInfo.batteryTV.text = getString(R.string.scooter_bottom_sheet_battery_level, viewRideResponseDto.battery)
         binding.rideInfo.batteryIV.setImageResource(getPhotoByBattery(viewRideResponseDto.battery))
-        binding.rideInfo.distanceTV.text = getString(R.string.ride_info_distance_text, viewRideResponseDto.distance / 1000)
+        binding.rideInfo.distanceTV.text = getString(R.string.ride_info_distance_text, viewRideResponseDto.distance / KEY_KILOMETER_VALUE)
+        binding.rideInfo.rideInfoExpanded.batteryTV.text =
+            getString(R.string.scooter_bottom_sheet_battery_level, viewRideResponseDto.battery)
+        binding.rideInfo.rideInfoExpanded.batteryHeadingIV.setImageResource(getPhotoByBattery(viewRideResponseDto.battery))
+        binding.rideInfo.rideInfoExpanded.distanceTV.text =
+            getString(R.string.ride_info_distance_text, viewRideResponseDto.distance / KEY_KILOMETER_VALUE)
     }
 
     companion object {
+        private const val UPDATE_LOCATION_DELAY = 10000L
+        private const val RIDE_DATA_DELAY = 7000L
+        private const val KEY_KILOMETER_VALUE = 1000F
         private const val MAX_ZOOM_LEVEL = 20f
         private const val MIN_ZOOM_LEVEL = 6f
         private const val DEFAULT_ZOOM_LEVEL = 17f

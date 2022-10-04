@@ -9,7 +9,7 @@ class RideTimer(context: Context, private val activity: FragmentActivity) {
 
     private var timerStarted = false
     private var time = 0.0
-    private val serviceIntent = Intent(context,TimerService::class.java)
+    private val serviceIntent = Intent(context, TimerService::class.java)
 
     fun startStopTimer() {
         if (timerStarted) {

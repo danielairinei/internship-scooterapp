@@ -54,7 +54,9 @@ class MapViewModel(
     val viewRideData: LiveData<ViewRideResponseDto?>
         get() = _viewRideData
 
-    val rideInProgress: MutableLiveData<Boolean> = MutableLiveData()
+    private val _rideInProgress: MutableLiveData<Boolean> = MutableLiveData()
+    val rideInProgress: LiveData<Boolean>
+        get() = _rideInProgress
 
     fun findScooters(latitude: Double, longitude: Double) {
         viewModelScope.launch {
@@ -123,7 +125,7 @@ class MapViewModel(
                     _startRideData.postValue(scooter)
                     saveCurrentRideId(response.updateRideDto.rideId)
                     _errorData.postValue(null)
-                    rideInProgress.postValue(true)
+                    _rideInProgress.postValue(true)
                     _unlockData.postValue(null)
                 }
             } catch (e: Exception) {
@@ -138,7 +140,8 @@ class MapViewModel(
                 rideRepo.endRide(endRideRequestDto)
                 _startRideData.postValue(null)
                 _updateRideData.postValue(null)
-                rideInProgress.postValue(false)
+                _rideInProgress.postValue(false)
+                _viewRideData.postValue(null)
             } catch (e: Exception) {
                 _errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
             }
@@ -161,7 +164,8 @@ class MapViewModel(
             try {
                 _viewRideData.postValue(rideRepo.viewRide(viewRideRequestDto))
             } catch (e: Exception) {
-                _errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
+                println(e.toString())
+                //_errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
             }
         }
     }

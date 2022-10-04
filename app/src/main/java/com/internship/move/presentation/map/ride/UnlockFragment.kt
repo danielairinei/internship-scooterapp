@@ -31,7 +31,6 @@ class UnlockFragment : Fragment(R.layout.fragment_unlock) {
             val scooterNumber = binding.codePinView.text.toString()
             if (scooterNumber.length == SCOOTER_SERIAL_NUMBER_LENGTH) {
                 viewModel.startRide(viewModel.getScooterByNumber(scooterNumber.toInt()), viewModel.getUserLocation())
-                //viewModel.fakeStartRide(viewModel.getScooterByNumber(scooterNumber.toInt()))
             }
         }
     }

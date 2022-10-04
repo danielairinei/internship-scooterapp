@@ -106,5 +106,6 @@
     <string name="ride_info_btn_end_ride">End ride</string>
     <string name="bottom_sheet_battery_card_heading">Battery</string>
     <string name="map_fragment_in_ride_menu_alert">Cannot access menu while in ride</string>
-    <string name="ride_info_distance_text">%02f km</string>
+    <string name="ride_info_distance_text">%.1f</string>
+    <string name="ride_info_default_value">0.0</string>
 </resources>
