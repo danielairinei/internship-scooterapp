@@ -1,8 +1,9 @@
 package com.internship.move.presentation.menu
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.internship.move.R
@@ -17,6 +18,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
 
     private val binding by viewBinding(FragmentMenuBinding::bind)
     private val viewModel by viewModel<MenuViewModel>()
+    private val clickableTextIntent = Intent(Intent.ACTION_VIEW, Uri.parse(KEY_URL_CLICKABLE_TEXT))
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,11 +42,14 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         }
 
         viewModel.userData.observe(viewLifecycleOwner) { user ->
-            binding.topAppBar.title = getString(R.string.menu_appbar_heading) + " ${user.name}!"
+            binding.topAppBar.title = getString(R.string.menu_appbar_heading, user.name)
         }
     }
 
     private fun initListeners() {
+        //TO FIX
+        binding.historyCard.totalRidesTV.text = getString(R.string.menu_history_total_rides, 10)
+
         binding.topAppBar.setNavigationOnClickListener {
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToMapFragment())
         }
@@ -62,15 +67,19 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         }
 
         binding.termsTV.setOnClickListener {
-            Toast.makeText(requireContext(), getString(R.string.key_terms_and_conditions), Toast.LENGTH_SHORT).show()
+            requireContext().startActivity(clickableTextIntent)
         }
 
         binding.privacyTV.setOnClickListener {
-            Toast.makeText(requireContext(), getString(R.string.key_privacy_policy), Toast.LENGTH_SHORT).show()
+            requireContext().startActivity(clickableTextIntent)
         }
 
         binding.rateUsTV.setOnClickListener {
-            Toast.makeText(requireContext(), getString(R.string.key_rate_us), Toast.LENGTH_SHORT).show()
+            requireContext().startActivity(clickableTextIntent)
         }
+    }
+
+    companion object {
+        private const val KEY_URL_CLICKABLE_TEXT = "https://tapptitude.com/"
     }
 }

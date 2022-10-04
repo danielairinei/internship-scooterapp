@@ -8,7 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import com.internship.move.data.dto.ErrorResponse
 import com.internship.move.data.dto.ride.EndRideRequestDto
+import com.internship.move.data.dto.ride.LockUnlockDto
 import com.internship.move.data.dto.ride.StartRideRequestDto
+import com.internship.move.data.dto.ride.UpdateRideRequestDto
+import com.internship.move.data.dto.ride.UpdateRideResponseDto
+import com.internship.move.data.dto.ride.ViewRideRequestDto
+import com.internship.move.data.dto.ride.ViewRideResponseDto
 import com.internship.move.data.dto.scooter.ScooterDto
 import com.internship.move.presentation.map.adapter.ScooterPlace
 import com.internship.move.repository.RideRepository
@@ -28,18 +33,34 @@ class MapViewModel(
     private val _scooterList: MutableLiveData<List<ScooterDto>> = MutableLiveData()
     val scooterList: LiveData<List<ScooterDto>>
         get() = _scooterList
+
     private val _errorData: MutableLiveData<ErrorResponse?> = MutableLiveData()
-    val errorData: MutableLiveData<ErrorResponse?>
+    val errorData: LiveData<ErrorResponse?>
         get() = _errorData
-    private val _rideData: MutableLiveData<ScooterDto?> = MutableLiveData()
-    val rideData: LiveData<ScooterDto?>
-        get() = _rideData
-    val fakeRide: MutableLiveData<ScooterDto?> = MutableLiveData()
+
+    private val _unlockData: MutableLiveData<Boolean?> = MutableLiveData()
+    val unlockData: LiveData<Boolean?>
+        get() = _unlockData
+
+    private val _startRideData: MutableLiveData<ScooterDto?> = MutableLiveData()
+    val startRideData: LiveData<ScooterDto?>
+        get() = _startRideData
+
+    private val _updateRideData: MutableLiveData<UpdateRideResponseDto?> = MutableLiveData()
+    val updateRideData: LiveData<UpdateRideResponseDto?>
+        get() = _updateRideData
+
+    private val _viewRideData: MutableLiveData<ViewRideResponseDto?> = MutableLiveData()
+    val viewRideData: LiveData<ViewRideResponseDto?>
+        get() = _viewRideData
+
+    val rideInProgress: MutableLiveData<Boolean> = MutableLiveData()
 
     fun findScooters(latitude: Double, longitude: Double) {
         viewModelScope.launch {
             try {
                 _scooterList.postValue(scooterRepo.findScooters(latitude, longitude))
+                _errorData.postValue(null)
             } catch (e: Exception) {
                 _errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
             }
@@ -65,21 +86,22 @@ class MapViewModel(
         it.number == scooterNumber
     }
 
-    fun unlockScooter(scooter: ScooterDto) {
+    fun unlockScooter(scooterId: String) {
         viewModelScope.launch {
             try {
-                rideRepo.unlockScooter(scooter.id)
-//                rideData.postValue(scooter)
+                rideRepo.unlockScooter(LockUnlockDto(scooterId))
+                _unlockData.postValue(true)
             } catch (e: Exception) {
-                Log.e("ERROR", e.toErrorResponse(errorResponseJsonAdapter).toString())
+                _errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
             }
         }
     }
 
-    fun lockScooter(scooterDto: ScooterDto) {
+    fun lockScooter(scooterId: String) {
         viewModelScope.launch {
             try {
-                rideRepo.lockScooter(scooterDto.id)
+                rideRepo.lockScooter(LockUnlockDto(scooterId))
+                _unlockData.postValue(false)
             } catch (e: Exception) {
                 Log.e("ERROR", e.toErrorResponse(errorResponseJsonAdapter).toString())
             }
@@ -90,7 +112,7 @@ class MapViewModel(
         viewModelScope.launch {
             try {
                 if (scooter != null) {
-                    rideRepo.startRide(
+                    val response = rideRepo.startRide(
                         StartRideRequestDto(
                             scooter.id,
                             userLocation.latitude,
@@ -98,9 +120,11 @@ class MapViewModel(
                             scooter.number
                         )
                     )
-                    rideRepo.saveCurrentScooterInRideId(scooter.id)
-                    _rideData.postValue(scooter)
+                    _startRideData.postValue(scooter)
+                    saveCurrentRideId(response.updateRideDto.rideId)
                     _errorData.postValue(null)
+                    rideInProgress.postValue(true)
+                    _unlockData.postValue(null)
                 }
             } catch (e: Exception) {
                 _errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
@@ -112,9 +136,32 @@ class MapViewModel(
         viewModelScope.launch {
             try {
                 rideRepo.endRide(endRideRequestDto)
-                _rideData.postValue(null)
+                _startRideData.postValue(null)
+                _updateRideData.postValue(null)
+                rideInProgress.postValue(false)
             } catch (e: Exception) {
-                Log.e("ERROR", e.toErrorResponse(errorResponseJsonAdapter).toString())
+                _errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
+            }
+        }
+    }
+
+    fun updateRide(updateRideRequestDto: UpdateRideRequestDto) {
+        viewModelScope.launch {
+            try {
+                val response = rideRepo.updateRide(updateRideRequestDto)
+                _updateRideData.postValue(response)
+            } catch (e: Exception) {
+                _errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
+            }
+        }
+    }
+
+    fun viewRide(viewRideRequestDto: ViewRideRequestDto) {
+        viewModelScope.launch {
+            try {
+                _viewRideData.postValue(rideRepo.viewRide(viewRideRequestDto))
+            } catch (e: Exception) {
+                _errorData.postValue(e.toErrorResponse(errorResponseJsonAdapter))
             }
         }
     }
@@ -123,11 +170,11 @@ class MapViewModel(
         userRepo.saveUserLocation(position)
     }
 
-    fun getCurrentScooterInRideId(): String = rideRepo.getCurrentScooterInRideId()
+    fun getCurrentRideId(): String = rideRepo.getCurrentRideId()
+
+    private fun saveCurrentRideId(rideId: String) {
+        rideRepo.saveCurrentRideId(rideId)
+    }
 
     fun getUserLocation(): LatLng = userRepo.getUserLocation()
-
-    fun fakeStartRide(scooterDto: ScooterDto?){
-        fakeRide.postValue(scooterDto)
-    }
 }

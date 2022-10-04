@@ -5,10 +5,13 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.maps.android.clustering.Cluster
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.clustering.view.DefaultClusterRenderer
 import com.internship.move.R
 import com.internship.move.utils.extensions.bitmapDescriptorFromVector
+
+private const val KEY_MINIMUM_CLUSTER_SIZE = 15
 
 class ScooterPlaceRenderer(
     private val context: Context,
@@ -29,5 +32,9 @@ class ScooterPlaceRenderer(
 
     override fun onClusterItemRendered(clusterItem: ScooterPlace, marker: Marker) {
         marker.tag = clusterItem
+    }
+
+    override fun shouldRenderAsCluster(cluster: Cluster<ScooterPlace>?): Boolean {
+        return cluster?.size?.compareTo(KEY_MINIMUM_CLUSTER_SIZE) == 1
     }
 }

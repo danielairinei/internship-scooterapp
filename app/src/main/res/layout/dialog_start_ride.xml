@@ -5,6 +5,8 @@
     android:layout_width="@dimen/scooter_cv_width"
     android:layout_height="@dimen/scooter_cv_height"
     android:id="@+id/scooterBS"
+    android:clickable="true"
+    android:focusable="true"
     android:background="@drawable/bg_scooter_cv"
     tools:ignore="ContentDescription"
     app:behavior_hideable="false"

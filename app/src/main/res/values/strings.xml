@@ -84,7 +84,8 @@
     <string name="menu_rate_us_heading">Rate us</string>
     <string name="menu_account_heading">Account</string>
     <string name="menu_account_logout">Log out</string>
-    <string name="menu_appbar_heading">Hi</string>
+    <string name="menu_appbar_heading">Hi %s</string>
+    <string name="menu_history_total_rides">Total rides: %d</string>
     <string name="key_rate_us">Thank you!</string>
     <string name="menu_change_pw_old">Old password</string>
     <string name="menu_change_pw_new">New password</string>
@@ -104,4 +105,6 @@
     <string name="ride_info_btn_unlock">Unlock</string>
     <string name="ride_info_btn_end_ride">End ride</string>
     <string name="bottom_sheet_battery_card_heading">Battery</string>
+    <string name="map_fragment_in_ride_menu_alert">Cannot access menu while in ride</string>
+    <string name="ride_info_distance_text">%02f km</string>
 </resources>

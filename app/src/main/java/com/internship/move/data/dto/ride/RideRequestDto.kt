@@ -12,8 +12,25 @@ data class StartRideRequestDto(
 )
 
 @JsonClass(generateAdapter = true)
+data class StartRideResponseDto(
+    @Json(name = "updateRide2") val updateRideDto: UpdateRideDto
+)
+
+@JsonClass(generateAdapter = true)
 data class EndRideRequestDto(
-    @Json(name = "idScooter") val rideId: String,
+    @Json(name = "idRide") val rideId: String,
     @Json(name = "longitude") val long: Double,
     @Json(name = "latitude") val lat: Double
+)
+
+@JsonClass(generateAdapter = true)
+data class UpdateRideRequestDto(
+    @Json(name = "idScooter") val idScooter: String,
+    @Json(name = "longitude") val longitude: Double,
+    @Json(name = "latitude") val latitude: Double
+)
+
+@JsonClass(generateAdapter = true)
+data class ViewRideRequestDto(
+    @Json(name = "idRide") val rideId: String
 )
