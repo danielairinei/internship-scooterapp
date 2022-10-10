@@ -10,8 +10,9 @@ import com.internship.move.R
 import com.internship.move.data.dto.user.UserRegisterRequestDto
 import com.internship.move.databinding.FragmentRegisterBinding
 import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
-import com.internship.move.utils.extensions.InfoDialogFragment
+import com.internship.move.utils.constants.ERROR_TIME
 import com.internship.move.utils.extensions.makeLinks
+import com.tapadoo.alerter.Alerter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -89,23 +90,19 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     private fun initObserver() {
-        viewModel.errorData.observe(viewLifecycleOwner) {
-            if (it == null) {
+        viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
+            if (errorResponse == null) {
                 viewModel.userRegisterData.observe(viewLifecycleOwner) {
                     findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
                 }
             } else {
-                val dialog = InfoDialogFragment.newInstance(
-                    "",
-                    it.message,
-                    getString(R.string.button_ok_text)
-                )
-                dialog.show(parentFragmentManager, KEY_ERROR_RESPONSE)
+                Alerter.create(requireActivity())
+                    .setTitle(errorResponse.message)
+                    .setTitleAppearance(R.style.AlertTitleAppearance)
+                    .setDuration(ERROR_TIME)
+                    .setBackgroundColorRes(R.color.error_alerter_background)
+                    .show()
             }
         }
-    }
-
-    companion object {
-        private const val KEY_ERROR_RESPONSE = "KEY_ERROR_RESPONSE"
     }
 }

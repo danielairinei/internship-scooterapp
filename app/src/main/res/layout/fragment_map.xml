@@ -1,68 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.map.MapFragment"
-    tools:ignore="HardcodedText,ContentDescription">
+    android:layout_height="match_parent">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/mapFragment"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center" />
+        tools:context=".presentation.map.MapFragment"
+        tools:ignore="HardcodedText,ContentDescription">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/mapFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
+        <include
+            android:id="@+id/scooterBs"
+            layout="@layout/dialog_start_ride"
+            android:layout_width="@dimen/scooter_cv_width"
+            android:layout_height="@dimen/scooter_cv_height"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="@dimen/scooter_card_view_margin_bottom"
+            app:layout_constraintBottom_toBottomOf="@id/mapFragment" />
+
+        <ImageButton
+            android:id="@+id/locationNotAllowedIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="@dimen/map_icons_margin_top"
+            android:layout_marginEnd="@dimen/map_horizontal_margin"
+            android:background="@null"
+            android:src="@drawable/ic_allow_location"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/locationAllowedIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="@dimen/map_icons_margin_top"
+            android:layout_marginEnd="@dimen/map_horizontal_margin"
+            android:background="@null"
+            android:src="@drawable/ic_focus_location"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/menuIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="@dimen/map_horizontal_margin"
+            android:layout_marginTop="@dimen/map_icons_margin_top"
+            android:background="@null"
+            android:src="@drawable/ic_menu_rectangle" />
+
+        <TextView
+            android:id="@+id/headingTV"
+            style="@style/Heading1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="@dimen/map_heading_margin_top"
+            android:text="@string/map_header_location_not_allowed"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="@dimen/regular_text_size" />
+    </FrameLayout>
 
     <include
-        android:id="@+id/scooterBs"
-        layout="@layout/dialog_start_ride"
-        android:layout_width="@dimen/scooter_cv_width"
-        android:layout_height="@dimen/scooter_cv_height"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="@dimen/scooter_card_view_margin_bottom"
-        app:layout_constraintBottom_toBottomOf="@id/mapFragment" />
+        android:id="@+id/rideInfo"
+        layout="@layout/item_ride_info_bottom_sheet_collapsed" />
 
-    <ImageButton
-        android:id="@+id/locationNotAllowedIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|end"
-        android:layout_marginTop="@dimen/map_icons_margin_top"
-        android:layout_marginEnd="@dimen/map_horizontal_margin"
-        android:background="@null"
-        android:src="@drawable/ic_allow_location"
-        android:visibility="visible" />
-
-    <ImageButton
-        android:id="@+id/locationAllowedIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|end"
-        android:layout_marginTop="@dimen/map_icons_margin_top"
-        android:layout_marginEnd="@dimen/map_horizontal_margin"
-        android:background="@null"
-        android:src="@drawable/ic_focus_location"
-        android:visibility="visible" />
-
-    <ImageButton
-        android:id="@+id/menuIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|start"
-        android:layout_marginStart="@dimen/map_horizontal_margin"
-        android:layout_marginTop="@dimen/map_icons_margin_top"
-        android:background="@null"
-        android:src="@drawable/ic_menu_rectangle" />
-
-    <TextView
-        android:id="@+id/headingTV"
-        style="@style/Heading1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
-        android:layout_marginTop="@dimen/map_heading_margin_top"
-        android:text="@string/map_header_location_not_allowed"
-        android:textColor="@color/secondary_text_color"
-        android:textSize="@dimen/regular_text_size" />
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

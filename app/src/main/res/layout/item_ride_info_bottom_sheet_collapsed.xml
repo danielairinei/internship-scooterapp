@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rideInfoCollapsed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_bottom_sheet"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        tools:ignore="ContentDescription,HardcodedText">
+
+        <ImageView
+            android:id="@+id/dragIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_top_bottom_sheet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/titleTV"
+            style="@style/Heading2SB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/ride_info_heading_margin_top"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:gravity="center"
+            android:text="@string/ride_info_bottom_sheet_heading"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="@dimen/regular_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/batteryIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/ride_info_battery_margin_top"
+            android:src="@drawable/ic_battery_100"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleTV" />
+
+        <TextView
+            android:id="@+id/batteryTV"
+            style="@style/Heading2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/scooter_card_view_battery_iv_margin_end"
+            android:layout_marginTop="@dimen/ride_info_battery_margin_top"
+            android:text="@string/scooter_card_view_battery_perc"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="@dimen/medium_text_size"
+            app:layout_constraintStart_toEndOf="@+id/batteryIV"
+            app:layout_constraintTop_toBottomOf="@id/titleTV" />
+
+        <ImageView
+            android:id="@+id/timeHeadingIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/horizontal_margin"
+            android:src="@drawable/ic_clock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/batteryIV" />
+
+        <TextView
+            android:id="@+id/timeHeadingTV"
+            style="@style/Heading2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/horizontal_margin"
+            android:text="@string/ride_info_time_heading"
+            android:textColor="@color/bottom_sheet_heading"
+            android:textSize="@dimen/regular_text_size"
+            app:layout_constraintStart_toEndOf="@id/timeHeadingIV"
+            app:layout_constraintTop_toBottomOf="@id/batteryIV" />
+
+        <TextView
+            android:id="@+id/timeTV"
+            style="@style/Heading1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:fontFamily="@font/bai_jamjuree_bold"
+            android:text="00:00"
+            android:textColor="@color/secondary_text_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/timeHeadingIV" />
+
+        <TextView
+            android:id="@+id/timeUnitTV"
+            style="@style/Heading1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ride_info_time_unit_margin_start"
+            android:layout_marginTop="@dimen/ride_info_time_unit_margin_top"
+            android:text="@string/ride_info_chronometer_unit"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="@dimen/regular_text_size"
+            app:layout_constraintStart_toEndOf="@id/timeTV"
+            app:layout_constraintTop_toBottomOf="@id/timeHeadingIV" />
+
+        <ImageView
+            android:id="@+id/mapIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ride_info_map_margin_start"
+            android:layout_marginTop="@dimen/horizontal_margin"
+            android:src="@drawable/ic_map"
+            app:layout_constraintStart_toEndOf="@id/timeTV"
+            app:layout_constraintTop_toBottomOf="@id/batteryIV" />
+
+        <TextView
+            android:id="@+id/distanceHeadingTV"
+            style="@style/Heading2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/horizontal_margin"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:text="@string/ride_info_distance_heading"
+            android:textColor="@color/bottom_sheet_heading"
+            android:textSize="@dimen/regular_text_size"
+            app:layout_constraintStart_toEndOf="@id/mapIV"
+            app:layout_constraintTop_toBottomOf="@id/batteryIV" />
+
+        <TextView
+            android:id="@+id/distanceTV"
+            style="@style/Heading1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ride_info_distance_margin_start"
+            android:text="0.0"
+            android:textColor="@color/secondary_text_color"
+            app:layout_constraintStart_toEndOf="@id/timeUnitTV"
+            app:layout_constraintTop_toBottomOf="@id/mapIV" />
+
+        <TextView
+            android:id="@+id/distanceUnitTV"
+            style="@style/Heading1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ride_info_distance_unit_margin_start"
+            android:layout_marginTop="@dimen/ride_info_distance_unit_margin_top"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:text="km"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="@dimen/regular_text_size"
+            app:layout_constraintStart_toEndOf="@id/distanceTV"
+            app:layout_constraintTop_toBottomOf="@id/mapIV" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/lockBtn"
+            android:layout_width="@dimen/bottom_sheet_btn_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/bottom_sheet_btn_margin_top"
+            android:background="@drawable/bg_primary_button_disabled"
+            android:text="@string/ride_info_btn_lock"
+            android:textColor="@color/transparent_button"
+            app:icon="@drawable/ic_lock"
+            app:iconGravity="textStart"
+            app:iconTint="@color/button_icon_color"
+            app:layout_constraintEnd_toStartOf="@+id/endRideBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/timeTV" />
+
+        <Button
+            android:id="@+id/endRideBtn"
+            style="@style/PrimaryButton"
+            android:layout_width="@dimen/bottom_sheet_btn_width"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/bottom_sheet_btn_margin_top"
+            android:text="@string/ride_info_btn_end_ride"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/lockBtn"
+            app:layout_constraintTop_toBottomOf="@id/timeTV" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/rideInfoExpanded"
+        layout="@layout/item_ride_info_bottom_sheet_expanded" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

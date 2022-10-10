@@ -18,6 +18,7 @@
     <color name="white_25">#40FFFFFF</color>
     <color name="pink_lemonade">#4DE53062</color>
     <color name="ruby_red">#FF0000</color>
+    <color name="purple_iris">#571984</color>
     <!--App Colors-->
     <color name="background_color">@color/jagger</color>
     <color name="dialog_background_color">@color/indigo</color>
@@ -41,6 +42,10 @@
     <color name="background_unlock_button">@color/white_25</color>
     <color name="alert_text_color">@color/ruby_red</color>
     <color name="background_history_card_view_stroke">@color/indigo</color>
+    <color name="bottom_sheet_heading">@color/dusty_grey</color>
+    <color name="transparent_button">@color/magenta</color>
     <color name="history_card_view_heading">@color/dusty_grey</color>
     <color name="stroke_unlock_button">@color/white</color>
+    <color name="error_alerter_background">@color/purple_iris</color>
+    <color name="button_icon_color">@color/magenta</color>
 </resources>

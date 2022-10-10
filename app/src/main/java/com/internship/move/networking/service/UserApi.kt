@@ -1,5 +1,10 @@
-package com.internship.move.data.dto.user
+package com.internship.move.networking.service
 
+import com.internship.move.data.dto.user.UserDto
+import com.internship.move.data.dto.user.UserLoginRequestDto
+import com.internship.move.data.dto.user.UserLoginResponseDto
+import com.internship.move.data.dto.user.UserRegisterRequestDto
+import com.internship.move.data.dto.user.UserRegisterResponseDto
 import okhttp3.MultipartBody
 import retrofit2.http.Body
 import retrofit2.http.DELETE

@@ -99,7 +99,7 @@
     <dimen name="history_card_view_width">328dp</dimen>
     <dimen name="start_ride_bottom_sheet_heading_margin_top">110dp</dimen>
     <dimen name="start_ride_bottom_iv_margin_top">20dp</dimen>
-    <dimen name="bottom_sheet_peek_height">10dp</dimen>
+    <dimen name="bottom_sheet_peek_height">340dp</dimen>
     <dimen name="start_ride_bottom_sheet_btn_margin_bottom">46dp</dimen>
     <dimen name="start_ride_bottom_sheet_btn_margin_top">24dp</dimen>
     <dimen name="transparent_button_stroke">1dp</dimen>
@@ -107,4 +107,24 @@
     <dimen name="menu_account_icon_margin_end">84dp</dimen>
     <dimen name="card_view_radius">30dp</dimen>
     <dimen name="card_view_stroke">1dp</dimen>
+    <dimen name="bottom_sheet_card_margin_top">24dp</dimen>
+    <dimen name="bottom_sheet_icon_margin_top">54dp</dimen>
+    <dimen name="bottom_sheet_battery_icon_margin_end">60dp</dimen>
+    <dimen name="bottom_sheet_card_heading_margin_start">6dp</dimen>
+    <dimen name="bottom_sheet_card_info_margin_top">12dp</dimen>
+    <dimen name="bottom_sheet_card_heading_margin_top">52dp</dimen>
+    <dimen name="bottom_sheet_card_info_text_size">44sp</dimen>
+    <dimen name="bottom_sheet_icon_margin_end">80dp</dimen>
+    <dimen name="bottom_sheet_km_margin_top">-20dp</dimen>
+    <dimen name="bottom_sheet_btn_margin_top">36dp</dimen>
+    <dimen name="bottom_sheet_btn_margin_bottom">52dp</dimen>
+    <dimen name="bottom_sheet_btn_width">0dp</dimen>
+    <dimen name="ride_info_heading_margin_top">20dp</dimen>
+    <dimen name="ride_info_battery_margin_top">16dp</dimen>
+    <dimen name="ride_info_time_unit_margin_start">6dp</dimen>
+    <dimen name="ride_info_time_unit_margin_top">20dp</dimen>
+    <dimen name="ride_info_map_margin_start">76dp</dimen>
+    <dimen name="ride_info_distance_margin_start">44dp</dimen>
+    <dimen name="ride_info_distance_unit_margin_start">4dp</dimen>
+    <dimen name="ride_info_distance_unit_margin_top">20dp</dimen>
 </resources>

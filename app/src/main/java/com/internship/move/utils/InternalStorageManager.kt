@@ -2,10 +2,7 @@ package com.internship.move.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.internship.move.data.dto.user.UserDto
-import com.internship.move.presentation.authentification.register.RegisterFragment
-import com.internship.move.presentation.authentification.viewmodel.AuthenticationViewModel
-import com.internship.move.presentation.menu.MenuFragment
+import com.google.android.gms.maps.model.LatLng
 
 class InternalStorageManager(
     context: Context
@@ -32,10 +29,29 @@ class InternalStorageManager(
     fun getLoginToken(): String =
         sharedPreferences.getString(KEY_SESSION_TOKEN, "").toString()
 
+    fun saveUserLocation(position: LatLng) {
+        sharedPreferences.edit().putFloat(KEY_LATITUDE, position.latitude.toFloat()).apply()
+        sharedPreferences.edit().putFloat(KEY_LONGITUDE, position.longitude.toFloat()).apply()
+    }
+
+    fun getUserLocation(): LatLng = LatLng(
+        sharedPreferences.getFloat(KEY_LATITUDE, 1f).toDouble(),
+        sharedPreferences.getFloat(KEY_LONGITUDE, 1f).toDouble()
+    )
+
+    fun saveCurrentRideId(scooterId: String) {
+        sharedPreferences.edit().putString(KEY_CURRENT_RIDE_ID, scooterId).apply()
+    }
+
+    fun getCurrentRideId(): String = sharedPreferences.getString(KEY_CURRENT_RIDE_ID, "").toString()
+
     companion object {
         const val KEY_APP_PREFERENCES = "KEY_APP_PREFERENCES"
         private const val KEY_IS_USER_LOGGED_IN = "KEY_IS_USER_LOGGED_IN"
         private const val KEY_HAS_USER_COMPLETED_ONBOARDING = "KEY_HAS_USER_COMPLETED_ONBOARDING"
         private const val KEY_SESSION_TOKEN = "KEY_SESSION_TOKEN"
+        private const val KEY_CURRENT_RIDE_ID = "KEY_CURRENT_RIDE_ID"
+        private const val KEY_LONGITUDE = "KEY_LONGITUDE"
+        private const val KEY_LATITUDE = "KEY_LATITUDE"
     }
 }

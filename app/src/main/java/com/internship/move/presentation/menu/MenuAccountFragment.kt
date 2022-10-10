@@ -7,6 +7,8 @@ import androidx.navigation.fragment.findNavController
 import com.internship.move.R
 import com.internship.move.databinding.FragmentMenuAccountBinding
 import com.internship.move.presentation.menu.viewmodel.MenuViewModel
+import com.internship.move.utils.constants.ERROR_TIME
+import com.tapadoo.alerter.Alerter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -42,6 +44,17 @@ class MenuAccountFragment : Fragment(R.layout.fragment_menu_account) {
         viewModel.userData.observe(viewLifecycleOwner) {
             binding.usernameTIET.setText(it.name)
             binding.emailTIET.setText(it.email)
+        }
+
+        viewModel.errorData.observe(viewLifecycleOwner) { errorResponse ->
+            if (errorResponse != null) {
+                Alerter.create(requireActivity())
+                    .setTitle(errorResponse.message)
+                    .setTitleAppearance(R.style.AlertTitleAppearance)
+                    .setDuration(ERROR_TIME)
+                    .setBackgroundColorRes(R.color.error_alerter_background)
+                    .show()
+            }
         }
 
         viewModel.loggedOut.observe(viewLifecycleOwner) {

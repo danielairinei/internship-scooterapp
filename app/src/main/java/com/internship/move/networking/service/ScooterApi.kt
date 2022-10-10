@@ -1,5 +1,6 @@
-package com.internship.move.data.dto.scooter
+package com.internship.move.networking.service
 
+import com.internship.move.data.dto.scooter.ScooterDto
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query

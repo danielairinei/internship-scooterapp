@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rideInfoExpandedCL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_bottom_sheet"
+        android:visibility="visible"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        tools:ignore="ContentDescription,HardcodedText">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_down_arrow"
+            app:title="@string/ride_info_bottom_sheet_heading"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/Heading2SB"
+            app:titleTextColor="@color/secondary_text_color" />
+
+        <ImageView
+            android:id="@+id/batteryBg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/bottom_sheet_card_margin_top"
+            android:src="@drawable/bg_card_ride_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topAppBar" />
+
+        <ImageView
+            android:id="@+id/batteryHeadingIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_sheet_icon_margin_top"
+            android:layout_marginEnd="@dimen/bottom_sheet_battery_icon_margin_end"
+            android:src="@drawable/ic_battery_100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topAppBar" />
+
+        <TextView
+            android:id="@+id/batteryHeadingTV"
+            style="@style/Heading2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bottom_sheet_card_heading_margin_start"
+            android:layout_marginTop="@dimen/bottom_sheet_card_heading_margin_top"
+            android:text="@string/bottom_sheet_battery_card_heading"
+            android:textColor="@color/bottom_sheet_heading"
+            android:textSize="@dimen/regular_text_size"
+            app:layout_constraintStart_toEndOf="@id/batteryHeadingIV"
+            app:layout_constraintTop_toBottomOf="@id/topAppBar" />
+
+        <TextView
+            android:id="@+id/batteryTV"
+            style="@style/Heading1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_sheet_card_info_margin_top"
+            android:text="@string/scooter_card_view_battery_perc"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="@dimen/bottom_sheet_card_info_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/batteryHeadingIV" />
+
+        <ImageView
+            android:id="@+id/travelTimeBg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/bottom_sheet_card_margin_top"
+            android:src="@drawable/bg_card_ride_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/batteryBg" />
+
+        <ImageView
+            android:id="@+id/timeHeadingIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_sheet_icon_margin_top"
+            android:layout_marginEnd="@dimen/bottom_sheet_icon_margin_end"
+            android:src="@drawable/ic_clock"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/batteryBg" />
+
+        <TextView
+            android:id="@+id/timeHeadingTV"
+            style="@style/Heading2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bottom_sheet_card_heading_margin_start"
+            android:layout_marginTop="@dimen/bottom_sheet_card_heading_margin_top"
+            android:text="@string/ride_info_time_heading"
+            android:textColor="@color/bottom_sheet_heading"
+            android:textSize="@dimen/regular_text_size"
+            app:layout_constraintStart_toEndOf="@id/timeHeadingIV"
+            app:layout_constraintTop_toBottomOf="@id/batteryBg" />
+
+        <TextView
+            android:id="@+id/timeTV"
+            style="@style/Heading1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_sheet_card_info_margin_top"
+            android:fontFamily="@font/bai_jamjuree_bold"
+            android:text="00:12:56"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="@dimen/bottom_sheet_card_info_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/timeHeadingIV" />
+
+        <ImageView
+            android:id="@+id/distanceBg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/bottom_sheet_card_margin_top"
+            android:src="@drawable/bg_card_ride_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/travelTimeBg" />
+
+        <ImageView
+            android:id="@+id/mapHeadingIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_sheet_icon_margin_top"
+            android:layout_marginEnd="@dimen/bottom_sheet_icon_margin_end"
+            android:src="@drawable/ic_map"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/travelTimeBg" />
+
+        <TextView
+            android:id="@+id/distanceHeadingTV"
+            style="@style/Heading2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/bottom_sheet_card_heading_margin_start"
+            android:layout_marginTop="@dimen/bottom_sheet_card_heading_margin_top"
+            android:text="@string/ride_info_distance_heading"
+            android:textColor="@color/bottom_sheet_heading"
+            android:textSize="@dimen/regular_text_size"
+            app:layout_constraintStart_toEndOf="@id/mapHeadingIV"
+            app:layout_constraintTop_toBottomOf="@id/travelTimeBg" />
+
+        <TextView
+            android:id="@+id/distanceTV"
+            style="@style/Heading1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.7"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="@dimen/bottom_sheet_card_info_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/distanceHeadingTV" />
+
+        <TextView
+            android:id="@+id/distanceUnitTV"
+            style="@style/Heading1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_sheet_km_margin_top"
+            android:text="km"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="@dimen/regular_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/distanceTV" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/lockBtn"
+            android:layout_width="@dimen/bottom_sheet_btn_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/bottom_sheet_btn_margin_top"
+            android:layout_marginBottom="@dimen/bottom_sheet_btn_margin_bottom"
+            android:background="@drawable/bg_primary_button_disabled"
+            android:text="@string/ride_info_btn_lock"
+            android:textColor="@color/transparent_button"
+            app:icon="@drawable/ic_lock"
+            app:iconGravity="textStart"
+            app:iconTint="@color/button_icon_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/endRideBtn"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/endRideBtn"
+            style="@style/PrimaryButton"
+            android:layout_width="@dimen/bottom_sheet_btn_width"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginBottom="@dimen/bottom_sheet_btn_margin_bottom"
+            android:text="@string/ride_info_btn_end_ride"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/lockBtn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

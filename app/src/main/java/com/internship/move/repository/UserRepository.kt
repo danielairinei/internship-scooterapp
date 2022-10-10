@@ -1,11 +1,12 @@
 package com.internship.move.repository
 
-import com.internship.move.data.dto.user.UserApi
 import com.internship.move.data.dto.user.UserDto
 import com.internship.move.data.dto.user.UserLoginRequestDto
 import com.internship.move.data.dto.user.UserLoginResponseDto
 import com.internship.move.data.dto.user.UserRegisterRequestDto
 import com.internship.move.data.dto.user.UserRegisterResponseDto
+import com.google.android.gms.maps.model.LatLng
+import com.internship.move.networking.service.UserApi
 import com.internship.move.utils.InternalStorageManager
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -35,6 +36,12 @@ class UserRepository(
 
     fun getLoginToken(): String =
         internalStorageManager.getLoginToken()
+
+    fun saveUserLocation(position: LatLng) {
+        internalStorageManager.saveUserLocation(position)
+    }
+
+    fun getUserLocation(): LatLng = internalStorageManager.getUserLocation()
 
     suspend fun loginRequest(newLoginRequestDto: UserLoginRequestDto): UserLoginResponseDto =
         userApi.loginRequest(newLoginRequestDto)

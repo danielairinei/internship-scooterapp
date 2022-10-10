@@ -105,4 +105,8 @@
         <item name="android:layout_marginTop">@dimen/text_field_margin_top</item>
         <item name="endIconTint">@null</item>
     </style>
+
+    <style name="AlertTitleAppearance" parent="Heading1">
+        <item name="android:textSize">@dimen/heading2_text_size</item>
+    </style>
 </resources>
